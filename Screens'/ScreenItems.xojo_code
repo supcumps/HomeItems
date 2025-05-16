@@ -41,6 +41,18 @@ Begin MobileScreen ScreenItems
       _ClosingFired   =   False
       _OpeningCompleted=   False
    End
+   Begin MobileToolbarButton ButtonAdd
+      Caption         =   "Add"
+      Enabled         =   True
+      Height          =   22
+      Icon            =   0
+      Left            =   8
+      LockedInPosition=   False
+      Scope           =   2
+      Top             =   778
+      Type            =   4
+      Width           =   22.0
+   End
 End
 #tag EndMobileScreen
 
@@ -55,6 +67,18 @@ End
 		Sub Opening()
 		  loadItems()
 		  
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub ToolbarButtonPressed(button As MobileToolbarButton)
+		  Select Case button.Type
+		  Case MobileToolbarButton.Types.Add
+		    Var AddItemScreen  As New ScreenAddItem
+		    AddItemScreen.Show
+		  End Select
+		  
+		  'End Select
 		End Sub
 	#tag EndEvent
 
