@@ -1,0 +1,266 @@
+#tag Class
+Protected Class App
+Inherits MobileApplication
+	#tag CompatibilityFlags = TargetIOS
+	#tag Event , Description = 2F2F204372656174652074686520646174616261736520696E2074686520617070277320446F63756D656E7473206469726563746F7279
+		Sub Opening()
+		  // This assigns to the App property, not a local variable
+		  db = New SQLiteDatabase
+		  db.DatabaseFile = SpecialFolder.Documents.Child("HomeTrack.sqlite")
+		  
+		  Try
+		    If Not db.DatabaseFile.Exists Then
+		      // First run – create new database
+		      Try
+		        db.CreateDatabase
+		        CreateTables
+		      Catch e As DatabaseException
+		        MessageBox("Database creation failed: " + e.Message)
+		        Return
+		      End Try
+		    Else
+		      // Existing database – just connect
+		      Try 
+		        db.Connect
+		        'CreateTables // Optional: only if you want to add tables in later versions
+		      Catch e As DatabaseException
+		        MessageBox("Database connection failed: " + e.Message)
+		        Return
+		      End Try
+		    End If
+		  Catch e As DatabaseException
+		    MessageBox("Unexpected database error: " + e.Message)
+		    Return
+		  End Try
+		  
+		  MessageBox(db.DatabaseFile.ShellPath)   // NEEDED FOR DEBUGGING COMMENT OUT BEFORE DISTRIBUTION
+		End Sub
+	#tag EndEvent
+
+
+	#tag Method, Flags = &h0
+		Sub CreateTables()
+		  '// Creates required tables on first launch
+		  '
+		  
+		  
+		  
+		  
+		  Var sql As String = ""
+		  
+		  sql = "CREATE TABLE IF NOT EXISTS HouseholdItem ("
+		  sql = sql + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+		  sql = sql + "Name TEXT, "
+		  sql = sql + "Category TEXT, "
+		  sql = sql + "PurchaseDate TEXT, "
+		  sql = sql + "Cost TEXT, "
+		  sql = sql + "WarrantyExpiryDate TEXT, "
+		  sql = sql + "SerialNumber TEXT, "
+		  sql = sql + "Location TEXT, "
+		  sql = sql + "Store TEXT, "
+		  sql = sql + "ReceiptImagePath TEXT, "
+		  sql = sql + "Manufacturer TEXT, "
+		  sql = sql + "ModelNumber TEXT, "
+		  sql = sql + "ReplacementCost TEXT, "
+		  sql = sql + "InsurancePolicy TEXT, "
+		  sql = sql + "IsInsured INTEGER"
+		  sql = sql + ");"
+		  
+		  db.ExecuteSQL(sql)
+		  
+		  ' REPAIRS TABLE
+		  sql = "CREATE TABLE IF NOT EXISTS RepairRecord ("
+		  sql = sql + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+		  sql = sql + "ItemID TEXT, "
+		  sql = sql + "RepairDate TEXT, "
+		  sql = sql + "Description TEXT, "
+		  sql = sql + "Cost REAL, "
+		  sql = sql + "PostRepairWarranty TEXT, "
+		  sql = sql + "ServiceCenter TEXT, "
+		  sql = sql + "FOREIGN KEY(ItemID) REFERENCES HouseholdItem(ID)"
+		  sql = sql + ");"
+		  
+		  db.ExecuteSQL(sql)
+		  
+		  '// Maintenance table
+		  
+		  sql = "CREATE TABLE IF NOT EXISTS MaintenanceReminder ("
+		  sql = sql + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+		  sql = sql + "ItemID TEXT, "
+		  sql = sql + "Description TEXT, "
+		  sql = sql + "DueDate TEXT, "                          // ISO 8601 (e.g. "2025-06-01")
+		  sql = sql + "Recurring INTEGER, "                      // 0 = no, 1 = yes
+		  sql = sql + "ReminderDaysBefore INTEGER, "             // How many days in advance to trigger alert
+		  sql = sql + "Completed INTEGER DEFAULT 0, "            // 0 = not done, 1 = done
+		  sql = sql + "FOREIGN KEY(ItemID) REFERENCES HouseholdItem(ID)"
+		  sql = sql + ");"
+		  
+		  
+		  
+		  db.ExecuteSQL(sql)
+		  
+		  '// Claim history table
+		  
+		  
+		  sql = "CREATE TABLE IF NOT EXISTS ClaimHistory ("
+		  sql = sql + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+		  sql = sql + "ItemID TEXT, "
+		  sql = sql + "DateFiled TEXT, "
+		  sql = sql + "AmountClaimed REAL, "
+		  sql = sql + "Status TEXT, "
+		  sql = sql + "Notes TEXT, "
+		  sql = sql + "FOREIGN KEY(ItemID) REFERENCES HouseholdItem(ID)"
+		  sql = sql + ");"
+		  
+		  
+		  db.ExecuteSQL(sql)
+		  db.ExecuteSQL("PRAGMA foreign_keys = ON;")
+		  
+		  
+		  
+		End Sub
+	#tag EndMethod
+
+
+	#tag Note, Name = Categories and Suggested Icons
+		
+		Category
+		Icon (FontAwesome or custom)
+		Electronics
+		📱
+		Furniture
+		🛋️
+		Appliance
+		🍽️
+		Tools
+		🔧
+		Decor
+		🖼️
+		HVAC/Utility
+		🌀
+		Outdoor
+		🌳
+		Vehicle
+		🚗
+		Insurance-only
+		📄
+		Miscellaneous
+		📦
+		
+		
+	#tag EndNote
+
+
+	#tag Property, Flags = &h0
+		db As SQLiteDatabase
+	#tag EndProperty
+
+
+	#tag ViewBehavior
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="_LaunchOptionsHandled"
+			Visible=false
+			Group="Behavior"
+			InitialValue="False"
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TintColor"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ColorGroup"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="NonReleaseVersion"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="MinorVersion"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="MajorVersion"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="IconBadgeNumber"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="BugVersion"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="StageCode"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+	#tag EndViewBehavior
+End Class
+#tag EndClass
