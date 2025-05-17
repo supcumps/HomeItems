@@ -1,5 +1,5 @@
 #tag MobileScreen
-Begin MobileScreen ScreenItems
+Begin MobileScreen ScreenItems Implements iOSMobileTableDataSource
    BackButtonCaption=   ""
    Compatibility   =   ""
    ControlCount    =   0
@@ -21,49 +21,37 @@ Begin MobileScreen ScreenItems
       AllowSearch     =   False
       AutoLayout      =   TableItems, 7, , 0, False, +1.00, 4, 1, 320, , True
       AutoLayout      =   TableItems, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
-      AutoLayout      =   TableItems, 3, <Parent>, 3, False, +1.00, 4, 1, 101, , True
-      AutoLayout      =   TableItems, 8, , 0, False, +1.00, 4, 1, 512, , True
+      AutoLayout      =   TableItems, 3, <Parent>, 3, False, +1.00, 4, 1, 91, , True
+      AutoLayout      =   TableItems, 8, , 0, False, +1.00, 4, 1, 470, , True
       ControlCount    =   0
       EditingEnabled  =   False
       EditingEnabled  =   False
       Enabled         =   True
       EstimatedRowHeight=   -1
-      Format          =   0
-      Height          =   512
+      Format          =   1
+      Height          =   470
       Left            =   35
       LockedInPosition=   False
       Scope           =   0
       SectionCount    =   0
       TintColor       =   &c000000
-      Top             =   101
+      Top             =   91
       Visible         =   True
       Width           =   320
       _ClosingFired   =   False
       _OpeningCompleted=   False
    End
-   Begin MobileToolbarButton EditButton
-      Caption         =   "📝 Edit"
-      Enabled         =   True
-      Height          =   22
-      Icon            =   0
-      Left            =   74
-      LockedInPosition=   False
-      Scope           =   2
-      Top             =   778
-      Type            =   1001
-      Width           =   56.0
-   End
    Begin MobileToolbarButton AddButton
-      Caption         =   "➕ Add"
+      Caption         =   "➕ Add Item"
       Enabled         =   True
       Height          =   22
       Icon            =   0
-      Left            =   8
+      Left            =   279
       LockedInPosition=   False
       Scope           =   2
-      Top             =   778
+      Top             =   32
       Type            =   1001
-      Width           =   57.0
+      Width           =   88.0
    End
 End
 #tag EndMobileScreen
@@ -88,9 +76,6 @@ End
 		  Case AddButton
 		    Var AddItemScreen  As New ScreenAddItem
 		    AddItemScreen.Show
-		  Case EditButton
-		    Var EditItemScreen  As New ScreenEditItem
-		    EditItemScreen.Show
 		  End Select
 		  
 		  'End Select
@@ -100,42 +85,22 @@ End
 
 	#tag Method, Flags = &h0
 		Sub LoadItems()
-		  'Try
+		  
+		  
 		  '// Clear all rows
 		  TableItems.RemoveAllRows
-		  '
-		  '// Query the database
-		  'Var rs As RowSet = App.db.SelectSQL("SELECT ID, Name, Category FROM HouseholdItem ORDER BY PurchaseDate DESC")
-		  '
-		  'While Not rs.AfterLastRow
-		  'Var id As String = rs.Column("ID").StringValue
-		  'Var name As String = rs.Column("Name").StringValue
-		  'Var category As String = rs.Column("Category").StringValue
-		  '
-		  '// Format display text
-		  'Var displayText As String = id + "          " + name + "          " + category
-		  '
-		  '// Add the row
-		  'TableItems.AddRow(displayText)
-		  'cell.Tag = id  
-		  '
-		  ''MessageBox("Rowtag = " + RowTag)
-		  'rs.MoveToNextRow
-		  'Wend
-		  '
-		  'rs.Close
-		  '
-		  'Catch e As DatabaseException
-		  'MessageBox("Failed to load items: " + e.Message)
-		  'End Try
-		  
-		  
-		  ///=========
 		  
 		  // Add section if needed
-		  TableItems.AddSection("")
+		  TableItems.AddSectionAt(0,"Headings")
+		  Var cell As MobileTableCellData 
+		  
+		  cell = TableItems.CreateCell
+		  cell.Text =" name" + " - " + "category "
+		  TableItems.AddRow(0, cell) 
 		  
 		  Var rs As RowSet = App.db.SelectSQL("SELECT ID, Name, Category FROM HouseholdItem ORDER BY PurchaseDate DESC")
+		  
+		  TableItems.AddSectionAt(1,"Items")
 		  
 		  While Not rs.AfterLastRow
 		    Var id As String = rs.Column("ID").StringValue
@@ -143,17 +108,50 @@ End
 		    Var category As String = rs.Column("Category").StringValue
 		    
 		    // Create the table cell
-		    Var cell As MobileTableCellData = TableItems.CreateCell
+		     cell  = TableItems.CreateCell
 		    
 		    cell.Text = name + " - " + category   // display string
 		    cell.Tag = id                         // store the ID silently in .Tag
 		    
-		    TableItems.AddRow(0, cell)            // add to section 0
+		    TableItems.AddRow(1, cell)            // add to section 0
 		    
 		    rs.MoveToNextRow
 		  Wend
 		  
+		  
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function RowCount(table As iOSMobileTable, section As Integer) As Integer
+		  // Part of the iOSMobileTableDataSource interface.
+		  
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function RowData(table As iOSMobileTable, section As Integer, row As Integer) As MobileTableCellData
+		  // Part of the iOSMobileTableDataSource interface.
+		  
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function SectionCount(table As iOSMobileTable) As Integer
+		  // Part of the iOSMobileTableDataSource interface.
+		  
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function SectionTitle(table As iOSMobileTable, section As Integer) As String
+		  // Part of the iOSMobileTableDataSource interface.
+		  
+		  
+		End Function
 	#tag EndMethod
 
 
