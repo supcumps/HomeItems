@@ -1,5 +1,5 @@
 #tag MobileScreen
-Begin MobileScreen ScreenDashboard
+Begin MobileScreen ScreenDashboardOne
    BackButtonCaption=   ""
    Compatibility   =   ""
    ControlCount    =   0
@@ -79,8 +79,8 @@ End
 #tag Events btn_Items
 	#tag Event
 		Sub Pressed()
-		  Var ItemScreen  As New ScreenItems
-		  ItemScreen.show
+		  'Var ItemScreen  As New ScreenItems
+		  'ItemScreen.show
 		  
 		End Sub
 	#tag EndEvent

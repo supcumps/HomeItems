@@ -33,7 +33,7 @@ Inherits MobileApplication
 		    Return
 		  End Try
 		  
-		  MessageBox(db.DatabaseFile.ShellPath)   // NEEDED FOR DEBUGGING COMMENT OUT BEFORE DISTRIBUTION
+		  MessageBox(db.DatabaseFile.ShellPath)   // NEEDED FOR DEBUGGING - COMMENT OUT BEFORE DISTRIBUTION
 		End Sub
 	#tag EndEvent
 

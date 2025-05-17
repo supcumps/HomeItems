@@ -41,8 +41,20 @@ Begin MobileScreen ScreenItems
       _ClosingFired   =   False
       _OpeningCompleted=   False
    End
-   Begin MobileToolbarButton ButtonAdd
-      Caption         =   "Add"
+   Begin MobileToolbarButton EditButton
+      Caption         =   "📝 Edit"
+      Enabled         =   True
+      Height          =   22
+      Icon            =   0
+      Left            =   74
+      LockedInPosition=   False
+      Scope           =   2
+      Top             =   778
+      Type            =   1001
+      Width           =   56.0
+   End
+   Begin MobileToolbarButton AddButton
+      Caption         =   "➕ Add"
       Enabled         =   True
       Height          =   22
       Icon            =   0
@@ -50,8 +62,8 @@ Begin MobileScreen ScreenItems
       LockedInPosition=   False
       Scope           =   2
       Top             =   778
-      Type            =   4
-      Width           =   22.0
+      Type            =   1001
+      Width           =   57.0
    End
 End
 #tag EndMobileScreen
@@ -72,10 +84,13 @@ End
 
 	#tag Event
 		Sub ToolbarButtonPressed(button As MobileToolbarButton)
-		  Select Case button.Type
-		  Case MobileToolbarButton.Types.Add
+		  Select Case Button
+		  Case AddButton
 		    Var AddItemScreen  As New ScreenAddItem
 		    AddItemScreen.Show
+		  Case EditButton
+		    Var EditItemScreen  As New ScreenEditItem
+		    EditItemScreen.Show
 		  End Select
 		  
 		  'End Select

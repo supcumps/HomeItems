@@ -770,20 +770,6 @@ End
 	#tag EndEvent
 
 
-	#tag Method, Flags = &h0
-		Sub Constructor(id as String)
-		  // Calling the overridden superclass constructor.
-		  'Super.Constructor
-		  ''Sub Constructor(id As String)
-		  '// Call the default constructor first
-		  'Self.Constructor
-		  '
-		  '// The passed ID is stored in the gloabl RowTag
-		  ''End Sub
-		End Sub
-	#tag EndMethod
-
-
 #tag EndWindowCode
 
 #tag Events btnSaveItem
