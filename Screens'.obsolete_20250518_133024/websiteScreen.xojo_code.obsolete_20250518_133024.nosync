@@ -29,7 +29,7 @@ Begin MobileScreen websiteScreen
       Enabled         =   True
       EstimatedRowHeight=   0
       Format          =   0
-      Height          =   723
+      Height          =   479
       Left            =   20
       LockedInPosition=   False
       Scope           =   0

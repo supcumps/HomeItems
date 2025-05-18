@@ -1,9 +1,9 @@
 #tag MobileScreen
-Begin MobileScreen websiteScreen
-   BackButtonCaption=   "🔙 Websites"
+Begin MobileScreen ScreenItemsOLD
+   BackButtonCaption=   ""
    Compatibility   =   ""
    ControlCount    =   0
-   Device = 1
+   Device = 7
    HasNavigationBar=   True
    LargeTitleDisplayMode=   2
    Left            =   0
@@ -11,146 +11,154 @@ Begin MobileScreen websiteScreen
    ScaleFactor     =   0.0
    TabBarVisible   =   True
    TabIcon         =   0
-   TintColor       =   ColorGroup1
-   Title           =   "Websites"
+   TintColor       =   ColorGroup3
+   Title           =   "Items"
    Top             =   0
-   Begin iOSMobileTable websitesTable
+   Begin iOSMobileTable TableItems
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AllowRefresh    =   False
       AllowSearch     =   False
-      AutoLayout      =   websitesTable, 4, BottomLayoutGuide, 4, False, +1.00, 4, 1, -*kStdControlGapV, , True
-      AutoLayout      =   websitesTable, 1, <Parent>, 1, False, +1.00, 4, 1, 20, , True
-      AutoLayout      =   websitesTable, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
-      AutoLayout      =   websitesTable, 3, <Parent>, 3, False, +1.00, 4, 1, 81, , True
+      AutoLayout      =   TableItems, 7, , 0, False, +1.00, 4, 1, 320, , True
+      AutoLayout      =   TableItems, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
+      AutoLayout      =   TableItems, 3, <Parent>, 3, False, +1.00, 4, 1, 91, , True
+      AutoLayout      =   TableItems, 8, , 0, False, +1.00, 4, 1, 470, , True
       ControlCount    =   0
       EditingEnabled  =   False
       EditingEnabled  =   False
       Enabled         =   True
-      EstimatedRowHeight=   0
+      EstimatedRowHeight=   -1
       Format          =   0
-      Height          =   723
-      Left            =   20
+      Height          =   470
+      Left            =   35
       LockedInPosition=   False
       Scope           =   0
       SectionCount    =   0
       TintColor       =   &c000000
-      Top             =   81
+      Top             =   91
       Visible         =   True
-      Width           =   280
+      Width           =   320
       _ClosingFired   =   False
       _OpeningCompleted=   False
+   End
+   Begin MobileToolbarButton AddButton
+      Caption         =   "➕ Add Item"
+      Enabled         =   True
+      Height          =   22
+      Icon            =   0
+      Left            =   279
+      LockedInPosition=   False
+      Scope           =   2
+      Top             =   32
+      Type            =   1001
+      Width           =   88.0
    End
 End
 #tag EndMobileScreen
 
 #tag WindowCode
 	#tag Event
+		Sub Activated()
+		  loadItems()
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Sub Opening()
-		  ''Me.SetBackgroundColorXC(ColorGroup1)
-		  'loadWebsites
-		  '
-		  'loadData
-		  '
-		  '
-		  ''websitesTable.TintColor = ColorGroup1
+		  loadItems()
 		  
 		End Sub
 	#tag EndEvent
 
-
-	#tag Method, Flags = &h21
-		Private Sub loadData()
-		  'websitesTable.AddSection("")
-		  '
-		  'Var cellData As MobileTableCellData
-		  '
-		  ''
-		  'For i As Integer = websites.FirstIndex To Websites.LastIndex
-		  ''cellData = websitesTable.CreateCell 
-		  'cellData = websitesTable.createCustomCell(GetTypeInfo(webCustomCell))
-		  'Var customCell As webCustomCell = webCustomCell(cellData.Control)
-		  '
-		  ''celldata.Text = websites(i)
-		  'CustomCell.webNameLabel.Text = websites(i)
-		  'cellData.AccessoryType = MobileTableCellData.AccessoryTypes.Disclosure
-		  '
-		  'websitesTable.AddRow(0, cellData)
-		  'Next
-		  '
+	#tag Event
+		Sub ToolbarButtonPressed(button As MobileToolbarButton)
+		  Select Case Button
+		  Case AddButton
+		    Var AddItemScreen  As New ScreenAddItem
+		    AddItemScreen.Show
+		  End Select
 		  
-		  
-		  //==
-		  
-		  
-		  
-		  
-		  
-		  
-		  '
-		  'For i As Integer = Questions.FirstIndex To Questions.LastIndex
-		  'cellData = QuestionsTable.createCustomCell(GetTypeInfo(QCustomCell))
-		  ''cellData = QuestionsTable.CreateCell
-		  'Var customCell As QCustomCell = QCustomCell(cellData.Control)
-		  '
-		  'CustomCell.questionAsked.Text = Questions(i)
-		  ''questionAsked = Questions(i)
-		  '
-		  'cellData.AccessoryType = MobileTableCellData.AccessoryTypes.Disclosure
-		  '
-		  'QuestionsTable.AddRow(0, cellData)
-		  '
-		  'Next
-		  '
-		  
+		  'End Select
 		End Sub
-	#tag EndMethod
+	#tag EndEvent
+
 
 	#tag Method, Flags = &h0
-		Sub loadWebsites()
-		  'Websites.Add("Search maps for 'Womens Refuges'") 
-		  ''Websites.Add("The Cooroy Legal Centre") 
-		  'Websites.Add("SJP Law") 
-		  'websites.add("Services Australia")
-		  'websites.add("National Legal Aid")
-		  'websites.add("Family Relationships Australia")
-		  'websites.add("Do it yourself Family Law Australia")
-		  'websites.add("The Family Court of Australia")
-		  'websites.add("Do-it-yourself Divorce Kit")
-		  'websites.add("The five stages of divorce")
-		  'websites.add("Mediation (dispute resolution) Services")
-		  'websites.add("Videos from the Family Court Of Australia")
-		  'websites.add("Australian Government Budget Planner")
-		  '
+		Sub LoadItems()
+		  
+		  
+		  '// Clear all rows
+		  TableItems.RemoveAllRows
+		  
+		  // Add section if needed
+		  TableItems.AddSectionAt(0,"Headings")
+		  Var cell As MobileTableCellData 
+		  
+		  cell = TableItems.CreateCell
+		  cell.Text =" name" + " - " + "category "
+		  TableItems.AddRow(0, cell) 
+		  
+		  Var rs As RowSet = App.db.SelectSQL("SELECT ID, Name, Category FROM HouseholdItem ORDER BY PurchaseDate DESC")
+		  
+		  TableItems.AddSectionAt(1,"Items")
+		  
+		  While Not rs.AfterLastRow
+		    Var id As String = rs.Column("ID").StringValue
+		    Var name As String = rs.Column("Name").StringValue
+		    Var category As String = rs.Column("Category").StringValue
+		    
+		    // Create the table cell
+		    cell  = TableItems.CreateCell
+		    
+		    cell.Text = name + " - " + category   // display string
+		    cell.Tag = id                         // store the ID silently in .Tag
+		    
+		    TableItems.AddRow(1, cell)            // add to section 0
+		    
+		    rs.MoveToNextRow
+		  Wend
+		  
 		  
 		End Sub
 	#tag EndMethod
+
+
+	#tag Property, Flags = &h0
+		ItemIDs() As Integer
+	#tag EndProperty
 
 
 #tag EndWindowCode
 
-#tag Events websitesTable
+#tag Events TableItems
 	#tag Event
 		Sub SelectionChanged(section As Integer, row As Integer)
-		  '
-		  '
-		  'Var details As New  displayWebsiteScreen
-		  '
-		  'websiteName = websites(websitesTable.SelectedRow.Right.Int32Value) // load into global for future reference
-		  '
-		  'PushTo(details)
+		  
+		  
+		  // Get the selected cell
+		  Var cell As MobileTableCellData = TableItems.RowCellData(section, row)
+		  
+		  // Check if Tag is assigned and cast it to String
+		  
+		  Var itemID As String = cell.Tag  
+		  MessageBox("Item ID: " + itemID)
+		  
+		  RowTag = itemID  //put into global variable for ease of use
+		  '// Create the item details screen and pass the ID
+		  Var EditScreen As New ScreenEditItem
+		  
+		  '// Push to the detail screen
+		  
+		  EditScreen.Show
+		  
+		  
+		  
+		  
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior
-	#tag ViewProperty
-		Name="ScaleFactor"
-		Visible=false
-		Group="Behavior"
-		InitialValue=""
-		Type="Double"
-		EditorType=""
-	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Index"
 		Visible=true
@@ -258,6 +266,14 @@ End
 		Group="Behavior"
 		InitialValue=""
 		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="ScaleFactor"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Double"
 		EditorType=""
 	#tag EndViewProperty
 #tag EndViewBehavior

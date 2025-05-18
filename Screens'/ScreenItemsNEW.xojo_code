@@ -1,5 +1,5 @@
 #tag MobileScreen
-Begin MobileScreen ScreenItems Implements iOSMobileTableDataSource
+Begin MobileScreen ScreenItemsNEW
    BackButtonCaption=   ""
    Compatibility   =   ""
    ControlCount    =   0
@@ -28,7 +28,7 @@ Begin MobileScreen ScreenItems Implements iOSMobileTableDataSource
       EditingEnabled  =   False
       Enabled         =   True
       EstimatedRowHeight=   -1
-      Format          =   0
+      Format          =   1
       Height          =   470
       Left            =   35
       LockedInPosition=   False
@@ -120,6 +120,38 @@ End
 		  
 		  
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function RowCount(table As iOSMobileTable, section As Integer) As Integer
+		  // Part of the iOSMobileTableDataSource interface.
+		  
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function RowData(table As iOSMobileTable, section As Integer, row As Integer) As MobileTableCellData
+		  // Part of the iOSMobileTableDataSource interface.
+		  
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function SectionCount(table As iOSMobileTable) As Integer
+		  // Part of the iOSMobileTableDataSource interface.
+		  
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function SectionTitle(table As iOSMobileTable, section As Integer) As String
+		  // Part of the iOSMobileTableDataSource interface.
+		  
+		  
+		End Function
 	#tag EndMethod
 
 

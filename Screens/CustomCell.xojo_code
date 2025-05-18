@@ -1,5 +1,5 @@
 #tag IOSContainerControl
-Begin MobileTableCustomCell CustomItemCell
+Begin MobileTableCustomCell CustomCell
    AccessibilityHint=   ""
    AccessibilityLabel=   ""
    AllowDynamicHeight=   False
@@ -7,7 +7,7 @@ Begin MobileTableCustomCell CustomItemCell
    ControlCount    =   0
    Device = 7
    Enabled         =   True
-   Height          =   60
+   Height          =   46
    Left            =   0
    Orientation = 0
    TintColor       =   &c000000
@@ -18,10 +18,10 @@ Begin MobileTableCustomCell CustomItemCell
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   0
-      AutoLayout      =   IDLabel, 8, , 0, False, +1.00, 4, 1, 30, , True
       AutoLayout      =   IDLabel, 1, <Parent>, 1, False, +1.00, 4, 1, *kStdGapCtlToViewH, , True
-      AutoLayout      =   IDLabel, 3, <Parent>, 3, False, +1.00, 4, 1, *kStdGapCtlToViewV, , True
-      AutoLayout      =   IDLabel, 7, , 0, False, +1.00, 4, 1, 26, , True
+      AutoLayout      =   IDLabel, 7, , 0, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   IDLabel, 3, <Parent>, 3, False, +1.00, 4, 1, 8, , True
+      AutoLayout      =   IDLabel, 8, , 0, False, +1.00, 4, 1, 30, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
@@ -38,23 +38,23 @@ Begin MobileTableCustomCell CustomItemCell
       TextFont        =   "System Bold		"
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   20
+      Top             =   8
       Visible         =   True
-      Width           =   26
+      Width           =   20
       _ClosingFired   =   False
    End
    Begin MobileLabel NameLabel
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   0
-      AutoLayout      =   NameLabel, 9, <Parent>, 9, False, +1.00, 4, 1, -4, , True
-      AutoLayout      =   NameLabel, 7, , 0, False, +1.00, 4, 1, 52, , True
+      AutoLayout      =   NameLabel, 1, IDLabel, 2, False, +1.00, 4, 1, 15, , True
+      AutoLayout      =   NameLabel, 7, , 0, False, +1.00, 4, 1, 86, , True
       AutoLayout      =   NameLabel, 8, , 0, False, +1.00, 4, 1, 30, , True
-      AutoLayout      =   NameLabel, 10, IDLabel, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   NameLabel, 11, IDLabel, 11, False, +1.00, 4, 1, 0, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   130
+      Left            =   55
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -67,23 +67,23 @@ Begin MobileTableCustomCell CustomItemCell
       TextFont        =   "System Bold		"
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   20
+      Top             =   8
       Visible         =   True
-      Width           =   52
+      Width           =   86
       _ClosingFired   =   False
    End
    Begin MobileLabel CategoryLabel
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   0
-      AutoLayout      =   CategoryLabel, 7, , 0, False, +1.00, 4, 1, 65, , True
       AutoLayout      =   CategoryLabel, 2, <Parent>, 2, False, +1.00, 4, 1, -29, , True
-      AutoLayout      =   CategoryLabel, 10, IDLabel, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   CategoryLabel, 7, , 0, False, +1.00, 4, 1, 95, , True
       AutoLayout      =   CategoryLabel, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   CategoryLabel, 11, IDLabel, 11, False, +1.00, 4, 1, 0, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   226
+      Left            =   196
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -96,9 +96,9 @@ Begin MobileTableCustomCell CustomItemCell
       TextFont        =   "System Bold		"
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   20
+      Top             =   8
       Visible         =   True
-      Width           =   65
+      Width           =   95
       _ClosingFired   =   False
    End
 End

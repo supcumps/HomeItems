@@ -1,5 +1,5 @@
 #tag MobileScreen
-Begin MobileScreen ScreenItems Implements iOSMobileTableDataSource
+Begin MobileScreen ScreenItemsNEW
    BackButtonCaption=   ""
    Compatibility   =   ""
    ControlCount    =   0
@@ -28,7 +28,7 @@ Begin MobileScreen ScreenItems Implements iOSMobileTableDataSource
       EditingEnabled  =   False
       Enabled         =   True
       EstimatedRowHeight=   -1
-      Format          =   0
+      Format          =   1
       Height          =   470
       Left            =   35
       LockedInPosition=   False
@@ -52,6 +52,26 @@ Begin MobileScreen ScreenItems Implements iOSMobileTableDataSource
       Top             =   32
       Type            =   1001
       Width           =   88.0
+   End
+   Begin MobileTableCustomCell TableCustomCell1
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AllowDynamicHeight=   False
+      AutoLayout      =   TableCustomCell1, 3, <Parent>, 3, False, +1.00, 4, 1, 80, , True
+      AutoLayout      =   TableCustomCell1, 1, <Parent>, 1, False, +1.00, 4, 1, 80, , True
+      AutoLayout      =   TableCustomCell1, 7, , 0, False, +1.00, 4, 1, 320, , True
+      AutoLayout      =   TableCustomCell1, 8, , 0, False, +1.00, 4, 1, 480, , True
+      ControlCount    =   0
+      Enabled         =   True
+      Height          =   480
+      Left            =   80
+      LockedInPosition=   False
+      Scope           =   2
+      TintColor       =   &c000000
+      Top             =   80
+      Visible         =   True
+      Width           =   320
+      _ClosingFired   =   False
    End
 End
 #tag EndMobileScreen
@@ -120,6 +140,38 @@ End
 		  
 		  
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function RowCount(table As iOSMobileTable, section As Integer) As Integer
+		  // Part of the iOSMobileTableDataSource interface.
+		  
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function RowData(table As iOSMobileTable, section As Integer, row As Integer) As MobileTableCellData
+		  // Part of the iOSMobileTableDataSource interface.
+		  
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function SectionCount(table As iOSMobileTable) As Integer
+		  // Part of the iOSMobileTableDataSource interface.
+		  
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function SectionTitle(table As iOSMobileTable, section As Integer) As String
+		  // Part of the iOSMobileTableDataSource interface.
+		  
+		  
+		End Function
 	#tag EndMethod
 
 

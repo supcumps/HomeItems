@@ -7,21 +7,21 @@ Begin MobileTableCustomCell CustomItemCell
    ControlCount    =   0
    Device = 7
    Enabled         =   True
-   Height          =   60
+   Height          =   46
    Left            =   0
    Orientation = 0
    TintColor       =   &c000000
    Top             =   0
    Visible         =   True
    Width           =   320
-   Begin MobileLabel IDLabel
+   Begin MobileLabel lblID
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   0
-      AutoLayout      =   IDLabel, 8, , 0, False, +1.00, 4, 1, 30, , True
-      AutoLayout      =   IDLabel, 1, <Parent>, 1, False, +1.00, 4, 1, *kStdGapCtlToViewH, , True
-      AutoLayout      =   IDLabel, 3, <Parent>, 3, False, +1.00, 4, 1, *kStdGapCtlToViewV, , True
-      AutoLayout      =   IDLabel, 7, , 0, False, +1.00, 4, 1, 26, , True
+      AutoLayout      =   lblID, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lblID, 1, <Parent>, 1, False, +1.00, 4, 1, *kStdGapCtlToViewH, , True
+      AutoLayout      =   lblID, 3, <Parent>, 3, False, +1.00, 4, 1, 8, , True
+      AutoLayout      =   lblID, 7, , 0, False, +1.00, 4, 1, 26, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
@@ -38,19 +38,19 @@ Begin MobileTableCustomCell CustomItemCell
       TextFont        =   "System Bold		"
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   20
+      Top             =   8
       Visible         =   True
       Width           =   26
       _ClosingFired   =   False
    End
-   Begin MobileLabel NameLabel
+   Begin MobileLabel lblName
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   0
-      AutoLayout      =   NameLabel, 9, <Parent>, 9, False, +1.00, 4, 1, -4, , True
-      AutoLayout      =   NameLabel, 7, , 0, False, +1.00, 4, 1, 52, , True
-      AutoLayout      =   NameLabel, 8, , 0, False, +1.00, 4, 1, 30, , True
-      AutoLayout      =   NameLabel, 10, IDLabel, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblName, 9, <Parent>, 9, False, +1.00, 4, 1, -4, , True
+      AutoLayout      =   lblName, 7, , 0, False, +1.00, 4, 1, 52, , True
+      AutoLayout      =   lblName, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lblName, 11, lblID, 11, False, +1.00, 4, 1, 0, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
@@ -67,19 +67,19 @@ Begin MobileTableCustomCell CustomItemCell
       TextFont        =   "System Bold		"
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   20
+      Top             =   8
       Visible         =   True
       Width           =   52
       _ClosingFired   =   False
    End
-   Begin MobileLabel CategoryLabel
+   Begin MobileLabel lblCAtegory
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   0
-      AutoLayout      =   CategoryLabel, 7, , 0, False, +1.00, 4, 1, 65, , True
-      AutoLayout      =   CategoryLabel, 2, <Parent>, 2, False, +1.00, 4, 1, -29, , True
-      AutoLayout      =   CategoryLabel, 10, IDLabel, 10, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   CategoryLabel, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lblCAtegory, 7, , 0, False, +1.00, 4, 1, 65, , True
+      AutoLayout      =   lblCAtegory, 2, <Parent>, 2, False, +1.00, 4, 1, -29, , True
+      AutoLayout      =   lblCAtegory, 11, lblID, 11, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblCAtegory, 8, , 0, False, +1.00, 4, 1, 30, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
@@ -96,7 +96,7 @@ Begin MobileTableCustomCell CustomItemCell
       TextFont        =   "System Bold		"
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   20
+      Top             =   8
       Visible         =   True
       Width           =   65
       _ClosingFired   =   False
