@@ -12,7 +12,6 @@ iOSLaunchScreen=LaunchScreen;LaunchScreen.xojo_code;&h0000000010594FFF;&h0000000
 BuildSteps=Build Automation;Build Automation.xojo_code;&h00000000197DE7FF;&h0000000000000000;false
 Folder=Screens;Screens;&h000000002817BFFF;&h0000000000000000;false
 MobileScreen=ScreenItems;Screens/ScreenItems.xojo_code;&h0000000033A567FF;&h000000002817BFFF;false
-MobileScreen=ScreenItemsOLD;Screens/ScreenItemsOLD.xojo_code;&h000000007896B7FF;&h000000002817BFFF;false
 MobileScreen=ScreenAddItem;Screens/ScreenAddItem.xojo_code;&h0000000078544FFF;&h000000002817BFFF;false
 MobileScreen=ScreenAlerts;Screens/ScreenAlerts.xojo_code;&h000000001D959FFF;&h000000002817BFFF;false
 MobileScreen=ScreenSettings;Screens/ScreenSettings.xojo_code;&h0000000037A757FF;&h000000002817BFFF;false

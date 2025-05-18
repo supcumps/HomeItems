@@ -21,17 +21,17 @@ Begin MobileScreen ScreenAddItem
       AllowAutoCorrection=   False
       AllowSpellChecking=   False
       AutoCapitalizationType=   0
-      AutoLayout      =   txtName, 1, <Parent>, 1, False, +1.00, 4, 1, 185, , True
-      AutoLayout      =   txtName, 7, , 0, False, +1.00, 4, 1, 100, , True
       AutoLayout      =   txtName, 4, txtCategory, 3, False, +1.00, 4, 1, -*kStdControlGapV, , True
       AutoLayout      =   txtName, 8, , 0, False, +1.00, 4, 1, 34, , True
+      AutoLayout      =   txtName, 1, lblName, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   txtName, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
       BorderStyle     =   3
       ControlCount    =   0
       Enabled         =   True
       Height          =   34
       Hint            =   ""
       InputType       =   0
-      Left            =   185
+      Left            =   153
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
       Password        =   False
@@ -48,7 +48,7 @@ Begin MobileScreen ScreenAddItem
       TintColor       =   &c000000
       Top             =   89
       Visible         =   True
-      Width           =   100
+      Width           =   202
       _ClosingFired   =   False
    End
    Begin MobileTextField txtCategory
@@ -58,17 +58,17 @@ Begin MobileScreen ScreenAddItem
       AllowAutoCorrection=   False
       AllowSpellChecking=   False
       AutoCapitalizationType=   0
-      AutoLayout      =   txtCategory, 1, <Parent>, 1, False, +1.00, 4, 1, 185, , True
-      AutoLayout      =   txtCategory, 7, , 0, False, +1.00, 4, 1, 100, , True
-      AutoLayout      =   txtCategory, 3, <Parent>, 3, False, +1.00, 4, 1, 131, , True
       AutoLayout      =   txtCategory, 8, , 0, False, +1.00, 4, 1, 34, , True
+      AutoLayout      =   txtCategory, 1, lblCategory, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   txtCategory, 3, <Parent>, 3, False, +1.00, 4, 1, 131, , True
+      AutoLayout      =   txtCategory, 7, , 0, False, +1.00, 4, 1, 100, , True
       BorderStyle     =   3
       ControlCount    =   0
       Enabled         =   True
       Height          =   34
       Hint            =   ""
       InputType       =   0
-      Left            =   185
+      Left            =   153
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
       Password        =   False
@@ -300,15 +300,15 @@ Begin MobileScreen ScreenAddItem
    Begin MobileLabel lblName
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      Alignment       =   0
-      AutoLayout      =   lblName, 1, <Parent>, 1, False, +1.00, 4, 1, 48, , True
-      AutoLayout      =   lblName, 2, lblCategory, 2, False, +1.00, 4, 1, 0, , True
+      Alignment       =   2
       AutoLayout      =   lblName, 8, , 0, False, +1.00, 4, 1, 30, , True
-      AutoLayout      =   lblName, 4, txtCategory, 3, False, +1.00, 4, 1, -*kStdControlGapV, , True
+      AutoLayout      =   lblName, 1, <Parent>, 1, False, +1.00, 4, 1, *kStdGapCtlToViewH, , True
+      AutoLayout      =   lblName, 3, TopLayoutGuide, 3, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   lblName, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   48
+      Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -321,23 +321,23 @@ Begin MobileScreen ScreenAddItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   93
+      Top             =   85
       Visible         =   True
-      Width           =   110
+      Width           =   125
       _ClosingFired   =   False
    End
    Begin MobileLabel lblCategory
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      Alignment       =   0
-      AutoLayout      =   lblCategory, 1, <Parent>, 1, False, +1.00, 4, 1, 58, , True
-      AutoLayout      =   lblCategory, 7, , 0, False, +1.00, 4, 1, 100, , True
-      AutoLayout      =   lblCategory, 10, txtCategory, 10, False, +1.00, 4, 1, 0, , True
+      Alignment       =   2
       AutoLayout      =   lblCategory, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lblCategory, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblCategory, 10, txtCategory, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblCategory, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   58
+      Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -352,7 +352,7 @@ Begin MobileScreen ScreenAddItem
       TintColor       =   &c000000
       Top             =   133
       Visible         =   True
-      Width           =   100
+      Width           =   125
       _ClosingFired   =   False
    End
    Begin MobileDateTimePicker dpPurchaseDate
@@ -379,15 +379,15 @@ Begin MobileScreen ScreenAddItem
    Begin MobileLabel lblPurchased
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      Alignment       =   0
-      AutoLayout      =   lblPurchased, 1, lblCategory, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lblPurchased, 7, , 0, False, +1.00, 4, 1, 100, , True
-      AutoLayout      =   lblPurchased, 3, <Parent>, 3, False, +1.00, 4, 1, 183, , True
+      Alignment       =   2
       AutoLayout      =   lblPurchased, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lblPurchased, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblPurchased, 3, <Parent>, 3, False, +1.00, 4, 1, 183, , True
+      AutoLayout      =   lblPurchased, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   58
+      Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -402,21 +402,21 @@ Begin MobileScreen ScreenAddItem
       TintColor       =   &c000000
       Top             =   183
       Visible         =   True
-      Width           =   100
+      Width           =   125
       _ClosingFired   =   False
    End
    Begin MobileLabel lblCost
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      Alignment       =   0
-      AutoLayout      =   lblCost, 1, <Parent>, 1, False, +1.00, 4, 1, 70, , True
-      AutoLayout      =   lblCost, 7, , 0, False, +1.00, 4, 1, 100, , True
-      AutoLayout      =   lblCost, 3, txtCost, 3, False, +1.00, 4, 1, 0, , True
+      Alignment       =   2
       AutoLayout      =   lblCost, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lblCost, 1, lblCategory, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblCost, 3, txtCost, 3, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblCost, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   70
+      Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -431,7 +431,7 @@ Begin MobileScreen ScreenAddItem
       TintColor       =   &c000000
       Top             =   235
       Visible         =   True
-      Width           =   100
+      Width           =   125
       _ClosingFired   =   False
    End
    Begin MobileDateTimePicker dpWarrantyDate
@@ -459,14 +459,14 @@ Begin MobileScreen ScreenAddItem
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   2
-      AutoLayout      =   lblWarranty, 1, lbl_Location, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lblWarranty, 7, , 0, False, +1.00, 4, 1, 122, , True
-      AutoLayout      =   lblWarranty, 3, <Parent>, 3, False, +1.00, 4, 1, 299, , True
       AutoLayout      =   lblWarranty, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lblWarranty, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblWarranty, 3, <Parent>, 3, False, +1.00, 4, 1, 299, , True
+      AutoLayout      =   lblWarranty, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   58
+      Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -481,7 +481,7 @@ Begin MobileScreen ScreenAddItem
       TintColor       =   &c000000
       Top             =   299
       Visible         =   True
-      Width           =   122
+      Width           =   125
       _ClosingFired   =   False
    End
    Begin MobileSwitch swInsured
@@ -489,7 +489,7 @@ Begin MobileScreen ScreenAddItem
       AccessibilityLabel=   ""
       AutoLayout      =   swInsured, 1, <Parent>, 1, False, +1.00, 4, 1, 211, , True
       AutoLayout      =   swInsured, 7, , 0, True, +1.00, 4, 1, 51, , True
-      AutoLayout      =   swInsured, 3, lblInsured, 3, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   swInsured, 3, <Parent>, 3, False, +1.00, 4, 1, 518, , True
       AutoLayout      =   swInsured, 8, , 0, True, +1.00, 4, 1, 31, , True
       ControlCount    =   0
       Enabled         =   True
@@ -508,14 +508,14 @@ Begin MobileScreen ScreenAddItem
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   2
-      AutoLayout      =   lblInsured, 1, lblCost, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lblInsured, 7, , 0, False, +1.00, 4, 1, 107, , True
-      AutoLayout      =   lblInsured, 3, <Parent>, 3, False, +1.00, 4, 1, 518, , True
       AutoLayout      =   lblInsured, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lblInsured, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblInsured, 3, <Parent>, 3, False, +1.00, 4, 1, 518, , True
+      AutoLayout      =   lblInsured, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   70
+      Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -530,21 +530,21 @@ Begin MobileScreen ScreenAddItem
       TintColor       =   &c000000
       Top             =   518
       Visible         =   True
-      Width           =   107
+      Width           =   125
       _ClosingFired   =   False
    End
    Begin MobileLabel lbl_Model
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   2
-      AutoLayout      =   lbl_Model, 1, <Parent>, 1, False, +1.00, 4, 1, 58, , True
-      AutoLayout      =   lbl_Model, 7, , 0, False, +1.00, 4, 1, 107, , True
-      AutoLayout      =   lbl_Model, 10, txtModel, 10, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   lbl_Model, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lbl_Model, 1, lblName, 1, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   lbl_Model, 10, txtModel, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lbl_Model, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   58
+      Left            =   28
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -559,21 +559,21 @@ Begin MobileScreen ScreenAddItem
       TintColor       =   &c000000
       Top             =   357
       Visible         =   True
-      Width           =   107
+      Width           =   125
       _ClosingFired   =   False
    End
    Begin MobileLabel lbl_Manufacturer
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   2
-      AutoLayout      =   lbl_Manufacturer, 1, <Parent>, 1, False, +1.00, 4, 1, 58, , True
-      AutoLayout      =   lbl_Manufacturer, 7, , 0, False, +1.00, 4, 1, 117, , True
       AutoLayout      =   lbl_Manufacturer, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lbl_Manufacturer, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   lbl_Manufacturer, 3, <Parent>, 3, False, +1.00, 4, 1, 413, , True
+      AutoLayout      =   lbl_Manufacturer, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   58
+      Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -588,21 +588,21 @@ Begin MobileScreen ScreenAddItem
       TintColor       =   &c000000
       Top             =   413
       Visible         =   True
-      Width           =   117
+      Width           =   125
       _ClosingFired   =   False
    End
    Begin MobileLabel lbl_Location
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   2
-      AutoLayout      =   lbl_Location, 1, <Parent>, 1, False, +1.00, 4, 1, 58, , True
-      AutoLayout      =   lbl_Location, 7, , 0, False, +1.00, 4, 1, 117, , True
-      AutoLayout      =   lbl_Location, 3, txtLocation, 3, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   lbl_Location, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lbl_Location, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lbl_Location, 3, txtLocation, 3, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lbl_Location, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   58
+      Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -617,21 +617,21 @@ Begin MobileScreen ScreenAddItem
       TintColor       =   &c000000
       Top             =   464
       Visible         =   True
-      Width           =   117
+      Width           =   125
       _ClosingFired   =   False
    End
    Begin MobileLabel lbl_PolicyNo
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   2
-      AutoLayout      =   lbl_PolicyNo, 1, <Parent>, 1, False, +1.00, 4, 1, 48, , True
-      AutoLayout      =   lbl_PolicyNo, 7, , 0, False, +1.00, 4, 1, 117, , True
-      AutoLayout      =   lbl_PolicyNo, 10, txtPolicy, 10, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   lbl_PolicyNo, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lbl_PolicyNo, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lbl_PolicyNo, 10, txtPolicy, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lbl_PolicyNo, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   48
+      Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -646,7 +646,7 @@ Begin MobileScreen ScreenAddItem
       TintColor       =   &c000000
       Top             =   559
       Visible         =   True
-      Width           =   117
+      Width           =   125
       _ClosingFired   =   False
    End
 End
