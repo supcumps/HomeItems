@@ -1,6 +1,6 @@
 Type=iOS
 RBProjectVersion=2025.011
-MinIDEVersion=20140300
+MinIDEVersion=20190300
 OrigIDEVersion=20250101
 iOSContainerControl=TableCustomCell1;TableCustomCell1.xojo_code;&h000000006A51CFFF;&h0000000000000000;false
 Class=App;App.xojo_code;&h000000005AFCFFFF;&h0000000000000000;false
@@ -19,6 +19,8 @@ Module=Globals;Globals.xojo_code;&h000000001A5957FF;&h0000000000000000;false
 MobileScreen=ScreenEditItem;Screens/ScreenEditItem.xojo_code;&h0000000014CBEFFF;&h000000002817BFFF;false
 iOSContainerControl=CustomCell;Screens/CustomCell.xojo_code;&h000000002655E7FF;&h000000002817BFFF;false
 Class=TableDataSource;Screens/TableDataSource.xojo_code;&h000000007D431FFF;&h000000002817BFFF;false
+ColorAsset=ColorGroup1;Screens/ColorGroup1.xojo_color;&h000000006BC72FFF;&h000000002817BFFF;false
+ColorAsset=ColorGroup2;Screens/ColorGroup2.xojo_color;&h0000000032136FFF;&h000000002817BFFF;false
 DefaultLayout=iPhoneLayout
 DefaultTabletLayout=iPadLayout
 MajorVersion=1

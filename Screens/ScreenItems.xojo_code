@@ -11,7 +11,7 @@ Begin MobileScreen ScreenItems
    ScaleFactor     =   0.0
    TabBarVisible   =   True
    TabIcon         =   0
-   TintColor       =   ColorGroup3
+   TintColor       =   ColorGroup2
    Title           =   "Items"
    Top             =   0
    Begin iOSMobileTable TableItems

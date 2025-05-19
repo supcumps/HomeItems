@@ -60,8 +60,8 @@ Begin MobileScreen ScreenAddItem
       AutoCapitalizationType=   0
       AutoLayout      =   txtCategory, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   txtCategory, 1, lblCategory, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   txtCategory, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
       AutoLayout      =   txtCategory, 10, lblCategory, 10, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   txtCategory, 7, , 0, False, +1.00, 4, 1, 100, , True
       BorderStyle     =   3
       ControlCount    =   0
       Enabled         =   True
@@ -85,7 +85,7 @@ Begin MobileScreen ScreenAddItem
       TintColor       =   &c000000
       Top             =   133
       Visible         =   True
-      Width           =   100
+      Width           =   202
       _ClosingFired   =   False
    End
    Begin MobileTextField txtLocation
@@ -95,17 +95,17 @@ Begin MobileScreen ScreenAddItem
       AllowAutoCorrection=   False
       AllowSpellChecking=   False
       AutoCapitalizationType=   0
-      AutoLayout      =   txtLocation, 1, <Parent>, 1, False, +1.00, 4, 1, 185, , True
-      AutoLayout      =   txtLocation, 7, , 0, False, +1.00, 4, 1, 100, , True
-      AutoLayout      =   txtLocation, 3, <Parent>, 3, False, +1.00, 4, 1, 464, , True
       AutoLayout      =   txtLocation, 8, , 0, False, +1.00, 4, 1, 34, , True
+      AutoLayout      =   txtLocation, 1, lbl_Location, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   txtLocation, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
+      AutoLayout      =   txtLocation, 10, lbl_Location, 10, False, +1.00, 4, 1, 0, , True
       BorderStyle     =   3
       ControlCount    =   0
       Enabled         =   True
       Height          =   34
       Hint            =   ""
       InputType       =   0
-      Left            =   185
+      Left            =   153
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
       Password        =   False
@@ -120,9 +120,9 @@ Begin MobileScreen ScreenAddItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   464
+      Top             =   455
       Visible         =   True
-      Width           =   100
+      Width           =   202
       _ClosingFired   =   False
    End
    Begin MobileTextField txtManufacturer
@@ -132,17 +132,17 @@ Begin MobileScreen ScreenAddItem
       AllowAutoCorrection=   False
       AllowSpellChecking=   False
       AutoCapitalizationType=   0
-      AutoLayout      =   txtManufacturer, 1, <Parent>, 1, False, +1.00, 4, 1, 185, , True
-      AutoLayout      =   txtManufacturer, 7, , 0, False, +1.00, 4, 1, 100, , True
-      AutoLayout      =   txtManufacturer, 3, <Parent>, 3, False, +1.00, 4, 1, 411, , True
       AutoLayout      =   txtManufacturer, 8, , 0, False, +1.00, 4, 1, 34, , True
+      AutoLayout      =   txtManufacturer, 1, lbl_Manufacturer, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   txtManufacturer, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
+      AutoLayout      =   txtManufacturer, 10, lbl_Manufacturer, 10, False, +1.00, 4, 1, 0, , True
       BorderStyle     =   3
       ControlCount    =   0
       Enabled         =   True
       Height          =   34
       Hint            =   ""
       InputType       =   0
-      Left            =   185
+      Left            =   153
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
       Password        =   False
@@ -157,9 +157,9 @@ Begin MobileScreen ScreenAddItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   411
+      Top             =   347
       Visible         =   True
-      Width           =   100
+      Width           =   202
       _ClosingFired   =   False
    End
    Begin MobileTextField txtPolicy
@@ -170,9 +170,9 @@ Begin MobileScreen ScreenAddItem
       AllowSpellChecking=   False
       AutoCapitalizationType=   0
       AutoLayout      =   txtPolicy, 8, , 0, False, +1.00, 4, 1, 34, , True
-      AutoLayout      =   txtPolicy, 1, txtCost, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   txtPolicy, 3, swInsured, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
-      AutoLayout      =   txtPolicy, 7, , 0, False, +1.00, 4, 1, 100, , True
+      AutoLayout      =   txtPolicy, 1, lbl_PolicyNo, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   txtPolicy, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
+      AutoLayout      =   txtPolicy, 10, lbl_PolicyNo, 10, False, +1.00, 4, 1, 0, , True
       BorderStyle     =   3
       ControlCount    =   0
       Enabled         =   True
@@ -196,7 +196,7 @@ Begin MobileScreen ScreenAddItem
       TintColor       =   &c000000
       Top             =   557
       Visible         =   True
-      Width           =   100
+      Width           =   202
       _ClosingFired   =   False
    End
    Begin MobileTextField txtModel
@@ -206,10 +206,10 @@ Begin MobileScreen ScreenAddItem
       AllowAutoCorrection=   False
       AllowSpellChecking=   False
       AutoCapitalizationType=   0
-      AutoLayout      =   txtModel, 1, txtCost, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   txtModel, 7, , 0, False, +1.00, 4, 1, 100, , True
-      AutoLayout      =   txtModel, 3, dpWarrantyDate, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       AutoLayout      =   txtModel, 8, , 0, False, +1.00, 4, 1, 34, , True
+      AutoLayout      =   txtModel, 1, lbl_Model, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   txtModel, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
+      AutoLayout      =   txtModel, 10, lbl_Model, 10, False, +1.00, 4, 1, 0, , True
       BorderStyle     =   3
       ControlCount    =   0
       Enabled         =   True
@@ -231,9 +231,9 @@ Begin MobileScreen ScreenAddItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   327
+      Top             =   401
       Visible         =   True
-      Width           =   100
+      Width           =   202
       _ClosingFired   =   False
    End
    Begin MobileTextField txtCost
@@ -245,7 +245,7 @@ Begin MobileScreen ScreenAddItem
       AutoCapitalizationType=   0
       AutoLayout      =   txtCost, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   txtCost, 1, lblCost, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
-      AutoLayout      =   txtCost, 3, dpPurchaseDate, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
+      AutoLayout      =   txtCost, 10, lblCost, 10, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   txtCost, 7, , 0, False, +1.00, 4, 1, 100, , True
       BorderStyle     =   3
       ControlCount    =   0
@@ -269,7 +269,7 @@ Begin MobileScreen ScreenAddItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   221
+      Top             =   239
       Visible         =   True
       Width           =   100
       _ClosingFired   =   False
@@ -337,7 +337,7 @@ Begin MobileScreen ScreenAddItem
       AccessibilityLabel=   ""
       AutoLayout      =   dpPurchaseDate, 8, , 0, False, +1.00, 4, 1, 30, , True
       AutoLayout      =   dpPurchaseDate, 1, lblPurchased, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
-      AutoLayout      =   dpPurchaseDate, 3, lblPurchased, 3, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   dpPurchaseDate, 10, lblPurchased, 10, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   dpPurchaseDate, 7, , 0, False, +1.00, 4, 1, 140, , True
       ControlCount    =   0
       DisplayMode     =   1
@@ -348,7 +348,7 @@ Begin MobileScreen ScreenAddItem
       LockedInPosition=   False
       Scope           =   0
       TintColor       =   &c000000
-      Top             =   183
+      Top             =   187
       Visible         =   True
       Width           =   140
       _ClosingFired   =   False
@@ -357,13 +357,13 @@ Begin MobileScreen ScreenAddItem
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   2
-      AutoLayout      =   lblPurchased, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lblPurchased, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   lblPurchased, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lblPurchased, 3, <Parent>, 3, False, +1.00, 4, 1, 183, , True
+      AutoLayout      =   lblPurchased, 3, lblCategory, 4, False, +1.00, 4, 1, 20, , True
       AutoLayout      =   lblPurchased, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
-      Height          =   30
+      Height          =   34
       Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
@@ -377,7 +377,7 @@ Begin MobileScreen ScreenAddItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   183
+      Top             =   185
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -386,13 +386,13 @@ Begin MobileScreen ScreenAddItem
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   2
-      AutoLayout      =   lblCost, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lblCost, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   lblCost, 1, lblCategory, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lblCost, 3, lblPurchased, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
+      AutoLayout      =   lblCost, 3, lblPurchased, 4, False, +1.00, 4, 1, 20, , True
       AutoLayout      =   lblCost, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
-      Height          =   30
+      Height          =   34
       Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
@@ -406,7 +406,7 @@ Begin MobileScreen ScreenAddItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   221
+      Top             =   239
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -416,7 +416,7 @@ Begin MobileScreen ScreenAddItem
       AccessibilityLabel=   ""
       AutoLayout      =   dpWarrantyDate, 8, , 0, False, +1.00, 4, 1, 60, , True
       AutoLayout      =   dpWarrantyDate, 1, lblWarranty, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
-      AutoLayout      =   dpWarrantyDate, 3, lblWarranty, 3, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   dpWarrantyDate, 10, lblWarranty, 10, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   dpWarrantyDate, 7, , 0, False, +1.00, 4, 1, 132, , True
       ControlCount    =   0
       DisplayMode     =   1
@@ -427,7 +427,7 @@ Begin MobileScreen ScreenAddItem
       LockedInPosition=   False
       Scope           =   0
       TintColor       =   &c000000
-      Top             =   259
+      Top             =   280
       Visible         =   True
       Width           =   132
       _ClosingFired   =   False
@@ -436,13 +436,13 @@ Begin MobileScreen ScreenAddItem
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   2
-      AutoLayout      =   lblWarranty, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lblWarranty, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   lblWarranty, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lblWarranty, 3, lblCost, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
+      AutoLayout      =   lblWarranty, 3, lblCost, 4, False, +1.00, 4, 1, 20, , True
       AutoLayout      =   lblWarranty, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
-      Height          =   30
+      Height          =   34
       Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
@@ -451,12 +451,12 @@ Begin MobileScreen ScreenAddItem
       SelectedText    =   ""
       SelectionLength =   0
       SelectionStart  =   0
-      Text            =   "Warranty expiry\nWarranty Expiry"
+      Text            =   "Warranty Expiry"
       TextColor       =   &c000000
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   259
+      Top             =   293
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -464,18 +464,18 @@ Begin MobileScreen ScreenAddItem
    Begin MobileSwitch swInsured
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   swInsured, 1, <Parent>, 1, False, +1.00, 4, 1, 211, , True
-      AutoLayout      =   swInsured, 7, , 0, True, +1.00, 4, 1, 51, , True
-      AutoLayout      =   swInsured, 3, <Parent>, 3, False, +1.00, 4, 1, 518, , True
       AutoLayout      =   swInsured, 8, , 0, True, +1.00, 4, 1, 31, , True
+      AutoLayout      =   swInsured, 1, lblInsured, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   swInsured, 10, lblInsured, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   swInsured, 7, , 0, True, +1.00, 4, 1, 51, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   31
-      Left            =   211
+      Left            =   153
       LockedInPosition=   False
       Scope           =   0
       TintColor       =   &c000000
-      Top             =   518
+      Top             =   508
       Value           =   False
       Visible         =   True
       Width           =   51
@@ -487,7 +487,7 @@ Begin MobileScreen ScreenAddItem
       Alignment       =   2
       AutoLayout      =   lblInsured, 8, , 0, False, +1.00, 4, 1, 30, , True
       AutoLayout      =   lblInsured, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lblInsured, 3, <Parent>, 3, False, +1.00, 4, 1, 518, , True
+      AutoLayout      =   lblInsured, 3, lbl_Location, 4, False, +1.00, 4, 1, 20, , True
       AutoLayout      =   lblInsured, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
@@ -505,7 +505,7 @@ Begin MobileScreen ScreenAddItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   518
+      Top             =   509
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -514,14 +514,15 @@ Begin MobileScreen ScreenAddItem
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   2
-      AutoLayout      =   lbl_Model, 8, , 0, False, +1.00, 4, 1, 30, , True
-      AutoLayout      =   lbl_Model, 1, lblName, 1, False, +1.00, 4, 1, *kStdControlGapH, , True
-      AutoLayout      =   lbl_Model, 10, txtModel, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lbl_Model, 11, txtModel, 11, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lbl_Model, 8, , 0, False, +1.00, 4, 1, 34, , True
+      AutoLayout      =   lbl_Model, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lbl_Model, 3, lbl_Manufacturer, 4, False, +1.00, 4, 1, 20, , True
       AutoLayout      =   lbl_Model, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
-      Height          =   30
-      Left            =   28
+      Height          =   34
+      Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -529,12 +530,12 @@ Begin MobileScreen ScreenAddItem
       SelectedText    =   ""
       SelectionLength =   0
       SelectionStart  =   0
-      Text            =   "Model Number\nWarranty Expiry"
+      Text            =   "Model Number"
       TextColor       =   &c000000
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   329
+      Top             =   401
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -543,13 +544,13 @@ Begin MobileScreen ScreenAddItem
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   2
-      AutoLayout      =   lbl_Manufacturer, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lbl_Manufacturer, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   lbl_Manufacturer, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lbl_Manufacturer, 3, <Parent>, 3, False, +1.00, 4, 1, 413, , True
+      AutoLayout      =   lbl_Manufacturer, 3, lblWarranty, 4, False, +1.00, 4, 1, 20, , True
       AutoLayout      =   lbl_Manufacturer, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
-      Height          =   30
+      Height          =   34
       Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
@@ -558,12 +559,12 @@ Begin MobileScreen ScreenAddItem
       SelectedText    =   ""
       SelectionLength =   0
       SelectionStart  =   0
-      Text            =   "Manufacturer\nWarranty Expiry"
+      Text            =   "Manufacturer"
       TextColor       =   &c000000
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   413
+      Top             =   347
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -572,13 +573,13 @@ Begin MobileScreen ScreenAddItem
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   2
-      AutoLayout      =   lbl_Location, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lbl_Location, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   lbl_Location, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lbl_Location, 3, txtLocation, 3, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lbl_Location, 3, lbl_Model, 4, False, +1.00, 4, 1, 20, , True
       AutoLayout      =   lbl_Location, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
-      Height          =   30
+      Height          =   34
       Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
@@ -587,12 +588,12 @@ Begin MobileScreen ScreenAddItem
       SelectedText    =   ""
       SelectionLength =   0
       SelectionStart  =   0
-      Text            =   "Location\nWarranty Expiry"
+      Text            =   "Location"
       TextColor       =   &c000000
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   464
+      Top             =   455
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -603,7 +604,7 @@ Begin MobileScreen ScreenAddItem
       Alignment       =   2
       AutoLayout      =   lbl_PolicyNo, 8, , 0, False, +1.00, 4, 1, 30, , True
       AutoLayout      =   lbl_PolicyNo, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lbl_PolicyNo, 10, txtPolicy, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lbl_PolicyNo, 3, lblInsured, 4, False, +1.00, 4, 1, 20, , True
       AutoLayout      =   lbl_PolicyNo, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
