@@ -5,6 +5,10 @@ Protected Module Globals
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		DebugMode As Boolean = FALSE
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		RowTag As Variant
 	#tag EndProperty
 

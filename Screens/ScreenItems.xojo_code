@@ -65,7 +65,7 @@ End
 
 	#tag Event
 		Sub Opening()
-		  Self.TintColor = ColorGroup2
+		  me.TintColor = ColorGroup2
 		  loadItems()
 		  
 		End Sub

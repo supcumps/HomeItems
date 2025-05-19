@@ -8,6 +8,9 @@ Inherits MobileApplication
 		  db = New SQLiteDatabase
 		  db.DatabaseFile = SpecialFolder.Documents.Child("HomeTrack.sqlite")
 		  
+		  // Allow for extra debugging information if needed - use global boolean value
+		  DebugMode = False
+		  
 		  Try
 		    If Not db.DatabaseFile.Exists Then
 		      // First run – create new database
@@ -33,8 +36,7 @@ Inherits MobileApplication
 		    Return
 		  End Try
 		  
-		  // Allow for extra debugging information if needed
-		  Var DebugMode As Boolean = False
+		  
 		  If DebugMode Then
 		    MessageBox(db.DatabaseFile.ShellPath)   
 		  End If
@@ -75,7 +77,7 @@ Inherits MobileApplication
 		      App.DB.ExecuteSQL(sql)
 		      MessageBox("Column '" + columnName + "' added to table '" + tableName + "'.")
 		    Else
-		      If DebugBuild then
+		      If DebugMode Then  // in contrastto debugBuild, which still shows in debugmode
 		        MessageBox("Column '" + columnName + "' already exists in table '" + tableName + "'.")
 		      end if 
 		    End If
