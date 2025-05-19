@@ -280,7 +280,7 @@ Begin MobileScreen ScreenAddItem
       Alignment       =   2
       AutoLayout      =   lblName, 8, , 0, False, +1.00, 4, 1, 30, , True
       AutoLayout      =   lblName, 1, <Parent>, 1, False, +1.00, 4, 1, *kStdGapCtlToViewH, , True
-      AutoLayout      =   lblName, 3, TopLayoutGuide, 3, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   lblName, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, 20, , True
       AutoLayout      =   lblName, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True

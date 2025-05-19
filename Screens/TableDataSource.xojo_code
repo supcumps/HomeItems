@@ -27,8 +27,8 @@ Implements iOSMobileTableDataSource
 		  
 		  
 		  'Var custom As customCell(cell.Control) 
-		  'You must cast from MobileUIControl to your CustomCell subclass. 
-		  'You cannot use constructor-like syntax (CustomCell(cell.Control)) directly in a Var declaration.
+		  'OOPs ->  must cast from MobileUIControl to your CustomCell subclass. 
+		  '  cannot use constructor-like syntax (CustomCell(cell.Control)) directly in a Var declaration.
 		  
 		  Var ctrl As MobileUIControl = cell.Control
 		  Var custom As CustomCell = CustomCell(ctrl)

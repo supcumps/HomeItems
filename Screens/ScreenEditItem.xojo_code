@@ -1,6 +1,6 @@
 #tag MobileScreen
 Begin MobileScreen ScreenEditItem
-   BackButtonCaption=   ""
+   BackButtonCaption=   "Items"
    Compatibility   =   ""
    ControlCount    =   0
    Device = 7
@@ -291,7 +291,7 @@ Begin MobileScreen ScreenEditItem
       Alignment       =   2
       AutoLayout      =   lblName, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   lblName, 1, <Parent>, 1, False, +1.00, 4, 1, *kStdGapCtlToViewH, , True
-      AutoLayout      =   lblName, 3, TopLayoutGuide, 3, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   lblName, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, 20, , True
       AutoLayout      =   lblName, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
@@ -637,6 +637,18 @@ Begin MobileScreen ScreenEditItem
       Width           =   125
       _ClosingFired   =   False
    End
+   Begin MobileToolbarButton DeleteButton
+      Caption         =   "🗑️ Delete"
+      Enabled         =   True
+      Height          =   22
+      Icon            =   0
+      Left            =   8
+      LockedInPosition=   False
+      Scope           =   2
+      Top             =   32
+      Type            =   1001
+      Width           =   71.0
+   End
 End
 #tag EndMobileScreen
 
@@ -647,6 +659,13 @@ End
 		  'MessageBox("Rowtag is still " + RowTag)
 		  
 		  'App.db.Connect
+		  '
+		  'Var saveButton As  New MobileToolbarButton(MobileToolbarButton.Types.Save)
+		  'RightNavigationToolbar.AddButton(saveButton)
+		  'Var deleteButton As New MobileToolbarButton(MobileToolbarButton.Types.Trash)
+		  'RightNavigationToolbar.AddButton(deleteButton)
+		  
+		  
 		  
 		  Try
 		    Var rs As RowSet = App.db.SelectSQL("SELECT * FROM HouseholdItem WHERE ID = ?", RowTag)
@@ -697,12 +716,42 @@ End
 		  Select Case Button
 		  Case SaveButton
 		    SaveItem()
+		  Case deleteButton
+		    DeleteItem()
 		  End Select
 		  
 		  
 		End Sub
 	#tag EndEvent
 
+
+	#tag Method, Flags = &h21
+		Private Sub DeleteItem()
+		  'MessageBox("RowTag = " + RowTag.StringValue)
+		  
+		  Try
+		    // Convert RowTag (a Variant) to String, then to Integer
+		    Var idToDelete As Integer = RowTag.StringValue.ToInteger
+		    
+		    // Prepare the SQL statement with a placeholder
+		    Var ps As SQLitePreparedStatement = App.DB.Prepare("DELETE FROM HouseholdItem WHERE ID = ?")
+		    
+		    // Tell SQLite what kind of value to expect (INTEGER)
+		    ps.BindType(0, SQLitePreparedStatement.SQLITE_INTEGER)
+		    
+		    // Bind the actual value
+		    ps.Bind(0, idToDelete)
+		    
+		    // Execute the SQL
+		    ps.ExecuteSQL
+		    
+		    MessageBox("Record deleted from householdItem. ID = " + idToDelete.ToString)
+		    
+		  Catch error As DatabaseException
+		    MessageBox("Delete failed: " + error.Message)
+		  End Try
+		End Sub
+	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub SaveItem()

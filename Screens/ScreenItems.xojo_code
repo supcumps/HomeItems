@@ -72,11 +72,15 @@ End
 
 	#tag Event
 		Sub ToolbarButtonPressed(button As MobileToolbarButton)
+		  
+		  
+		  
 		  Select Case Button
 		  Case AddButton
 		    Var AddItemScreen  As New ScreenAddItem
 		    AddItemScreen.Show
 		  End Select
+		  
 		  
 		  
 		End Sub
@@ -101,7 +105,6 @@ End
 		  
 		  
 		  
-		  
 		End Sub
 	#tag EndMethod
 
@@ -118,18 +121,39 @@ End
 		Sub SelectionChanged(section As Integer, row As Integer)
 		  
 		  
+		  // Skip interaction if the selected row is the header row (first row)
+		  
+		  // Skip the header row: section 0, row 0
+		  If section = 0 And row = 0 Then Return
+		  // Ensure the DataSource has a valid Recordset before proceeding
 		  If DataSource.Recordset <> Nil Then
+		    
+		    // We'll use this to track which record we're currently on in the loop
 		    Var currentRow As Integer = 0
+		    
+		    // Loop through each row in the Recordset from the DataSource
 		    For Each dbRow As DatabaseRow In DataSource.Recordset
+		      
+		      // When we reach the row that matches the selected row index
 		      If currentRow = row Then
+		        
+		        // Retrieve the "ID" column from the database row and store it in RowTag
+		        // (You might use this to load or identify the correct record on the next screen)
 		        RowTag = dbRow.Column("ID").StringValue
 		        
-		        // Navigate to the edit screen
+		        // Create an instance of the edit screen
 		        Var editScreen As New ScreenEditItem
+		        
+		        // Show the edit screen to allow user to view or edit details
 		        editScreen.Show
+		        
+		        // Exit the loop early, since we've found and handled the tapped row
 		        Exit
 		      End If
+		      
+		      // Move to the next row in the loop
 		      currentRow = currentRow + 1
+		      
 		    Next
 		  End If
 		  
