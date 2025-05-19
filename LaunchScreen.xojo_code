@@ -15,6 +15,28 @@ Begin MobileScreen LaunchScreen
    TintColor       =   &c000000
    Title           =   "Untitled"
    Top             =   0
+   Begin MobileImageViewer ImageViewer1
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   ImageViewer1, 9, <Parent>, 9, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   ImageViewer1, 8, , 0, False, +1.00, 4, 1, 341, , True
+      AutoLayout      =   ImageViewer1, 3, TopLayoutGuide, 3, False, +1.00, 4, 1, 60, , True
+      AutoLayout      =   ImageViewer1, 7, , 0, False, +1.00, 4, 1, 350, , True
+      ControlCount    =   0
+      DisplayMode     =   0
+      Enabled         =   True
+      Height          =   341
+      Image           =   0
+      Left            =   12
+      LockedInPosition=   False
+      Scope           =   2
+      TintColor       =   &c000000
+      Top             =   125
+      URL             =   ""
+      Visible         =   True
+      Width           =   350
+      _ClosingFired   =   False
+   End
 End
 #tag EndIOSLaunchScreen
 

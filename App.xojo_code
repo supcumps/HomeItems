@@ -41,7 +41,7 @@ Inherits MobileApplication
 		  
 		  
 		  
-		  /// Provide code for add ing a filed to a table
+		  /// Provide code for adding a filed to a table
 		  
 		  AddColumnToTable("HouseholdItem","URL")
 		End Sub
@@ -49,21 +49,42 @@ Inherits MobileApplication
 
 
 	#tag Method, Flags = &h21
-		Private Sub AddColumnToTable(TableName as String, Column as String)
+		Private Sub AddColumnToTable(TableName as String, ColumnName as String)
+		  
+		  
 		  
 		  
 		  Try
-		    // Compose the SQL to add the column
-		    Var sql As String = "ALTER TABLE " + TableName + " ADD COLUMN " + Column + " TEXT"
+		    // Check existing columns with PRAGMA table_info
+		    Var rs As RowSet = App.DB.SelectSQL("PRAGMA table_info(" + tableName + ")")
 		    
-		    // Execute the SQL
-		    App.DB.ExecuteSQL(sql)
+		    Var columnExists As Boolean = False
 		    
-		    MessageBox("Field '" + Column + "' successfully added to table '" + TableName + "'.")
+		    While rs.AfterLastRow = False
+		      If rs.Column("name").StringValue = columnName Then
+		        columnExists = True
+		        Exit
+		      End If
+		      rs.MoveToNextRow
+		    Wend
+		    rs.Close
+		    
+		    // Only add the column if it doesn't exist
+		    If Not columnExists Then
+		      Var sql As String = "ALTER TABLE " + tableName + " ADD COLUMN " + columnName + " TEXT"
+		      App.DB.ExecuteSQL(sql)
+		      MessageBox("Column '" + columnName + "' added to table '" + tableName + "'.")
+		    Else
+		      If DebugBuild then
+		        MessageBox("Column '" + columnName + "' already exists in table '" + tableName + "'.")
+		      end if 
+		    End If
 		    
 		  Catch error As DatabaseException
-		    MessageBox("Error: " + error.Message)
+		    MessageBox("Error checking/adding column: " + error.Message)
 		  End Try
+		  
+		  
 		End Sub
 	#tag EndMethod
 
