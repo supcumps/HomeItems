@@ -78,7 +78,7 @@ End
 		    AddItemScreen.Show
 		  End Select
 		  
-		  'End Select
+		  
 		End Sub
 	#tag EndEvent
 
@@ -92,8 +92,9 @@ End
 		    
 		    DataSource = New TableDataSource
 		    DataSource.Recordset = App.db.SelectSQL("SELECT ID, Name, Category FROM HouseholdItem ORDER BY PurchaseDate DESC")
-		    
 		    TableItems.DataSource = DataSource  // ✅ triggers dynamic row loading
+		    
+		    
 		  Catch e As DatabaseException
 		    MessageBox("Database error: " + e.Message)
 		  End Try
@@ -117,21 +118,27 @@ End
 		Sub SelectionChanged(section As Integer, row As Integer)
 		  
 		  
-		  // Get the selected cell
-		  Var cell As MobileTableCellData = TableItems.RowCellData(section, row)
+		  If DataSource.Recordset <> Nil Then
+		    Var currentRow As Integer = 0
+		    For Each dbRow As DatabaseRow In DataSource.Recordset
+		      If currentRow = row Then
+		        RowTag = dbRow.Column("ID").StringValue
+		        
+		        // Navigate to the edit screen
+		        Var editScreen As New ScreenEditItem
+		        editScreen.Show
+		        Exit
+		      End If
+		      currentRow = currentRow + 1
+		    Next
+		  End If
 		  
-		  // Check if Tag is assigned and cast it to String
 		  
-		  Var itemID As String = cell.Tag  
-		  MessageBox("Item ID: " + itemID)
 		  
-		  RowTag = itemID  //put into global variable for ease of use
-		  '// Create the item details screen and pass the ID
-		  Var EditScreen As New ScreenEditItem
 		  
-		  '// Push to the detail screen
 		  
-		  EditScreen.Show
+		  
+		  
 		  
 		  
 		  
