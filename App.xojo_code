@@ -33,10 +33,39 @@ Inherits MobileApplication
 		    Return
 		  End Try
 		  
-		  MessageBox(db.DatabaseFile.ShellPath)   // NEEDED FOR DEBUGGING - COMMENT OUT BEFORE DISTRIBUTION
+		  // Allow for extra debugging information if needed
+		  Var DebugMode As Boolean = False
+		  If DebugMode Then
+		    MessageBox(db.DatabaseFile.ShellPath)   
+		  End If
+		  
+		  
+		  
+		  /// Provide code for add ing a filed to a table
+		  
+		  AddColumnToTable("HouseholdItem","URL")
 		End Sub
 	#tag EndEvent
 
+
+	#tag Method, Flags = &h21
+		Private Sub AddColumnToTable(TableName as String, Column as String)
+		  
+		  
+		  Try
+		    // Compose the SQL to add the column
+		    Var sql As String = "ALTER TABLE " + TableName + " ADD COLUMN " + Column + " TEXT"
+		    
+		    // Execute the SQL
+		    App.DB.ExecuteSQL(sql)
+		    
+		    MessageBox("Field '" + Column + "' successfully added to table '" + TableName + "'.")
+		    
+		  Catch error As DatabaseException
+		    MessageBox("Error: " + error.Message)
+		  End Try
+		End Sub
+	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub CreateTables()
@@ -121,6 +150,12 @@ Inherits MobileApplication
 		End Sub
 	#tag EndMethod
 
+
+	#tag Note, Name = Add item to table
+		
+		Code is added to the opening event of the app to allow extra columns (fields) to be added to tables.
+		This could be modified to allow more thna one field to be added by using a dictionary or array.
+	#tag EndNote
 
 	#tag Note, Name = Categories and Suggested Icons
 		

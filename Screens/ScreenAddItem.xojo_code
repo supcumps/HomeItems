@@ -120,7 +120,7 @@ Begin MobileScreen ScreenAddItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   455
+      Top             =   509
       Visible         =   True
       Width           =   202
       _ClosingFired   =   False
@@ -194,7 +194,7 @@ Begin MobileScreen ScreenAddItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   557
+      Top             =   611
       Visible         =   True
       Width           =   202
       _ClosingFired   =   False
@@ -231,7 +231,7 @@ Begin MobileScreen ScreenAddItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   401
+      Top             =   455
       Visible         =   True
       Width           =   202
       _ClosingFired   =   False
@@ -475,7 +475,7 @@ Begin MobileScreen ScreenAddItem
       LockedInPosition=   False
       Scope           =   0
       TintColor       =   &c000000
-      Top             =   508
+      Top             =   562
       Value           =   False
       Visible         =   True
       Width           =   51
@@ -505,7 +505,7 @@ Begin MobileScreen ScreenAddItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   509
+      Top             =   563
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -517,7 +517,7 @@ Begin MobileScreen ScreenAddItem
       AutoLayout      =   lbl_Model, 11, txtModel, 11, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   lbl_Model, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   lbl_Model, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lbl_Model, 3, lbl_Manufacturer, 4, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   lbl_Model, 3, Lbl_CompanyURL, 4, False, +1.00, 4, 1, 20, , True
       AutoLayout      =   lbl_Model, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
@@ -535,7 +535,7 @@ Begin MobileScreen ScreenAddItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   401
+      Top             =   455
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -593,7 +593,7 @@ Begin MobileScreen ScreenAddItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   455
+      Top             =   509
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -622,7 +622,7 @@ Begin MobileScreen ScreenAddItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   559
+      Top             =   613
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -638,6 +638,73 @@ Begin MobileScreen ScreenAddItem
       Top             =   32
       Type            =   1001
       Width           =   66.0
+   End
+   Begin MobileLabel Lbl_CompanyURL
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      Alignment       =   0
+      AutoLayout      =   Lbl_CompanyURL, 8, , 0, False, +1.00, 4, 1, 34, , True
+      AutoLayout      =   Lbl_CompanyURL, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   Lbl_CompanyURL, 3, lbl_Manufacturer, 4, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   Lbl_CompanyURL, 7, , 0, False, +1.00, 4, 1, 125, , True
+      ControlCount    =   0
+      Enabled         =   True
+      Height          =   34
+      Left            =   20
+      LineBreakMode   =   0
+      LockedInPosition=   False
+      MaximumCharactersAllowed=   0
+      Scope           =   2
+      SelectedText    =   ""
+      SelectionLength =   0
+      SelectionStart  =   0
+      Text            =   "Company URL"
+      TextColor       =   &c000000
+      TextFont        =   ""
+      TextSize        =   0
+      TintColor       =   &c000000
+      Top             =   401
+      Visible         =   True
+      Width           =   125
+      _ClosingFired   =   False
+   End
+   Begin MobileTextField TextURL
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      Alignment       =   0
+      AllowAutoCorrection=   False
+      AllowSpellChecking=   False
+      AutoCapitalizationType=   0
+      AutoLayout      =   TextURL, 8, , 0, False, +1.00, 4, 1, 34, , True
+      AutoLayout      =   TextURL, 1, Lbl_CompanyURL, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   TextURL, 2, <Parent>, 2, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   TextURL, 10, Lbl_CompanyURL, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   TextURL, 7, , 0, False, +1.00, 4, 1, 194, , True
+      BorderStyle     =   3
+      ControlCount    =   0
+      Enabled         =   True
+      Height          =   34
+      Hint            =   ""
+      InputType       =   0
+      Left            =   153
+      LockedInPosition=   False
+      MaximumCharactersAllowed=   0
+      Password        =   False
+      ReadOnly        =   False
+      ReturnCaption   =   0
+      Scope           =   2
+      SelectedText    =   ""
+      SelectionLength =   0
+      SelectionStart  =   0
+      Text            =   ""
+      TextColor       =   &c000000
+      TextFont        =   ""
+      TextSize        =   0
+      TintColor       =   &c000000
+      Top             =   401
+      Visible         =   True
+      Width           =   194
+      _ClosingFired   =   False
    End
 End
 #tag EndMobileScreen
