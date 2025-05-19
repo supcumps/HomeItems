@@ -236,29 +236,6 @@ Begin MobileScreen ScreenAddItem
       Width           =   100
       _ClosingFired   =   False
    End
-   Begin MobileButton btnSaveItem
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      AutoLayout      =   btnSaveItem, 1, txtCost, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   btnSaveItem, 7, , 0, False, +1.00, 4, 1, 100, , True
-      AutoLayout      =   btnSaveItem, 3, <Parent>, 3, False, +1.00, 4, 1, 630, , True
-      AutoLayout      =   btnSaveItem, 8, , 0, False, +1.00, 4, 1, 30, , True
-      Caption         =   "Save Item"
-      CaptionColor    =   &c00000000
-      ControlCount    =   0
-      Enabled         =   True
-      Height          =   30
-      Left            =   153
-      LockedInPosition=   False
-      Scope           =   0
-      TextFont        =   ""
-      TextSize        =   0
-      TintColor       =   &c000000
-      Top             =   630
-      Visible         =   True
-      Width           =   100
-      _ClosingFired   =   False
-   End
    Begin MobileTextField txtCost
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
@@ -649,15 +626,24 @@ Begin MobileScreen ScreenAddItem
       Width           =   125
       _ClosingFired   =   False
    End
+   Begin MobileToolbarButton SaveButton
+      Caption         =   "💾  Save"
+      Enabled         =   True
+      Height          =   22
+      Icon            =   0
+      Left            =   301
+      LockedInPosition=   False
+      Scope           =   2
+      Top             =   32
+      Type            =   1001
+      Width           =   66.0
+   End
 End
 #tag EndMobileScreen
 
 #tag WindowCode
-#tag EndWindowCode
-
-#tag Events btnSaveItem
 	#tag Event
-		Sub Pressed()
+		Sub ToolbarButtonPressed(button As MobileToolbarButton)
 		  Try
 		    If App.db = Nil Then
 		      MessageBox("Database is Nil")
@@ -715,7 +701,71 @@ End
 		  End Try
 		End Sub
 	#tag EndEvent
-#tag EndEvents
+
+
+	#tag Method, Flags = &h21
+		Private Sub SaveItem()
+		  Try
+		    If App.db = Nil Then
+		      MessageBox("Database is Nil")
+		      Return
+		    End If
+		    
+		    If Not App.db.Connect Then
+		      MessageBox("Database not connected")
+		      Return
+		    End If
+		    
+		    Var category As String = txtCategory.Text.Trim
+		    Var cost As Double = txtCost.Text.ToDouble
+		    Var location As String = txtLocation.Text.Trim
+		    Var manufacturer As String = txtManufacturer.Text.Trim
+		    Var modelNumber As String = txtModel.Text.Trim
+		    Var name As String = txtName.Text.Trim
+		    Var insurancePolicy As String = txtPolicy.Text.Trim
+		    Var purchaseDate As String = dpPurchaseDate.SelectedDate.SQLDate
+		    Var warrantyExpiryDate As String = dpWarrantyDate.SelectedDate.SQLDate
+		    Var isInsured As Integer = If(swInsured.Value, 1, 0)
+		    
+		    Var receiptImagePath As String = ""
+		    Var serialNumber As String = ""
+		    Var replacementCost As Double = 0.0
+		    Var store As String = ""
+		    
+		    // Validate numeric inputs
+		    If cost.IsNotANumber Or replacementCost.IsNotANumber Then
+		      MessageBox("Cost or ReplacementCost is invalid")
+		      Return
+		    End If
+		    
+		    Var sql As String = "INSERT INTO HouseholdItem ("
+		    sql = sql + "Name, Category, PurchaseDate, Cost, WarrantyExpiryDate, "
+		    sql = sql + "SerialNumber, Location, Store, ReceiptImagePath, "
+		    sql = sql + "Manufacturer, ModelNumber, ReplacementCost, InsurancePolicy, IsInsured"
+		    sql = sql + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+		    
+		    System.DebugLog("VALUES: Name=" + name + ", Category=" + category + ", PurchaseDate=" + purchaseDate + ", Cost=" + cost.ToString + _
+		    ", Warranty=" + warrantyExpiryDate + ", Serial=" + serialNumber + ", Location=" + location + ", Store=" + store + ", Receipt=" + receiptImagePath + _
+		    ", Manufacturer=" + manufacturer + ", Model=" + modelNumber + ", ReplacementCost=" + replacementCost.ToString + ", Policy=" + insurancePolicy + ", IsInsured=" + isInsured.ToString)
+		    
+		    App.db.ExecuteSQL(sql, _
+		    name, category, purchaseDate, cost, warrantyExpiryDate, _
+		    serialNumber, location, store, receiptImagePath, _
+		    manufacturer, modelNumber, replacementCost, insurancePolicy, isInsured)
+		    
+		    MessageBox("Item saved.")
+		    Self.Close
+		    
+		  Catch e As DatabaseException
+		    MessageBox("DB Error: " + e.Message)
+		    System.DebugLog("Outer DB Error: " + e.Message)
+		  End Try
+		End Sub
+	#tag EndMethod
+
+
+#tag EndWindowCode
+
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="Index"

@@ -236,29 +236,6 @@ Begin MobileScreen ScreenEditItem
       Width           =   100
       _ClosingFired   =   False
    End
-   Begin MobileButton btnSaveItem
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      AutoLayout      =   btnSaveItem, 1, <Parent>, 1, False, +1.00, 4, 1, 197, , True
-      AutoLayout      =   btnSaveItem, 7, , 0, False, +1.00, 4, 1, 100, , True
-      AutoLayout      =   btnSaveItem, 3, <Parent>, 3, False, +1.00, 4, 1, 630, , True
-      AutoLayout      =   btnSaveItem, 8, , 0, False, +1.00, 4, 1, 30, , True
-      Caption         =   "Save Item"
-      CaptionColor    =   &c00000000
-      ControlCount    =   0
-      Enabled         =   True
-      Height          =   30
-      Left            =   197
-      LockedInPosition=   False
-      Scope           =   0
-      TextFont        =   ""
-      TextSize        =   0
-      TintColor       =   &c000000
-      Top             =   630
-      Visible         =   True
-      Width           =   100
-      _ClosingFired   =   False
-   End
    Begin MobileTextField txtCost
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
@@ -656,10 +633,10 @@ Begin MobileScreen ScreenEditItem
       AllowAutoCorrection=   False
       AllowSpellChecking=   False
       AutoCapitalizationType=   0
-      AutoLayout      =   Txt_ID, 1, lblInsured, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
-      AutoLayout      =   Txt_ID, 7, , 0, False, +1.00, 4, 1, 100, , True
-      AutoLayout      =   Txt_ID, 10, lblID, 10, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   Txt_ID, 8, , 0, False, +1.00, 4, 1, 34, , True
+      AutoLayout      =   Txt_ID, 1, lblInsured, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   Txt_ID, 10, lblID, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   Txt_ID, 7, , 0, False, +1.00, 4, 1, 100, , True
       BorderStyle     =   3
       ControlCount    =   0
       Enabled         =   True
@@ -715,6 +692,18 @@ Begin MobileScreen ScreenEditItem
       Width           =   50
       _ClosingFired   =   False
    End
+   Begin MobileToolbarButton SaveButton
+      Caption         =   "💾 Save"
+      Enabled         =   True
+      Height          =   22
+      Icon            =   0
+      Left            =   310
+      LockedInPosition=   False
+      Scope           =   2
+      Top             =   32
+      Type            =   1001
+      Width           =   62.0
+   End
 End
 #tag EndMobileScreen
 
@@ -769,12 +758,21 @@ End
 		End Sub
 	#tag EndEvent
 
-
-#tag EndWindowCode
-
-#tag Events btnSaveItem
 	#tag Event
-		Sub Pressed()
+		Sub ToolbarButtonPressed(button As MobileToolbarButton)
+		  
+		  Select Case Button
+		  Case Save Button
+		    SaveItem()
+		  End Select
+		  
+		  
+		End Sub
+	#tag EndEvent
+
+
+	#tag Method, Flags = &h21
+		Private Sub SaveItem()
 		  Try
 		    If App.db = Nil Then
 		      MessageBox("Database is Nil")
@@ -838,8 +836,11 @@ End
 		    System.DebugLog("Outer DB Error: " + e.Message)
 		  End Try
 		End Sub
-	#tag EndEvent
-#tag EndEvents
+	#tag EndMethod
+
+
+#tag EndWindowCode
+
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="Index"
