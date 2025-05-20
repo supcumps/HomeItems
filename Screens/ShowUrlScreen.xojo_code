@@ -56,8 +56,12 @@ End
 		  
 		  // Open in WebViewer:
 		  MessageBox("URL " + URLToDisplay)
-		  HTMLViewer1.LoadURL(URLToDisplay)
-		  HTMLViewer1.LoadPage(URLToDisplay)
+		  
+		  If URLToDisplay.Trim <> "" Then
+		    HTMLViewer1.LoadURL(URLToDisplay)
+		  Else
+		    MessageBox("No URL to display.")
+		  End If
 		  
 		End Sub
 	#tag EndMethod
@@ -186,6 +190,14 @@ End
 		Group="Behavior"
 		InitialValue=""
 		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="URLToDisplay"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="String"
 		EditorType=""
 	#tag EndViewProperty
 #tag EndViewBehavior
