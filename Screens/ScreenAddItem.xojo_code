@@ -733,6 +733,7 @@ End
 		    Var cost As Double = txtCost.Text.ToDouble
 		    Var location As String = txtLocation.Text.Trim
 		    Var manufacturer As String = txtManufacturer.Text.Trim
+		    Var URL As String = TextURL.Text.Trim
 		    Var modelNumber As String = txtModel.Text.Trim
 		    Var name As String = txtName.Text.Trim
 		    Var insurancePolicy As String = txtPolicy.Text.Trim
@@ -754,8 +755,8 @@ End
 		    Var sql As String = "INSERT INTO HouseholdItem ("
 		    sql = sql + "Name, Category, PurchaseDate, Cost, WarrantyExpiryDate, "
 		    sql = sql + "SerialNumber, Location, Store, ReceiptImagePath, "
-		    sql = sql + "Manufacturer, ModelNumber, ReplacementCost, InsurancePolicy, IsInsured"
-		    sql = sql + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+		    sql = sql + "Manufacturer, URL, ModelNumber, ReplacementCost, InsurancePolicy, IsInsured"
+		    sql = sql + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)"
 		    
 		    System.DebugLog("VALUES: Name=" + name + ", Category=" + category + ", PurchaseDate=" + purchaseDate + ", Cost=" + cost.ToString + _
 		    ", Warranty=" + warrantyExpiryDate + ", Serial=" + serialNumber + ", Location=" + location + ", Store=" + store + ", Receipt=" + receiptImagePath + _
@@ -764,7 +765,7 @@ End
 		    App.db.ExecuteSQL(sql, _
 		    name, category, purchaseDate, cost, warrantyExpiryDate, _
 		    serialNumber, location, store, receiptImagePath, _
-		    manufacturer, modelNumber, replacementCost, insurancePolicy, isInsured)
+		    manufacturer, URL, modelNumber, replacementCost, insurancePolicy, isInsured)
 		    
 		    MessageBox("Item saved.")
 		    Self.Close
@@ -775,67 +776,6 @@ End
 		  End Try
 		End Sub
 	#tag EndEvent
-
-
-	#tag Method, Flags = &h21
-		Private Sub SaveItem()
-		  Try
-		    If App.db = Nil Then
-		      MessageBox("Database is Nil")
-		      Return
-		    End If
-		    
-		    If Not App.db.Connect Then
-		      MessageBox("Database not connected")
-		      Return
-		    End If
-		    
-		    Var category As String = txtCategory.Text.Trim
-		    Var cost As Double = txtCost.Text.ToDouble
-		    Var location As String = txtLocation.Text.Trim
-		    Var manufacturer As String = txtManufacturer.Text.Trim
-		    Var modelNumber As String = txtModel.Text.Trim
-		    Var name As String = txtName.Text.Trim
-		    Var insurancePolicy As String = txtPolicy.Text.Trim
-		    Var purchaseDate As String = dpPurchaseDate.SelectedDate.SQLDate
-		    Var warrantyExpiryDate As String = dpWarrantyDate.SelectedDate.SQLDate
-		    Var isInsured As Integer = If(swInsured.Value, 1, 0)
-		    
-		    Var receiptImagePath As String = ""
-		    Var serialNumber As String = ""
-		    Var replacementCost As Double = 0.0
-		    Var store As String = ""
-		    
-		    // Validate numeric inputs
-		    If cost.IsNotANumber Or replacementCost.IsNotANumber Then
-		      MessageBox("Cost or ReplacementCost is invalid")
-		      Return
-		    End If
-		    
-		    Var sql As String = "INSERT INTO HouseholdItem ("
-		    sql = sql + "Name, Category, PurchaseDate, Cost, WarrantyExpiryDate, "
-		    sql = sql + "SerialNumber, Location, Store, ReceiptImagePath, "
-		    sql = sql + "Manufacturer, ModelNumber, ReplacementCost, InsurancePolicy, IsInsured"
-		    sql = sql + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-		    
-		    System.DebugLog("VALUES: Name=" + name + ", Category=" + category + ", PurchaseDate=" + purchaseDate + ", Cost=" + cost.ToString + _
-		    ", Warranty=" + warrantyExpiryDate + ", Serial=" + serialNumber + ", Location=" + location + ", Store=" + store + ", Receipt=" + receiptImagePath + _
-		    ", Manufacturer=" + manufacturer + ", Model=" + modelNumber + ", ReplacementCost=" + replacementCost.ToString + ", Policy=" + insurancePolicy + ", IsInsured=" + isInsured.ToString)
-		    
-		    App.db.ExecuteSQL(sql, _
-		    name, category, purchaseDate, cost, warrantyExpiryDate, _
-		    serialNumber, location, store, receiptImagePath, _
-		    manufacturer, modelNumber, replacementCost, insurancePolicy, isInsured)
-		    
-		    MessageBox("Item saved.")
-		    Self.Close
-		    
-		  Catch e As DatabaseException
-		    MessageBox("DB Error: " + e.Message)
-		    System.DebugLog("Outer DB Error: " + e.Message)
-		  End Try
-		End Sub
-	#tag EndMethod
 
 
 #tag EndWindowCode

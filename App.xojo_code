@@ -43,7 +43,7 @@ Inherits MobileApplication
 		  
 		  
 		  
-		  /// Provide code for adding a filed to a table
+		  /// Provide code for adding a field (Column)  to a table
 		  
 		  AddColumnToTable("HouseholdItem","URL")
 		End Sub

@@ -658,7 +658,7 @@ Begin MobileScreen ScreenEditItem
       AutoCapitalizationType=   0
       AutoLayout      =   TextURL, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   TextURL, 1, Lbl_CompanyURL, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
-      AutoLayout      =   TextURL, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
+      AutoLayout      =   TextURL, 2, <Parent>, 2, False, +1.00, 4, 1, -40, , True
       AutoLayout      =   TextURL, 10, Lbl_CompanyURL, 10, False, +1.00, 4, 1, 0, , True
       BorderStyle     =   3
       ControlCount    =   0
@@ -666,7 +666,7 @@ Begin MobileScreen ScreenEditItem
       Height          =   34
       Hint            =   ""
       InputType       =   0
-      Left            =   153
+      Left            =   128
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
       Password        =   False
@@ -683,7 +683,7 @@ Begin MobileScreen ScreenEditItem
       TintColor       =   &c000000
       Top             =   409
       Visible         =   True
-      Width           =   202
+      Width           =   207
       _ClosingFired   =   False
    End
    Begin MobileLabel Lbl_CompanyURL
@@ -693,7 +693,7 @@ Begin MobileScreen ScreenEditItem
       AutoLayout      =   Lbl_CompanyURL, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   Lbl_CompanyURL, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   Lbl_CompanyURL, 3, lbl_Manufacturer, 4, False, +1.00, 4, 1, 20, , True
-      AutoLayout      =   Lbl_CompanyURL, 7, , 0, False, +1.00, 4, 1, 125, , True
+      AutoLayout      =   Lbl_CompanyURL, 7, , 0, False, +1.00, 4, 1, 100, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   34
@@ -712,7 +712,30 @@ Begin MobileScreen ScreenEditItem
       TintColor       =   &c000000
       Top             =   409
       Visible         =   True
-      Width           =   125
+      Width           =   100
+      _ClosingFired   =   False
+   End
+   Begin MobileButton Button1
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   Button1, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   Button1, 1, TextURL, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   Button1, 10, TextURL, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   Button1, 7, , 0, False, +1.00, 4, 1, 20, , True
+      Caption         =   "🏭"
+      CaptionColor    =   &c007AFF00
+      ControlCount    =   0
+      Enabled         =   True
+      Height          =   30
+      Left            =   343
+      LockedInPosition=   False
+      Scope           =   0
+      TextFont        =   ""
+      TextSize        =   0
+      TintColor       =   &c000000
+      Top             =   411
+      Visible         =   True
+      Width           =   20
       _ClosingFired   =   False
    End
 End
@@ -720,63 +743,69 @@ End
 
 #tag WindowCode
 	#tag Event
+		Sub Activated()
+		  loadData()
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Sub Opening()
 		  
 		  Me.SetBackgroundColorXC(&cFFFDEE)
+		  loadData()
 		  
-		  
-		  If DebugMode then
-		    MessageBox("Rowtag is still " + RowTag)
-		  End If
-		  
-		  'App.db.Connect
+		  'If DebugMode Then
+		  'MessageBox("Rowtag is still " + RowTag)
+		  'End If
 		  '
-		  'Var saveButton As  New MobileToolbarButton(MobileToolbarButton.Types.Save)
-		  'RightNavigationToolbar.AddButton(saveButton)
-		  'Var deleteButton As New MobileToolbarButton(MobileToolbarButton.Types.Trash)
-		  'RightNavigationToolbar.AddButton(deleteButton)
-		  
-		  
-		  
-		  Try
-		    Var rs As RowSet = App.db.SelectSQL("SELECT * FROM HouseholdItem WHERE ID = ?", RowTag)
-		    
-		    
-		    If Not rs.AfterLastRow Then
-		      // Example: display name and category in labels
-		      
-		      TXTCategory.Text = rs.Column("Category").StringValue
-		      txtCost.Text =  rs.Column("Cost").StringValue
-		      'Txt_ID.Text =  rs.Column("ID").StringValue   /// Use RowTag for save, so this is not needed
-		      txtLocation.Text =  rs.Column("Location").StringValue
-		      txtManufacturer.Text =  rs.Column("Manufacturer").StringValue
-		      txtModel.Text =  rs.Column("modelNumber").StringValue
-		      TXTName.Text = rs.Column("Name").StringValue
-		      txtPolicy.Text =  rs.Column("insurancePolicy").StringValue
-		      
-		      
-		      dpPurchaseDate.SelectedDate =  DateTime.FromString( rs.Column("purchaseDate").StringValue)
-		      
-		      dpPurchaseDate.SelectedDate =  DateTime.FromString( rs.Column("purchaseDate").StringValue)
-		      dpWarrantyDate.SelectedDate  = DateTime.FromString( rs.Column("WarrantyExpiryDate").StringValue)  
-		      '
-		      swInsured.Value  =  rs.Column("isInsured").StringValue.ToBoolean
-		      
-		      
-		      
-		      
-		      
-		      // Add other fields as needed
-		    Else
-		      MessageBox("Item not found.")
-		    End If
-		    
-		    rs.Close
-		    
-		  Catch e As DatabaseException
-		    MessageBox("Error loading item: " + e.Message)
-		  End Try
-		  
+		  ''App.db.Connect
+		  ''
+		  ''Var saveButton As  New MobileToolbarButton(MobileToolbarButton.Types.Save)
+		  ''RightNavigationToolbar.AddButton(saveButton)
+		  ''Var deleteButton As New MobileToolbarButton(MobileToolbarButton.Types.Trash)
+		  ''RightNavigationToolbar.AddButton(deleteButton)
+		  '
+		  '
+		  '
+		  'Try
+		  'Var rs As RowSet = App.db.SelectSQL("SELECT * FROM HouseholdItem WHERE ID = ?", RowTag)
+		  '
+		  '
+		  'If Not rs.AfterLastRow Then
+		  '// Example: display name and category in labels
+		  '
+		  'TXTCategory.Text = rs.Column("Category").StringValue
+		  'txtCost.Text =  rs.Column("Cost").StringValue
+		  ''Txt_ID.Text =  rs.Column("ID").StringValue   /// Use RowTag for save, so this is not needed
+		  'txtLocation.Text =  rs.Column("Location").StringValue
+		  'txtManufacturer.Text =  rs.Column("Manufacturer").StringValue
+		  'txtModel.Text =  rs.Column("modelNumber").StringValue
+		  'TXTName.Text = rs.Column("Name").StringValue
+		  'txtPolicy.Text =  rs.Column("insurancePolicy").StringValue
+		  '
+		  '
+		  'dpPurchaseDate.SelectedDate =  DateTime.FromString( rs.Column("purchaseDate").StringValue)
+		  '
+		  'dpPurchaseDate.SelectedDate =  DateTime.FromString( rs.Column("purchaseDate").StringValue)
+		  'dpWarrantyDate.SelectedDate  = DateTime.FromString( rs.Column("WarrantyExpiryDate").StringValue)  
+		  ''
+		  'swInsured.Value  =  rs.Column("isInsured").StringValue.ToBoolean
+		  '
+		  '
+		  '
+		  '
+		  '
+		  '// Add other fields as needed
+		  'Else
+		  'MessageBox("Item not found.")
+		  'End If
+		  '
+		  'rs.Close
+		  '
+		  'Catch e As DatabaseException
+		  'MessageBox("Error loading item: " + e.Message)
+		  'End Try
+		  '
 		  
 		End Sub
 	#tag EndEvent
@@ -824,6 +853,66 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub loadData()
+		  
+		  If DebugMode Then
+		    MessageBox("Rowtag is still " + RowTag)
+		  End If
+		  
+		  'App.db.Connect
+		  '
+		  'Var saveButton As  New MobileToolbarButton(MobileToolbarButton.Types.Save)
+		  'RightNavigationToolbar.AddButton(saveButton)
+		  'Var deleteButton As New MobileToolbarButton(MobileToolbarButton.Types.Trash)
+		  'RightNavigationToolbar.AddButton(deleteButton)
+		  
+		  
+		  
+		  Try
+		    Var rs As RowSet = App.db.SelectSQL("SELECT * FROM HouseholdItem WHERE ID = ?", RowTag)
+		    
+		    
+		    If Not rs.AfterLastRow Then
+		      // Example: display name and category in labels
+		      
+		      TXTCategory.Text = rs.Column("Category").StringValue
+		      txtCost.Text =  rs.Column("Cost").StringValue
+		      'Txt_ID.Text =  rs.Column("ID").StringValue   /// Use RowTag for save, so this is not needed
+		      txtLocation.Text =  rs.Column("Location").StringValue
+		      txtManufacturer.Text =  rs.Column("Manufacturer").StringValue
+		      TextURL.Text = rs.column("URL").StringValue
+		      txtModel.Text =  rs.Column("modelNumber").StringValue
+		      TXTName.Text = rs.Column("Name").StringValue
+		      txtPolicy.Text =  rs.Column("insurancePolicy").StringValue
+		      
+		      
+		      dpPurchaseDate.SelectedDate =  DateTime.FromString( rs.Column("purchaseDate").StringValue)
+		      
+		      dpPurchaseDate.SelectedDate =  DateTime.FromString( rs.Column("purchaseDate").StringValue)
+		      dpWarrantyDate.SelectedDate  = DateTime.FromString( rs.Column("WarrantyExpiryDate").StringValue)  
+		      '
+		      swInsured.Value  =  rs.Column("isInsured").StringValue.ToBoolean
+		      
+		      
+		      
+		      
+		      
+		      // Add other fields as needed
+		    Else
+		      MessageBox("Item not found.")
+		    End If
+		    
+		    rs.Close
+		    
+		  Catch e As DatabaseException
+		    MessageBox("Error loading item: " + e.Message)
+		  End Try
+		  
+		  
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h21
 		Private Sub SaveItem()
 		  Try
@@ -841,6 +930,7 @@ End
 		    Var cost As Double = txtCost.Text.ToDouble
 		    Var location As String = txtLocation.Text.Trim
 		    Var manufacturer As String = txtManufacturer.Text.Trim
+		    Var URL As String = TextURL.Text.Trim
 		    Var modelNumber As String = txtModel.Text.Trim
 		    Var name As String = txtName.Text.Trim
 		    Var insurancePolicy As String = txtPolicy.Text.Trim
@@ -865,18 +955,24 @@ End
 		    Var sql As String = "UPDATE HouseholdItem SET "
 		    sql = sql + "Name = ?, Category = ?, PurchaseDate = ?, Cost = ?, "
 		    sql = sql + "WarrantyExpiryDate = ?, SerialNumber = ?, Location = ?, Store = ?, "
-		    sql = sql + "ReceiptImagePath = ?, Manufacturer = ?, ModelNumber = ?, "
+		    sql = sql + "ReceiptImagePath = ?, Manufacturer = ?, URL = ?,ModelNumber = ?, "
 		    sql = sql + "ReplacementCost = ?, InsurancePolicy = ?, IsInsured = ? "
 		    sql = sql + "WHERE ID = ?"
 		    
 		    System.DebugLog("VALUES: Name=" + name + ", Category=" + category + ", PurchaseDate=" + purchaseDate + ", Cost=" + cost.ToString + _
 		    ", Warranty=" + warrantyExpiryDate + ", Serial=" + serialNumber + ", Location=" + location + ", Store=" + store + ", Receipt=" + receiptImagePath + _
-		    ", Manufacturer=" + manufacturer + ", Model=" + modelNumber + ", ReplacementCost=" + replacementCost.ToString + ", Policy=" + insurancePolicy + ", IsInsured=" + isInsured.ToString)
+		    ", Manufacturer=" + manufacturer + ", URL = " + URL + ", Model=" + modelNumber + ", ReplacementCost=" + replacementCost.ToString + ", Policy=" + insurancePolicy + ", IsInsured=" + isInsured.ToString)
+		    
+		    Var rs As RowSet = App.DB.SelectSQL("PRAGMA table_info(HouseholdItem)")
+		    While Not rs.AfterLastRow
+		      System.DebugLog("Column: " + rs.Column("name").StringValue)
+		      rs.MoveToNextRow
+		    Wend
 		    
 		    Try
 		      App.db.ExecuteSQL(sql, name, category, purchaseDate, cost, warrantyExpiryDate, _
 		      serialNumber, location, store, receiptImagePath, _
-		      manufacturer, modelNumber, replacementCost, insurancePolicy, _
+		      manufacturer, URL, modelNumber, replacementCost, insurancePolicy, _
 		      isInsured, ID)
 		    Catch e As DatabaseException
 		      MessageBox("Update failed: " + e.Message)
@@ -893,8 +989,32 @@ End
 	#tag EndMethod
 
 
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return TextUrl.Text
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  TextURL.Text = value
+			End Set
+		#tag EndSetter
+		CompanyURL As String
+	#tag EndComputedProperty
+
+
 #tag EndWindowCode
 
+#tag Events Button1
+	#tag Event
+		Sub Pressed()
+		  Var urlScreen As New ShowUrlScreen
+		  urlScreen.URLToDisplay = Self.CompanyURL
+		  urlScreen.Show
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="Index"
