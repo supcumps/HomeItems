@@ -65,7 +65,7 @@ End
 
 	#tag Event
 		Sub Opening()
-		  me.TintColor = ColorGroup2
+		  Me.SetBackgroundColorXC(&cFFFDEE)
 		  loadItems()
 		  
 		End Sub
@@ -169,6 +169,11 @@ End
 		  
 		  
 		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Opening()
+		  Me.SetBackgroundColorXC(&cFFFDEE)
 		End Sub
 	#tag EndEvent
 #tag EndEvents

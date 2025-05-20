@@ -677,7 +677,7 @@ Begin MobileScreen ScreenAddItem
       AutoCapitalizationType=   0
       AutoLayout      =   TextURL, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   TextURL, 1, Lbl_CompanyURL, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
-      AutoLayout      =   TextURL, 2, <Parent>, 2, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   TextURL, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
       AutoLayout      =   TextURL, 10, Lbl_CompanyURL, 10, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   TextURL, 7, , 0, False, +1.00, 4, 1, 194, , True
       BorderStyle     =   3
@@ -710,6 +710,12 @@ End
 #tag EndMobileScreen
 
 #tag WindowCode
+	#tag Event
+		Sub Opening()
+		  Me.SetBackgroundColorXC(&cFFFDEE)
+		End Sub
+	#tag EndEvent
+
 	#tag Event
 		Sub ToolbarButtonPressed(button As MobileToolbarButton)
 		  Try

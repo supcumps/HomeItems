@@ -132,7 +132,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   527
+      Top             =   517
       Visible         =   True
       Width           =   202
       _ClosingFired   =   False
@@ -206,7 +206,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   629
+      Top             =   619
       Visible         =   True
       Width           =   202
       _ClosingFired   =   False
@@ -243,7 +243,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   473
+      Top             =   463
       Visible         =   True
       Width           =   202
       _ClosingFired   =   False
@@ -486,7 +486,7 @@ Begin MobileScreen ScreenEditItem
       LockedInPosition=   False
       Scope           =   2
       TintColor       =   &c000000
-      Top             =   580
+      Top             =   570
       Value           =   False
       Visible         =   True
       Width           =   51
@@ -516,7 +516,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   581
+      Top             =   571
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -545,7 +545,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   473
+      Top             =   463
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -603,7 +603,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   527
+      Top             =   517
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -632,7 +632,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   631
+      Top             =   621
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -681,7 +681,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   419
+      Top             =   409
       Visible         =   True
       Width           =   202
       _ClosingFired   =   False
@@ -692,7 +692,7 @@ Begin MobileScreen ScreenEditItem
       Alignment       =   0
       AutoLayout      =   Lbl_CompanyURL, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   Lbl_CompanyURL, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   Lbl_CompanyURL, 3, lbl_Manufacturer, 4, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   Lbl_CompanyURL, 3, lbl_Manufacturer, 4, False, +1.00, 4, 1, 20, , True
       AutoLayout      =   Lbl_CompanyURL, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
@@ -710,7 +710,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   419
+      Top             =   409
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -722,7 +722,12 @@ End
 	#tag Event
 		Sub Opening()
 		  
-		  'MessageBox("Rowtag is still " + RowTag)
+		  Me.SetBackgroundColorXC(&cFFFDEE)
+		  
+		  
+		  If DebugMode then
+		    MessageBox("Rowtag is still " + RowTag)
+		  End If
 		  
 		  'App.db.Connect
 		  '

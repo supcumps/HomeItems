@@ -1,16 +1,14 @@
 #tag Module
-Protected Module Globals
-	#tag Property, Flags = &h0
-		callingTable As iOSMobileTable
-	#tag EndProperty
+Protected Module UIKit
+	#tag CompatibilityFlags = ( TargetConsole and ( Target32Bit or Target64Bit ) ) or ( TargetWeb and ( Target32Bit or Target64Bit ) ) or ( TargetDesktop and ( Target32Bit or Target64Bit ) ) or ( TargetIOS and ( Target64Bit ) )
+	#tag Note, Name = README
+		
+		Delete this module if you are already using iOSKit by Jason King
+	#tag EndNote
 
-	#tag Property, Flags = &h0
-		DebugMode As Boolean = FALSE
-	#tag EndProperty
 
-	#tag Property, Flags = &h0
-		RowTag As Variant
-	#tag EndProperty
+	#tag Constant, Name = UIKitLib, Type = Text, Dynamic = False, Default = \"UIKit.framework", Scope = Public
+	#tag EndConstant
 
 
 	#tag ViewBehavior
@@ -52,14 +50,6 @@ Protected Module Globals
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="DebugMode"
-			Visible=false
-			Group="Behavior"
-			InitialValue="FALSE"
-			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

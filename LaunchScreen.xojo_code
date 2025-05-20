@@ -26,7 +26,7 @@ Begin MobileScreen LaunchScreen
       DisplayMode     =   0
       Enabled         =   True
       Height          =   341
-      Image           =   0
+      Image           =   1121011711
       Left            =   12
       LockedInPosition=   False
       Scope           =   2
