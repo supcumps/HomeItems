@@ -39,6 +39,7 @@ Class=TableDataSource;Screens/TableDataSource.xojo_code;&h000000007D431FFF;&h000
 ColorAsset=ColorGroup1;Screens/ColorGroup1.xojo_color;&h000000006BC72FFF;&h000000002817BFFF;false
 ColorAsset=ColorGroup2;Screens/ColorGroup2.xojo_color;&h0000000032136FFF;&h000000002817BFFF;false
 MultiImage=image13;image13.xojo_image;&h0000000042D147FF;&h0000000000000000;false
+MobileScreen=RepairsScreen;Screens/RepairsScreen.xojo_code;&h000000004C2A97FF;&h000000002817BFFF;false
 DefaultLayout=iPhoneLayout
 DefaultTabletLayout=iPadLayout
 MajorVersion=1

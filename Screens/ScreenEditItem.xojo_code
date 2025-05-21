@@ -715,13 +715,13 @@ Begin MobileScreen ScreenEditItem
       Width           =   100
       _ClosingFired   =   False
    End
-   Begin MobileButton Button1
+   Begin MobileButton webSiteButton
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Button1, 8, , 0, False, +1.00, 4, 1, 30, , True
-      AutoLayout      =   Button1, 1, TextURL, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
-      AutoLayout      =   Button1, 10, TextURL, 10, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   Button1, 7, , 0, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   webSiteButton, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   webSiteButton, 1, TextURL, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   webSiteButton, 10, TextURL, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   webSiteButton, 7, , 0, False, +1.00, 4, 1, 20, , True
       Caption         =   "🏭"
       CaptionColor    =   &c007AFF00
       ControlCount    =   0
@@ -737,6 +737,18 @@ Begin MobileScreen ScreenEditItem
       Visible         =   True
       Width           =   20
       _ClosingFired   =   False
+   End
+   Begin MobileToolbarButton RepairsButton
+      Caption         =   "👷 Repairs"
+      Enabled         =   True
+      Height          =   22
+      Icon            =   0
+      Left            =   8
+      LockedInPosition=   False
+      Scope           =   2
+      Top             =   778
+      Type            =   1001
+      Width           =   79.0
    End
 End
 #tag EndMobileScreen
@@ -818,6 +830,10 @@ End
 		    SaveItem()
 		  Case deleteButton
 		    DeleteItem()
+		  Case RepairsButton
+		    Var repairsScreen As New RepairsScreen
+		    'repairsScreen.SelectedItemID = RowTagrepairsScreen.LoadRepairs
+		    repairsScreen.Show
 		  End Select
 		  
 		  
@@ -1006,7 +1022,7 @@ End
 
 #tag EndWindowCode
 
-#tag Events Button1
+#tag Events webSiteButton
 	#tag Event
 		Sub Pressed()
 		  Var urlScreen As New ShowUrlScreen
@@ -1131,6 +1147,14 @@ End
 		Group="Behavior"
 		InitialValue=""
 		Type="Double"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="CompanyURL"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="String"
 		EditorType=""
 	#tag EndViewProperty
 #tag EndViewBehavior

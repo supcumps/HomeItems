@@ -44,6 +44,7 @@ Inherits MobileApplication
 		  
 		  
 		  /// Provide code for adding a field (Column)  to a table
+		  // N.B. Make sure that all code addressing the table and displaying the records includes the new field.
 		  
 		  AddColumnToTable("HouseholdItem","URL")
 		End Sub
@@ -120,17 +121,17 @@ Inherits MobileApplication
 		  
 		  db.ExecuteSQL(sql)
 		  
-		  ' REPAIRS TABLE
-		  sql = "CREATE TABLE IF NOT EXISTS RepairRecord ("
-		  sql = sql + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-		  sql = sql + "ItemID TEXT, "
-		  sql = sql + "RepairDate TEXT, "
-		  sql = sql + "Description TEXT, "
-		  sql = sql + "Cost REAL, "
-		  sql = sql + "PostRepairWarranty TEXT, "
-		  sql = sql + "ServiceCenter TEXT, "
-		  sql = sql + "FOREIGN KEY(ItemID) REFERENCES HouseholdItem(ID)"
-		  sql = sql + ");"
+		  
+		  sql = "CREATE TABLE IF NOT EXISTS RepairRecord (" 
+		  sql = sql +"ID INTEGER PRIMARY KEY AUTOINCREMENT, " 
+		  sql = sql +"ItemID INTEGER, "   // ItemID should be INTEGER if it references the INTEGER PK of HouseholdItem
+		  sql = sql +"RepairDate TEXT, " 
+		  sql = sql +"Description TEXT, "
+		  sql = sql +"Cost REAL, "
+		  sql = sql +"PostRepairWarranty TEXT, " 
+		  sql = sql +"ServiceCenter TEXT, "
+		  sql = sql +"FOREIGN KEY(ItemID) REFERENCES HouseholdItem(ID)" 
+		  sql = sql +");"
 		  
 		  db.ExecuteSQL(sql)
 		  
@@ -146,8 +147,6 @@ Inherits MobileApplication
 		  sql = sql + "Completed INTEGER DEFAULT 0, "            // 0 = not done, 1 = done
 		  sql = sql + "FOREIGN KEY(ItemID) REFERENCES HouseholdItem(ID)"
 		  sql = sql + ");"
-		  
-		  
 		  
 		  db.ExecuteSQL(sql)
 		  

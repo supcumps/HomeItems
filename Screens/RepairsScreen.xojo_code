@@ -1,9 +1,9 @@
 #tag MobileScreen
-Begin MobileScreen ShowUrlScreen
+Begin MobileScreen RepairsScreen
    BackButtonCaption=   ""
    Compatibility   =   ""
    ControlCount    =   0
-   Device = 1
+   Device = 7
    HasNavigationBar=   True
    LargeTitleDisplayMode=   2
    Left            =   0
@@ -11,27 +11,34 @@ Begin MobileScreen ShowUrlScreen
    ScaleFactor     =   0.0
    TabBarVisible   =   True
    TabIcon         =   0
-   TintColor       =   ColorGroup1
-   Title           =   "Website"
+   TintColor       =   &c000000
+   Title           =   "Untitled"
    Top             =   0
-   Begin MobileHTMLViewer HTMLViewer1
+   Begin iOSMobileTable tblRepairs
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   HTMLViewer1, 4, <Parent>, 4, False, +1.00, 4, 1, -*kStdGapCtlToViewV, , True
-      AutoLayout      =   HTMLViewer1, 1, <Parent>, 1, False, +1.00, 4, 1, 20, , True
-      AutoLayout      =   HTMLViewer1, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
-      AutoLayout      =   HTMLViewer1, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
+      AllowRefresh    =   False
+      AllowSearch     =   False
+      AutoLayout      =   tblRepairs, 1, <Parent>, 1, False, +1.00, 4, 1, *kStdGapCtlToViewH, , True
+      AutoLayout      =   tblRepairs, 7, , 0, False, +1.00, 4, 1, 320, , True
+      AutoLayout      =   tblRepairs, 3, , 0, False, +1.00, 4, 1, 84, , True
+      AutoLayout      =   tblRepairs, 8, , 0, False, +1.00, 4, 1, 457, , True
       ControlCount    =   0
+      EditingEnabled  =   False
       Enabled         =   True
-      Height          =   475
+      EstimatedRowHeight=   -1
+      Format          =   0
+      Height          =   457
       Left            =   20
       LockedInPosition=   False
-      Scope           =   0
+      Scope           =   2
+      SectionCount    =   0
       TintColor       =   &c000000
-      Top             =   73
+      Top             =   84
       Visible         =   True
-      Width           =   280
+      Width           =   320
       _ClosingFired   =   False
+      _OpeningCompleted=   False
    End
 End
 #tag EndMobileScreen
@@ -39,50 +46,56 @@ End
 #tag WindowCode
 	#tag Event
 		Sub Opening()
-		  Me.SetBackgroundColorXC(&cFFFDEE)
-		  
-		  '
-		  loadData
-		  '
-		  '
-		  
-		  
+		  SelectedItemID = RowTag.Type.ToString
 		End Sub
 	#tag EndEvent
 
 
 	#tag Method, Flags = &h21
-		Private Sub loadData()
-		  
-		  // Open in WebViewer:
-		  MessageBox("URL " + URLToDisplay)
-		  
-		  If URLToDisplay.Trim <> "" Then
-		    HTMLViewer1.LoadURL(URLToDisplay)
-		  Else
-		    MessageBox("No URL to display.")
-		  End If
-		  
+		Private Sub LoadRepairs()
+		  Try
+		    tblRepairs.RemoveAllRows
+		    
+		    Var sql As String = "SELECT RepairDate, Description, Cost, PostRepairWarranty, ServiceCenter FROM RepairRecord WHERE ItemID = ?"
+		    Var rs As RowSet = App.db.SelectSQL(sql, SelectedItemID)
+		    
+		    While Not rs.AfterLastRow
+		      Var displayText As String = rs.Column("RepairDate").StringValue + " - " + rs.Column("Description").StringValue
+		      Var detailText As String = "Cost: $" + rs.Column("Cost").DoubleValue.ToString("0.00") + _
+		      ", Warranty: " + rs.Column("PostRepairWarranty").StringValue + _
+		      ", Service: " + rs.Column("ServiceCenter").StringValue
+		      
+		      Var cell As MobileTableCellData = tblRepairs.CreateCell
+		      cell.Text = displayText
+		      cell.DetailText = detailText
+		      
+		      // iOSMobileTable in Xojo 2025r1.1 only supports:
+		      // AddRow(value As String)
+		      // AddRow(section As Integer, value As String)
+		      // AddRow(section As Integer, value As MobileTableCellData)
+		      // So we use section = 0 by default if not grouping by sections.
+		      tblRepairs.AddRow(0, cell)
+		      
+		      rs.MoveToNextRow
+		    Wend
+		    
+		    rs.Close
+		    
+		  Catch e As DatabaseException
+		    MessageBox("Error loading repairs: " + e.Message)
+		  End Try
 		End Sub
 	#tag EndMethod
 
 
 	#tag Property, Flags = &h0
-		URLToDisplay As String
+		SelectedItemID As String
 	#tag EndProperty
 
 
 #tag EndWindowCode
 
 #tag ViewBehavior
-	#tag ViewProperty
-		Name="ScaleFactor"
-		Visible=false
-		Group="Behavior"
-		InitialValue=""
-		Type="Double"
-		EditorType=""
-	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Index"
 		Visible=true
@@ -193,11 +206,11 @@ End
 		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
-		Name="URLToDisplay"
+		Name="ScaleFactor"
 		Visible=false
 		Group="Behavior"
 		InitialValue=""
-		Type="String"
-		EditorType="MultiLineEditor"
+		Type="Double"
+		EditorType=""
 	#tag EndViewProperty
 #tag EndViewBehavior
