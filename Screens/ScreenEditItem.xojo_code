@@ -831,8 +831,7 @@ End
 		  Case deleteButton
 		    DeleteItem()
 		  Case RepairsButton
-		    Var repairsScreen As New RepairsScreen
-		    'repairsScreen.SelectedItemID = RowTagrepairsScreen.LoadRepairs
+		    Var repairsScreen As New ScreenRepairs
 		    repairsScreen.Show
 		  End Select
 		  
@@ -1155,6 +1154,6 @@ End
 		Group="Behavior"
 		InitialValue=""
 		Type="String"
-		EditorType=""
+		EditorType="MultiLineEditor"
 	#tag EndViewProperty
 #tag EndViewBehavior

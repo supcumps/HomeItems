@@ -1,5 +1,5 @@
 #tag MobileScreen
-Begin MobileScreen RepairsScreen
+Begin MobileScreen ScreenAddRepairs
    BackButtonCaption=   ""
    Compatibility   =   ""
    ControlCount    =   0
@@ -14,83 +14,15 @@ Begin MobileScreen RepairsScreen
    TintColor       =   &c000000
    Title           =   "Untitled"
    Top             =   0
-   Begin iOSMobileTable tblRepairs
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      AllowRefresh    =   False
-      AllowSearch     =   False
-      AutoLayout      =   tblRepairs, 1, <Parent>, 1, False, +1.00, 4, 1, *kStdGapCtlToViewH, , True
-      AutoLayout      =   tblRepairs, 7, , 0, False, +1.00, 4, 1, 320, , True
-      AutoLayout      =   tblRepairs, 3, , 0, False, +1.00, 4, 1, 84, , True
-      AutoLayout      =   tblRepairs, 8, , 0, False, +1.00, 4, 1, 457, , True
-      ControlCount    =   0
-      EditingEnabled  =   False
-      Enabled         =   True
-      EstimatedRowHeight=   -1
-      Format          =   0
-      Height          =   457
-      Left            =   20
-      LockedInPosition=   False
-      Scope           =   2
-      SectionCount    =   0
-      TintColor       =   &c000000
-      Top             =   84
-      Visible         =   True
-      Width           =   320
-      _ClosingFired   =   False
-      _OpeningCompleted=   False
-   End
 End
 #tag EndMobileScreen
 
 #tag WindowCode
 	#tag Event
 		Sub Opening()
-		  SelectedItemID = RowTag.Type.ToString
+		  MessageBox("ADD repairs Screen")
 		End Sub
 	#tag EndEvent
-
-
-	#tag Method, Flags = &h21
-		Private Sub LoadRepairs()
-		  Try
-		    tblRepairs.RemoveAllRows
-		    
-		    Var sql As String = "SELECT RepairDate, Description, Cost, PostRepairWarranty, ServiceCenter FROM RepairRecord WHERE ItemID = ?"
-		    Var rs As RowSet = App.db.SelectSQL(sql, SelectedItemID)
-		    
-		    While Not rs.AfterLastRow
-		      Var displayText As String = rs.Column("RepairDate").StringValue + " - " + rs.Column("Description").StringValue
-		      Var detailText As String = "Cost: $" + rs.Column("Cost").DoubleValue.ToString("0.00") + _
-		      ", Warranty: " + rs.Column("PostRepairWarranty").StringValue + _
-		      ", Service: " + rs.Column("ServiceCenter").StringValue
-		      
-		      Var cell As MobileTableCellData = tblRepairs.CreateCell
-		      cell.Text = displayText
-		      cell.DetailText = detailText
-		      
-		      // iOSMobileTable in Xojo 2025r1.1 only supports:
-		      // AddRow(value As String)
-		      // AddRow(section As Integer, value As String)
-		      // AddRow(section As Integer, value As MobileTableCellData)
-		      // So we use section = 0 by default if not grouping by sections.
-		      tblRepairs.AddRow(0, cell)
-		      
-		      rs.MoveToNextRow
-		    Wend
-		    
-		    rs.Close
-		    
-		  Catch e As DatabaseException
-		    MessageBox("Error loading repairs: " + e.Message)
-		  End Try
-		End Sub
-	#tag EndMethod
-
-
-	#tag Property, Flags = &h0
-		SelectedItemID As String
-	#tag EndProperty
 
 
 #tag EndWindowCode

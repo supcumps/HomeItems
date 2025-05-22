@@ -9,7 +9,7 @@ Inherits MobileApplication
 		  db.DatabaseFile = SpecialFolder.Documents.Child("HomeTrack.sqlite")
 		  
 		  // Allow for extra debugging information if needed - use global boolean value
-		  DebugMode = False
+		  DebugMode = TRUE
 		  
 		  Try
 		    If Not db.DatabaseFile.Exists Then
@@ -139,7 +139,7 @@ Inherits MobileApplication
 		  
 		  sql = "CREATE TABLE IF NOT EXISTS MaintenanceReminder ("
 		  sql = sql + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-		  sql = sql + "ItemID TEXT, "
+		  sql = sql + "ItemID INTEGER, "
 		  sql = sql + "Description TEXT, "
 		  sql = sql + "DueDate TEXT, "                          // ISO 8601 (e.g. "2025-06-01")
 		  sql = sql + "Recurring INTEGER, "                      // 0 = no, 1 = yes
@@ -155,7 +155,7 @@ Inherits MobileApplication
 		  
 		  sql = "CREATE TABLE IF NOT EXISTS ClaimHistory ("
 		  sql = sql + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-		  sql = sql + "ItemID TEXT, "
+		  sql = sql + "ItemID INTEGER, "
 		  sql = sql + "DateFiled TEXT, "
 		  sql = sql + "AmountClaimed REAL, "
 		  sql = sql + "Status TEXT, "
