@@ -11,8 +11,8 @@ Begin MobileScreen ScreenRepairs
    ScaleFactor     =   0.0
    TabBarVisible   =   True
    TabIcon         =   0
-   TintColor       =   ColorGroup2
-   Title           =   "Items"
+   TintColor       =   &c34C75900
+   Title           =   "Items for Repair"
    Top             =   0
    Begin iOSMobileTable TableRepairs
       AccessibilityHint=   ""
@@ -42,16 +42,16 @@ Begin MobileScreen ScreenRepairs
       _OpeningCompleted=   False
    End
    Begin MobileToolbarButton AddButton
-      Caption         =   "➕ Add Item"
+      Caption         =   "➕ Add Repair"
       Enabled         =   True
       Height          =   22
       Icon            =   0
-      Left            =   279
+      Left            =   265
       LockedInPosition=   False
       Scope           =   2
       Top             =   32
       Type            =   1001
-      Width           =   88.0
+      Width           =   102.0
    End
 End
 #tag EndMobileScreen

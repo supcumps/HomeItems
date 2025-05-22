@@ -18,14 +18,14 @@ Begin MobileTableCustomCell RepairsCustomCell
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   0
-      AutoLayout      =   IDLabel, 1, <Parent>, 1, False, +1.00, 4, 1, *kStdGapCtlToViewH, , True
-      AutoLayout      =   IDLabel, 7, , 0, False, +1.00, 4, 1, 20, , True
-      AutoLayout      =   IDLabel, 3, <Parent>, 3, False, +1.00, 4, 1, 8, , True
       AutoLayout      =   IDLabel, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   IDLabel, 1, <Parent>, 1, False, +1.00, 4, 1, 25, , True
+      AutoLayout      =   IDLabel, 3, <Parent>, 3, False, +1.00, 4, 1, 8, , True
+      AutoLayout      =   IDLabel, 7, , 0, False, +1.00, 4, 1, 20, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   20
+      Left            =   25
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -47,14 +47,14 @@ Begin MobileTableCustomCell RepairsCustomCell
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   0
-      AutoLayout      =   DateLabel, 1, IDLabel, 2, False, +1.00, 4, 1, 15, , True
-      AutoLayout      =   DateLabel, 7, , 0, False, +1.00, 4, 1, 86, , True
       AutoLayout      =   DateLabel, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   DateLabel, 1, IDLabel, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
       AutoLayout      =   DateLabel, 10, IDLabel, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   DateLabel, 7, , 0, False, +1.00, 4, 1, 86, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   55
+      Left            =   53
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -76,14 +76,14 @@ Begin MobileTableCustomCell RepairsCustomCell
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   0
-      AutoLayout      =   DescriptionLabel, 2, <Parent>, 2, False, +1.00, 4, 1, -29, , True
-      AutoLayout      =   DescriptionLabel, 7, , 0, False, +1.00, 4, 1, 95, , True
+      AutoLayout      =   DescriptionLabel, 1, DateLabel, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   DescriptionLabel, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
       AutoLayout      =   DescriptionLabel, 8, , 0, False, +1.00, 4, 1, 30, , True
       AutoLayout      =   DescriptionLabel, 10, IDLabel, 10, False, +1.00, 4, 1, 0, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   196
+      Left            =   147
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -98,7 +98,7 @@ Begin MobileTableCustomCell RepairsCustomCell
       TintColor       =   &c000000
       Top             =   8
       Visible         =   True
-      Width           =   95
+      Width           =   153
       _ClosingFired   =   False
    End
 End

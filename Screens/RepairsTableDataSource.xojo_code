@@ -32,7 +32,7 @@ Implements iOSMobileTableDataSource
 		  
 		  
 		  If section = 0 Then  // headings section
-		    custom.IDLabel.Text = "Item ID"
+		    custom.IDLabel.Text = "ID"
 		    custom.DateLabel.Text = "Date"
 		    custom.DescriptionLabel.Text = "Description"
 		    

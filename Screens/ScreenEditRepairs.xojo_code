@@ -12,7 +12,7 @@ Begin MobileScreen ScreenEditRepairs
    TabBarVisible   =   True
    TabIcon         =   0
    TintColor       =   &c000000
-   Title           =   "Untitled"
+   Title           =   "Edit Repair Details"
    Top             =   0
 End
 #tag EndMobileScreen

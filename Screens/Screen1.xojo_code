@@ -1,5 +1,5 @@
 #tag MobileScreen
-Begin MobileScreen ScreenAddRepairs
+Begin MobileScreen Screen1
    BackButtonCaption=   ""
    Compatibility   =   ""
    ControlCount    =   0
@@ -12,19 +12,12 @@ Begin MobileScreen ScreenAddRepairs
    TabBarVisible   =   True
    TabIcon         =   0
    TintColor       =   &c000000
-   Title           =   "New Repair"
+   Title           =   "Untitled"
    Top             =   0
 End
 #tag EndMobileScreen
 
 #tag WindowCode
-	#tag Event
-		Sub Opening()
-		  MessageBox("ADD repairs Screen")
-		End Sub
-	#tag EndEvent
-
-
 #tag EndWindowCode
 
 #tag ViewBehavior
