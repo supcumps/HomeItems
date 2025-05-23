@@ -245,7 +245,7 @@ Begin MobileScreen ScreenEditRepair
       Enabled         =   True
       Height          =   34
       Hint            =   ""
-      InputType       =   0
+      InputType       =   8
       Left            =   128
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -352,43 +352,6 @@ Begin MobileScreen ScreenEditRepair
       Type            =   1001
       Width           =   71.0
    End
-   Begin MobileTextField ItemIDtextField
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      Alignment       =   0
-      AllowAutoCorrection=   False
-      AllowSpellChecking=   False
-      AutoCapitalizationType=   0
-      AutoLayout      =   ItemIDtextField, 3, <Parent>, 3, False, +1.00, 4, 1, 376, , True
-      AutoLayout      =   ItemIDtextField, 1, <Parent>, 1, False, +1.00, 4, 1, 240, , True
-      AutoLayout      =   ItemIDtextField, 7, , 0, False, +1.00, 4, 1, 100, , True
-      AutoLayout      =   ItemIDtextField, 8, , 0, False, +1.00, 4, 1, 34, , True
-      BorderStyle     =   3
-      ControlCount    =   0
-      Enabled         =   True
-      Height          =   34
-      Hint            =   ""
-      InputType       =   0
-      Left            =   240
-      LockedInPosition=   False
-      MaximumCharactersAllowed=   0
-      Password        =   False
-      ReadOnly        =   False
-      ReturnCaption   =   0
-      Scope           =   2
-      SelectedText    =   ""
-      SelectionLength =   0
-      SelectionStart  =   0
-      Text            =   "ItemId"
-      TextColor       =   &c000000
-      TextFont        =   ""
-      TextSize        =   0
-      TintColor       =   &c000000
-      Top             =   376
-      Visible         =   True
-      Width           =   100
-      _ClosingFired   =   False
-   End
 End
 #tag EndMobileScreen
 
@@ -471,7 +434,7 @@ End
 		    End If
 		    
 		    // Display the ItemID for information or linkage
-		    ItemIDTextField.Text = rs.Column("ItemID").IntegerValue.ToString
+		    'ItemIDTextField.Text = rs.Column("ItemID").IntegerValue.ToString
 		    
 		    // Optional: Enable/Delete/Save buttons
 		    DeleteButton.Enabled = True
@@ -498,7 +461,9 @@ End
 		    // The ItemID of the RepairRecord to update (e.g., passed via RowTag)
 		    Var ID As Integer = RowTag.IntegerValue
 		    
-		    Var ItemID as integer = ItemIDtextField.Text.ToInteger
+		    'Var ItemID As Integer = ItemIDtextField.Text.ToInteger
+		    Var ItemID As Integer = selectedItemID
+		    
 		    // Get updated values from UI controls
 		    
 		    Var repairDate As String = RepairDatePicker.SelectedDate.SQLDate

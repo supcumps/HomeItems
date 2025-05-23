@@ -12,7 +12,7 @@ Inherits MobileApplication
 		  
 		  
 		  Var debugMode As Boolean
-		  debugMode = FALSE
+		  debugMode = FAlSE
 		  
 		  
 		  If DebugMode Then
@@ -146,7 +146,7 @@ Inherits MobileApplication
 		  sql = sql +"ItemID INTEGER, "   // ItemID should be INTEGER if it references the INTEGER PK of HouseholdItem
 		  sql = sql +"RepairDate TEXT, " 
 		  sql = sql +"Description TEXT, "
-		  sql = sql +"Cost REAL, "
+		  sql = sql +"Cost TEXT, "
 		  sql = sql +"PostRepairWarranty TEXT, " 
 		  sql = sql +"ServiceCenter TEXT, "
 		  sql = sql +"FOREIGN KEY(ItemID) REFERENCES HouseholdItem(ID) ON DELETE CASCADE" 

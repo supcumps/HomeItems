@@ -402,7 +402,8 @@ End
 		  
 		  Try
 		    // RowTag is set to the ID of the HouseholdItem we're adding a repair to
-		    Var itemId As Integer = RowTag.IntegerValue
+		    
+		    Var itemId As Integer =  RowTag.IntegerValue
 		    // Example fields from UI controls
 		    Var repairDate As String = RepairDatePicker.SelectedDate.SQLDate
 		    Var description As String = DescriptionField.Text
@@ -411,7 +412,7 @@ End
 		    Var serviceCenter As String = ServiceCenterField.Text
 		    
 		    // Prepare SQL insert
-		    Var ps As SQLitePreparedStatement = App.DB.Prepare("UPDATE RepairRecord (ItemID, RepairDate, Description, Cost, PostRepairWarranty, ServiceCenter) VALUES (?, ?, ?, ?, ?, ?)")
+		    Var ps As SQLitePreparedStatement = App.DB.Prepare("INSERT INTO   RepairRecord (ItemID, RepairDate, Description, Cost, PostRepairWarranty, ServiceCenter) VALUES (?, ?, ?, ?, ?, ?)")
 		    
 		    ps.BindType(0, SQLitePreparedStatement.SQLITE_INTEGER)
 		    ps.BindType(1, SQLitePreparedStatement.SQLITE_TEXT)
