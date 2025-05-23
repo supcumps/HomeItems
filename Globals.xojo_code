@@ -1,15 +1,15 @@
 #tag Module
 Protected Module Globals
 	#tag Property, Flags = &h0
-		callingTable As iOSMobileTable
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
 		DebugMode As Boolean = FALSE
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
 		RowTag As Variant
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		selectedItemID As Integer
 	#tag EndProperty
 
 
@@ -60,6 +60,14 @@ Protected Module Globals
 			Group="Behavior"
 			InitialValue="FALSE"
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="selectedItemID"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

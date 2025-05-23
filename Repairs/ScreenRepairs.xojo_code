@@ -59,14 +59,14 @@ End
 #tag WindowCode
 	#tag Event
 		Sub Activated()
-		  loadRepairs()
+		  loadRepair()
 		End Sub
 	#tag EndEvent
 
 	#tag Event
 		Sub Opening()
 		  Me.SetBackgroundColorXC(&cFFFDEE)
-		  loadRepairs()
+		  loadRepair()
 		  
 		End Sub
 	#tag EndEvent
@@ -89,7 +89,7 @@ End
 
 
 	#tag Method, Flags = &h0
-		Sub LoadRepairs()
+		Sub LoadRepair()
 		  
 		  
 		  Try
@@ -103,19 +103,6 @@ End
 		  Catch e As DatabaseException
 		    MessageBox("Database error: " + e.Message)
 		  End Try
-		  
-		  '///=====
-		  'Try
-		  'App.db.Connect
-		  '
-		  'DataSource = New TableDataSource
-		  'DataSource.Recordset = App.db.SelectSQL("SELECT ID, Name, Category FROM HouseholdItem ORDER BY PurchaseDate DESC")
-		  'TableItems.DataSource = DataSource  // ✅ triggers dynamic row loading
-		  '
-		  '
-		  'Catch e As DatabaseException
-		  'MessageBox("Database error: " + e.Message)
-		  'End Try
 		  
 		End Sub
 	#tag EndMethod
@@ -149,12 +136,14 @@ End
 		      // When we reach the row that matches the selected row index
 		      If currentRow = row Then
 		        
-		        // Retrieve the "ID" column from the database row and store it in RowTag
+		        // Retrieve the "ID" column from the database row and store it in Selected
 		        // (You  use this to load or identify the correct record on the next screen)
-		        RowTag = dbRow.Column("ItemID").StringValue
+		        
+		        SelectedItemID = dbRow.Column("ItemID").IntegerValue
 		        
 		        // Create an instance of the edit screen
-		        Var editRepairScreen As New ScreenEditRepairs
+		        Var editRepairScreen As New ScreenEditRepair
+		        // Pass the selected ItemID to the screen
 		        
 		        // Show the edit screen to allow user to view or edit details
 		        editRepairScreen.Show

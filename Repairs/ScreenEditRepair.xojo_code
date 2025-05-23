@@ -1,5 +1,5 @@
 #tag MobileScreen
-Begin MobileScreen ScreenAddRepairs
+Begin MobileScreen ScreenEditRepair
    BackButtonCaption=   ""
    Compatibility   =   ""
    ControlCount    =   0
@@ -12,14 +12,14 @@ Begin MobileScreen ScreenAddRepairs
    TabBarVisible   =   True
    TabIcon         =   0
    TintColor       =   &c000000
-   Title           =   "Add Repair"
+   Title           =   "Edit Repair Record"
    Top             =   0
    Begin MobileToolbarButton SaveButton
       Caption         =   "💾 Save"
       Enabled         =   True
       Height          =   22
       Icon            =   0
-      Left            =   265
+      Left            =   305
       LockedInPosition=   False
       Scope           =   2
       Top             =   32
@@ -236,7 +236,7 @@ Begin MobileScreen ScreenAddRepairs
       AllowAutoCorrection=   False
       AllowSpellChecking=   False
       AutoCapitalizationType=   0
-      AutoLayout      =   CostField, 11, CostLabel, 11, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   CostField, 10, CostLabel, 10, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   CostField, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   CostField, 1, CostLabel, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
       AutoLayout      =   CostField, 2, RepairDatePicker, 2, False, +1.00, 4, 1, 0, , True
@@ -340,13 +340,69 @@ Begin MobileScreen ScreenAddRepairs
       Width           =   227
       _ClosingFired   =   False
    End
+   Begin MobileToolbarButton DeleteButton
+      Caption         =   "🚮 Delete"
+      Enabled         =   True
+      Height          =   22
+      Icon            =   0
+      Left            =   8
+      LockedInPosition=   False
+      Scope           =   2
+      Top             =   32
+      Type            =   1001
+      Width           =   71.0
+   End
+   Begin MobileTextField ItemIDtextField
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      Alignment       =   0
+      AllowAutoCorrection=   False
+      AllowSpellChecking=   False
+      AutoCapitalizationType=   0
+      AutoLayout      =   ItemIDtextField, 3, <Parent>, 3, False, +1.00, 4, 1, 376, , True
+      AutoLayout      =   ItemIDtextField, 1, <Parent>, 1, False, +1.00, 4, 1, 240, , True
+      AutoLayout      =   ItemIDtextField, 7, , 0, False, +1.00, 4, 1, 100, , True
+      AutoLayout      =   ItemIDtextField, 8, , 0, False, +1.00, 4, 1, 34, , True
+      BorderStyle     =   3
+      ControlCount    =   0
+      Enabled         =   True
+      Height          =   34
+      Hint            =   ""
+      InputType       =   0
+      Left            =   240
+      LockedInPosition=   False
+      MaximumCharactersAllowed=   0
+      Password        =   False
+      ReadOnly        =   False
+      ReturnCaption   =   0
+      Scope           =   2
+      SelectedText    =   ""
+      SelectionLength =   0
+      SelectionStart  =   0
+      Text            =   "ItemId"
+      TextColor       =   &c000000
+      TextFont        =   ""
+      TextSize        =   0
+      TintColor       =   &c000000
+      Top             =   376
+      Visible         =   True
+      Width           =   100
+      _ClosingFired   =   False
+   End
 End
 #tag EndMobileScreen
 
 #tag WindowCode
 	#tag Event
+		Sub Activated()
+		  loadRepair()
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Sub Opening()
 		  Me.SetBackgroundColorXC(&cFFFDEE)
+		  loadRepair()
 		End Sub
 	#tag EndEvent
 
@@ -354,64 +410,106 @@ End
 		Sub ToolbarButtonPressed(button As MobileToolbarButton)
 		  Select Case Button
 		  Case SaveButton
-		    SaveRepair()
+		    UpdateRepair()
+		  Case deleteButton
+		    DeleteRepair()
 		  End Select
 		  
 		  
-		  
-		  'Try
-		  '// RowTag is set to the ID of the HouseholdItem we're adding a repair to
-		  'Var itemId As Integer = RowTag.IntegerValue
-		  '// Example fields from UI controls
-		  'Var repairDate As String = RepairDatePicker.SelectedDate.SQLDate
-		  'Var description As String = DescriptionField.Text
-		  'Var cost As Double = CostField.Text.ToDouble
-		  'Var postRepairWarranty As String = WarrantyField.Text
-		  'Var serviceCenter As String = ServiceCenterField.Text
-		  '
-		  '// Prepare SQL insert
-		  'Var ps As SQLitePreparedStatement = App.DB.Prepare("UPDATE RepairRecord (ItemID, RepairDate, Description, Cost, PostRepairWarranty, ServiceCenter) VALUES (?, ?, ?, ?, ?, ?)")
-		  '
-		  'ps.BindType(0, SQLitePreparedStatement.SQLITE_INTEGER)
-		  'ps.BindType(1, SQLitePreparedStatement.SQLITE_TEXT)
-		  'ps.BindType(2, SQLitePreparedStatement.SQLITE_TEXT)
-		  'ps.BindType(3, SQLitePreparedStatement.SQLITE_DOUBLE)
-		  'ps.BindType(4, SQLitePreparedStatement.SQLITE_TEXT)
-		  'ps.BindType(5, SQLitePreparedStatement.SQLITE_TEXT)
-		  '
-		  'ps.Bind(0, itemId)
-		  'ps.Bind(1, repairDate)
-		  'ps.Bind(2, description)
-		  'ps.Bind(3, cost)
-		  'ps.Bind(4, postRepairWarranty)
-		  'ps.Bind(5, serviceCenter)
-		  '
-		  'ps.ExecuteSQL
-		  '
-		  'MessageBox("Repair record added for item ID " + itemId.ToString)
-		  '
-		  'Catch error As DatabaseException
-		  'MessageBox("Add repair failed: " + error.Message)
-		  'End Try
 		End Sub
 	#tag EndEvent
 
 
 	#tag Method, Flags = &h21
-		Private Sub SaveRepair()
+		Private Sub DeleteRepair()
+		  Try
+		    // Get the repair record ID to delete
+		    Var repairId As Integer = RowTag.IntegerValue
+		    
+		    // Prepare and execute delete
+		    Var ps As SQLitePreparedStatement = App.DB.Prepare("DELETE FROM RepairRecord WHERE ID = ?")
+		    ps.BindType(0, SQLitePreparedStatement.SQLITE_INTEGER)
+		    ps.Bind(0, repairId)
+		    ps.ExecuteSQL
+		    
+		    MessageBox("Repair record deleted. ID = " + repairId.ToString)
+		    
+		  Catch error As DatabaseException
+		    MessageBox("Delete repair failed: " + error.Message)
+		  End Try
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub LoadRepair()
+		  
 		  
 		  Try
-		    // RowTag is set to the ID of the HouseholdItem we're adding a repair to
-		    Var itemId As Integer = RowTag.IntegerValue
-		    // Example fields from UI controls
+		    // repairId is passed via SelectedItemID
+		    Var repairId As Integer = SelectedItemID
+		    
+		    // Query the RepairRecord table
+		    Var rs As RowSet = App.DB.SelectSQL("SELECT * FROM RepairRecord WHERE itemID = ?", SelectedItemID)
+		    
+		    If rs.AfterLastRow Then
+		      MessageBox("No repair record found for ID: " + repairId.ToString)
+		      Return
+		    End If
+		    
+		    // Move to the first row
+		    rs.MoveToFirstRow
+		    
+		    // Populate controls with data
+		    DescriptionField.Text = rs.Column("Description").StringValue
+		    CostField.Text = rs.Column("Cost").DoubleValue.ToString
+		    WarrantyField.Text = rs.Column("PostRepairWarranty").StringValue
+		    ServiceCenterField.Text = rs.Column("ServiceCenter").StringValue
+		    
+		    // Date handling
+		    If rs.Column("RepairDate").StringValue <> "" Then
+		      RepairDatePicker.SelectedDate = DateTime. FromString(rs.Column("RepairDate").StringValue)
+		    End If
+		    
+		    // Display the ItemID for information or linkage
+		    ItemIDTextField.Text = rs.Column("ItemID").IntegerValue.ToString
+		    
+		    // Optional: Enable/Delete/Save buttons
+		    DeleteButton.Enabled = True
+		    SaveButton.Enabled = True
+		    
+		    // Optional: Update labels if needed
+		    DescriptionLabel.Text = "Description:"
+		    CostLabel.Text = "Cost:"
+		    RepairDateLabel.Text = "Repair Date:"
+		    ServiceCentreLabel.Text = "Service Centre:"
+		    WarrantyLabel.Text = "Post-Repair Warranty:"
+		    
+		  Catch error As DatabaseException
+		    MessageBox("Error loading repair record: " + error.Message)
+		  Catch e As RuntimeException
+		    MessageBox("Unexpected error: " + e.Message)
+		  End Try
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub UpdateRepair()
+		  Try
+		    // The ItemID of the RepairRecord to update (e.g., passed via RowTag)
+		    Var ID As Integer = RowTag.IntegerValue
+		    
+		    Var ItemID as integer = ItemIDtextField.Text.ToInteger
+		    // Get updated values from UI controls
+		    
 		    Var repairDate As String = RepairDatePicker.SelectedDate.SQLDate
 		    Var description As String = DescriptionField.Text
 		    Var cost As Double = CostField.Text.ToDouble
 		    Var postRepairWarranty As String = WarrantyField.Text
 		    Var serviceCenter As String = ServiceCenterField.Text
 		    
-		    // Prepare SQL insert
-		    Var ps As SQLitePreparedStatement = App.DB.Prepare("UPDATE RepairRecord (ItemID, RepairDate, Description, Cost, PostRepairWarranty, ServiceCenter) VALUES (?, ?, ?, ?, ?, ?)")
+		    // Prepare the UPDATE SQL statement
+		    Var sql As String = "UPDATE RepairRecord SET ItemID = ?,RepairDate = ?, Description = ?, Cost = ?, PostRepairWarranty = ?, ServiceCenter = ? WHERE ID = ?"
+		    Var ps As SQLitePreparedStatement = App.DB.Prepare(sql)
 		    
 		    ps.BindType(0, SQLitePreparedStatement.SQLITE_INTEGER)
 		    ps.BindType(1, SQLitePreparedStatement.SQLITE_TEXT)
@@ -419,23 +517,30 @@ End
 		    ps.BindType(3, SQLitePreparedStatement.SQLITE_DOUBLE)
 		    ps.BindType(4, SQLitePreparedStatement.SQLITE_TEXT)
 		    ps.BindType(5, SQLitePreparedStatement.SQLITE_TEXT)
+		    ps.BindType(6, SQLitePreparedStatement.SQLITE_INTEGER)
 		    
-		    ps.Bind(0, itemId)
+		    ps.Bind(0, itemID)
 		    ps.Bind(1, repairDate)
 		    ps.Bind(2, description)
 		    ps.Bind(3, cost)
 		    ps.Bind(4, postRepairWarranty)
 		    ps.Bind(5, serviceCenter)
+		    ps.Bind(6, ID)
 		    
 		    ps.ExecuteSQL
 		    
-		    MessageBox("Repair record added for item ID " + itemId.ToString)
+		    MessageBox("Repair record updated. ID = " + itemID.ToString)
 		    
 		  Catch error As DatabaseException
-		    MessageBox("Add repair failed: " + error.Message)
+		    MessageBox("Update failed: " + error.Message)
 		  End Try
 		End Sub
 	#tag EndMethod
+
+
+	#tag Property, Flags = &h0
+		ItemID As Integer
+	#tag EndProperty
 
 
 #tag EndWindowCode

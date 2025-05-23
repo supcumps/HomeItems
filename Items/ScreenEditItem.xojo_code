@@ -638,7 +638,7 @@ Begin MobileScreen ScreenEditItem
       _ClosingFired   =   False
    End
    Begin MobileToolbarButton DeleteButton
-      Caption         =   "🗑️ Delete"
+      Caption         =   "🚮Delete"
       Enabled         =   True
       Height          =   22
       Icon            =   0
@@ -647,7 +647,7 @@ Begin MobileScreen ScreenEditItem
       Scope           =   2
       Top             =   32
       Type            =   1001
-      Width           =   71.0
+      Width           =   67.0
    End
    Begin MobileTextField TextURL
       AccessibilityHint=   ""
@@ -766,59 +766,6 @@ End
 		  Me.SetBackgroundColorXC(&cFFFDEE)
 		  loadData()
 		  
-		  'If DebugMode Then
-		  'MessageBox("Rowtag is still " + RowTag)
-		  'End If
-		  '
-		  ''App.db.Connect
-		  ''
-		  ''Var saveButton As  New MobileToolbarButton(MobileToolbarButton.Types.Save)
-		  ''RightNavigationToolbar.AddButton(saveButton)
-		  ''Var deleteButton As New MobileToolbarButton(MobileToolbarButton.Types.Trash)
-		  ''RightNavigationToolbar.AddButton(deleteButton)
-		  '
-		  '
-		  '
-		  'Try
-		  'Var rs As RowSet = App.db.SelectSQL("SELECT * FROM HouseholdItem WHERE ID = ?", RowTag)
-		  '
-		  '
-		  'If Not rs.AfterLastRow Then
-		  '// Example: display name and category in labels
-		  '
-		  'TXTCategory.Text = rs.Column("Category").StringValue
-		  'txtCost.Text =  rs.Column("Cost").StringValue
-		  ''Txt_ID.Text =  rs.Column("ID").StringValue   /// Use RowTag for save, so this is not needed
-		  'txtLocation.Text =  rs.Column("Location").StringValue
-		  'txtManufacturer.Text =  rs.Column("Manufacturer").StringValue
-		  'txtModel.Text =  rs.Column("modelNumber").StringValue
-		  'TXTName.Text = rs.Column("Name").StringValue
-		  'txtPolicy.Text =  rs.Column("insurancePolicy").StringValue
-		  '
-		  '
-		  'dpPurchaseDate.SelectedDate =  DateTime.FromString( rs.Column("purchaseDate").StringValue)
-		  '
-		  'dpPurchaseDate.SelectedDate =  DateTime.FromString( rs.Column("purchaseDate").StringValue)
-		  'dpWarrantyDate.SelectedDate  = DateTime.FromString( rs.Column("WarrantyExpiryDate").StringValue)  
-		  ''
-		  'swInsured.Value  =  rs.Column("isInsured").StringValue.ToBoolean
-		  '
-		  '
-		  '
-		  '
-		  '
-		  '// Add other fields as needed
-		  'Else
-		  'MessageBox("Item not found.")
-		  'End If
-		  '
-		  'rs.Close
-		  '
-		  'Catch e As DatabaseException
-		  'MessageBox("Error loading item: " + e.Message)
-		  'End Try
-		  '
-		  
 		End Sub
 	#tag EndEvent
 
@@ -877,12 +824,6 @@ End
 		    MessageBox("Rowtag is still " + RowTag)
 		  End If
 		  
-		  'App.db.Connect
-		  '
-		  'Var saveButton As  New MobileToolbarButton(MobileToolbarButton.Types.Save)
-		  'RightNavigationToolbar.AddButton(saveButton)
-		  'Var deleteButton As New MobileToolbarButton(MobileToolbarButton.Types.Trash)
-		  'RightNavigationToolbar.AddButton(deleteButton)
 		  
 		  
 		  
@@ -904,7 +845,6 @@ End
 		      txtPolicy.Text =  rs.Column("insurancePolicy").StringValue
 		      
 		      
-		      dpPurchaseDate.SelectedDate =  DateTime.FromString( rs.Column("purchaseDate").StringValue)
 		      
 		      dpPurchaseDate.SelectedDate =  DateTime.FromString( rs.Column("purchaseDate").StringValue)
 		      dpWarrantyDate.SelectedDate  = DateTime.FromString( rs.Column("WarrantyExpiryDate").StringValue)  
@@ -976,15 +916,18 @@ End
 		    sql = sql + "ReplacementCost = ?, InsurancePolicy = ?, IsInsured = ? "
 		    sql = sql + "WHERE ID = ?"
 		    
-		    System.DebugLog("VALUES: Name=" + name + ", Category=" + category + ", PurchaseDate=" + purchaseDate + ", Cost=" + cost.ToString + _
-		    ", Warranty=" + warrantyExpiryDate + ", Serial=" + serialNumber + ", Location=" + location + ", Store=" + store + ", Receipt=" + receiptImagePath + _
-		    ", Manufacturer=" + manufacturer + ", URL = " + URL + ", Model=" + modelNumber + ", ReplacementCost=" + replacementCost.ToString + ", Policy=" + insurancePolicy + ", IsInsured=" + isInsured.ToString)
-		    
-		    Var rs As RowSet = App.DB.SelectSQL("PRAGMA table_info(HouseholdItem)")
-		    While Not rs.AfterLastRow
-		      System.DebugLog("Column: " + rs.Column("name").StringValue)
-		      rs.MoveToNextRow
-		    Wend
+		    If DebugMode then
+		      System.DebugLog("VALUES: Name=" + name + ", Category=" + category + ", PurchaseDate=" + purchaseDate + ", Cost=" + cost.ToString + _
+		      ", Warranty=" + warrantyExpiryDate + ", Serial=" + serialNumber + ", Location=" + location + ", Store=" + store + ", Receipt=" + receiptImagePath + _
+		      ", Manufacturer=" + manufacturer + ", URL = " + URL + ", Model=" + modelNumber + ", ReplacementCost=" + replacementCost.ToString + ", Policy=" + insurancePolicy + ", IsInsured=" + isInsured.ToString)
+		      
+		      Var rs As RowSet = App.DB.SelectSQL("PRAGMA table_info(HouseholdItem)")
+		      While Not rs.AfterLastRow
+		        System.DebugLog("Column: " + rs.Column("name").StringValue)
+		        rs.MoveToNextRow
+		      Wend
+		      
+		    End If
 		    
 		    Try
 		      App.db.ExecuteSQL(sql, name, category, purchaseDate, cost, warrantyExpiryDate, _
