@@ -9,7 +9,28 @@ Inherits MobileApplication
 		  db.DatabaseFile = SpecialFolder.Documents.Child("HomeTrack.sqlite")
 		  
 		  // Allow for extra debugging information if needed - use global boolean value
-		  DebugMode = TRUE
+		  
+		  
+		  Var debugMode As Boolean
+		  debugMode = FALSE
+		  
+		  
+		  If DebugMode Then
+		    
+		    MessageBox(db.DatabaseFile.ShellPath)  
+		    
+		    Try
+		      If db.DatabaseFile.Exists Then
+		        db.DatabaseFile.Remove
+		        MessageBox("Database removed")
+		      End If
+		    Catch e As DatabaseException
+		      MessageBox("Database Error: " + e.Message)
+		    End Try
+		    
+		  End If
+		  
+		  
 		  
 		  Try
 		    If Not db.DatabaseFile.Exists Then
@@ -37,9 +58,7 @@ Inherits MobileApplication
 		  End Try
 		  
 		  
-		  If DebugMode Then
-		    MessageBox(db.DatabaseFile.ShellPath)   
-		  End If
+		  
 		  
 		  
 		  
@@ -130,8 +149,12 @@ Inherits MobileApplication
 		  sql = sql +"Cost REAL, "
 		  sql = sql +"PostRepairWarranty TEXT, " 
 		  sql = sql +"ServiceCenter TEXT, "
-		  sql = sql +"FOREIGN KEY(ItemID) REFERENCES HouseholdItem(ID)" 
+		  sql = sql +"FOREIGN KEY(ItemID) REFERENCES HouseholdItem(ID) ON DELETE CASCADE" 
 		  sql = sql +");"
+		  
+		  
+		  
+		  
 		  
 		  db.ExecuteSQL(sql)
 		  
@@ -145,7 +168,7 @@ Inherits MobileApplication
 		  sql = sql + "Recurring INTEGER, "                      // 0 = no, 1 = yes
 		  sql = sql + "ReminderDaysBefore INTEGER, "             // How many days in advance to trigger alert
 		  sql = sql + "Completed INTEGER DEFAULT 0, "            // 0 = not done, 1 = done
-		  sql = sql + "FOREIGN KEY(ItemID) REFERENCES HouseholdItem(ID)"
+		  sql = sql + "FOREIGN KEY(ItemID) REFERENCES HouseholdItem(ID) ON DELETE CASCADE"
 		  sql = sql + ");"
 		  
 		  db.ExecuteSQL(sql)
@@ -160,11 +183,12 @@ Inherits MobileApplication
 		  sql = sql + "AmountClaimed REAL, "
 		  sql = sql + "Status TEXT, "
 		  sql = sql + "Notes TEXT, "
-		  sql = sql + "FOREIGN KEY(ItemID) REFERENCES HouseholdItem(ID)"
+		  sql = sql + "FOREIGN KEY(ItemID) REFERENCES HouseholdItem(ID) ON DELETE CASCADE"
 		  sql = sql + ");"
 		  
 		  
 		  db.ExecuteSQL(sql)
+		  
 		  db.ExecuteSQL("PRAGMA foreign_keys = ON;")
 		  
 		  

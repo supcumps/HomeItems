@@ -865,6 +865,8 @@ End
 		  Catch error As DatabaseException
 		    MessageBox("Delete failed: " + error.Message)
 		  End Try
+		  
+		  
 		End Sub
 	#tag EndMethod
 
