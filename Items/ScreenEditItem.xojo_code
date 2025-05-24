@@ -95,7 +95,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   139
+      Top             =   127
       Visible         =   True
       Width           =   202
       _ClosingFired   =   False
@@ -132,7 +132,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   517
+      Top             =   421
       Visible         =   True
       Width           =   202
       _ClosingFired   =   False
@@ -169,7 +169,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   355
+      Top             =   295
       Visible         =   True
       Width           =   202
       _ClosingFired   =   False
@@ -206,7 +206,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   619
+      Top             =   499
       Visible         =   True
       Width           =   202
       _ClosingFired   =   False
@@ -243,7 +243,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   463
+      Top             =   379
       Visible         =   True
       Width           =   202
       _ClosingFired   =   False
@@ -280,7 +280,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   247
+      Top             =   211
       Visible         =   True
       Width           =   100
       _ClosingFired   =   False
@@ -320,7 +320,7 @@ Begin MobileScreen ScreenEditItem
       Alignment       =   2
       AutoLayout      =   lblCategory, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   lblCategory, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lblCategory, 3, lblName, 4, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   lblCategory, 3, lblName, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       AutoLayout      =   lblCategory, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
@@ -338,7 +338,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   139
+      Top             =   127
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -359,7 +359,7 @@ Begin MobileScreen ScreenEditItem
       LockedInPosition=   False
       Scope           =   2
       TintColor       =   &c000000
-      Top             =   195
+      Top             =   171
       Visible         =   True
       Width           =   140
       _ClosingFired   =   False
@@ -370,7 +370,7 @@ Begin MobileScreen ScreenEditItem
       Alignment       =   2
       AutoLayout      =   lblPurchased, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   lblPurchased, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lblPurchased, 3, lblCategory, 4, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   lblPurchased, 3, lblCategory, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       AutoLayout      =   lblPurchased, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
@@ -388,7 +388,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   193
+      Top             =   169
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -399,7 +399,7 @@ Begin MobileScreen ScreenEditItem
       Alignment       =   2
       AutoLayout      =   lblCost, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   lblCost, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lblCost, 3, lblPurchased, 4, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   lblCost, 3, lblPurchased, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       AutoLayout      =   lblCost, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
@@ -417,7 +417,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   247
+      Top             =   211
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -438,7 +438,7 @@ Begin MobileScreen ScreenEditItem
       LockedInPosition=   False
       Scope           =   2
       TintColor       =   &c000000
-      Top             =   288
+      Top             =   240
       Visible         =   True
       Width           =   132
       _ClosingFired   =   False
@@ -449,7 +449,7 @@ Begin MobileScreen ScreenEditItem
       Alignment       =   2
       AutoLayout      =   lblWarranty, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   lblWarranty, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lblWarranty, 3, lblCost, 4, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   lblWarranty, 3, lblCost, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       AutoLayout      =   lblWarranty, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
@@ -467,7 +467,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   301
+      Top             =   253
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -486,7 +486,7 @@ Begin MobileScreen ScreenEditItem
       LockedInPosition=   False
       Scope           =   2
       TintColor       =   &c000000
-      Top             =   570
+      Top             =   462
       Value           =   False
       Visible         =   True
       Width           =   51
@@ -498,7 +498,7 @@ Begin MobileScreen ScreenEditItem
       Alignment       =   2
       AutoLayout      =   lblInsured, 8, , 0, False, +1.00, 4, 1, 30, , True
       AutoLayout      =   lblInsured, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lblInsured, 3, lbl_Location, 4, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   lblInsured, 3, lbl_Location, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       AutoLayout      =   lblInsured, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
@@ -516,7 +516,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   571
+      Top             =   463
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -527,7 +527,7 @@ Begin MobileScreen ScreenEditItem
       Alignment       =   2
       AutoLayout      =   lbl_Model, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   lbl_Model, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lbl_Model, 3, Lbl_CompanyURL, 4, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   lbl_Model, 3, Lbl_CompanyURL, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       AutoLayout      =   lbl_Model, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
@@ -545,7 +545,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   463
+      Top             =   379
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -556,7 +556,7 @@ Begin MobileScreen ScreenEditItem
       Alignment       =   2
       AutoLayout      =   lbl_Manufacturer, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   lbl_Manufacturer, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lbl_Manufacturer, 3, lblWarranty, 4, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   lbl_Manufacturer, 3, lblWarranty, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       AutoLayout      =   lbl_Manufacturer, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
@@ -574,7 +574,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   355
+      Top             =   295
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -585,7 +585,7 @@ Begin MobileScreen ScreenEditItem
       Alignment       =   2
       AutoLayout      =   lbl_Location, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   lbl_Location, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lbl_Location, 3, lbl_Model, 4, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   lbl_Location, 3, lbl_Model, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       AutoLayout      =   lbl_Location, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
@@ -603,7 +603,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   517
+      Top             =   421
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -614,7 +614,7 @@ Begin MobileScreen ScreenEditItem
       Alignment       =   2
       AutoLayout      =   lbl_PolicyNo, 8, , 0, False, +1.00, 4, 1, 30, , True
       AutoLayout      =   lbl_PolicyNo, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lbl_PolicyNo, 3, lblInsured, 4, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   lbl_PolicyNo, 3, lblInsured, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       AutoLayout      =   lbl_PolicyNo, 7, , 0, False, +1.00, 4, 1, 125, , True
       ControlCount    =   0
       Enabled         =   True
@@ -632,7 +632,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   621
+      Top             =   501
       Visible         =   True
       Width           =   125
       _ClosingFired   =   False
@@ -681,7 +681,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   409
+      Top             =   337
       Visible         =   True
       Width           =   207
       _ClosingFired   =   False
@@ -692,7 +692,7 @@ Begin MobileScreen ScreenEditItem
       Alignment       =   0
       AutoLayout      =   Lbl_CompanyURL, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   Lbl_CompanyURL, 1, lblName, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   Lbl_CompanyURL, 3, lbl_Manufacturer, 4, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   Lbl_CompanyURL, 3, lbl_Manufacturer, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       AutoLayout      =   Lbl_CompanyURL, 7, , 0, False, +1.00, 4, 1, 100, , True
       ControlCount    =   0
       Enabled         =   True
@@ -710,7 +710,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   409
+      Top             =   337
       Visible         =   True
       Width           =   100
       _ClosingFired   =   False
@@ -733,7 +733,7 @@ Begin MobileScreen ScreenEditItem
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   411
+      Top             =   339
       Visible         =   True
       Width           =   20
       _ClosingFired   =   False
@@ -749,6 +749,18 @@ Begin MobileScreen ScreenEditItem
       Top             =   778
       Type            =   1001
       Width           =   79.0
+   End
+   Begin MobileToolbarButton MaintenanceButton
+      Caption         =   "🚧 Maintenance"
+      Enabled         =   True
+      Height          =   22
+      Icon            =   0
+      Left            =   96
+      LockedInPosition=   False
+      Scope           =   2
+      Top             =   778
+      Type            =   1001
+      Width           =   112.0
    End
 End
 #tag EndMobileScreen
@@ -780,6 +792,9 @@ End
 		  Case RepairsButton
 		    Var repairsScreen As New ScreenRepairs
 		    repairsScreen.Show
+		  Case MaintenanceButton
+		    Var MaingenanceScreen As New ScreenMaintenance
+		    MaingenanceScreen.Show
 		  End Select
 		  
 		  
