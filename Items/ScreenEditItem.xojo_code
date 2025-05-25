@@ -182,9 +182,9 @@ Begin MobileScreen ScreenEditItem
       AllowSpellChecking=   False
       AutoCapitalizationType=   0
       AutoLayout      =   txtPolicy, 8, , 0, False, +1.00, 4, 1, 34, , True
-      AutoLayout      =   txtPolicy, 1, lbl_PolicyNo, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   txtPolicy, 1, txtManufacturer, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   txtPolicy, 10, lbl_PolicyNo, 10, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   txtPolicy, 7, , 0, False, +1.00, 4, 1, 202, , True
+      AutoLayout      =   txtPolicy, 7, TextURL, 7, False, +1.00, 4, 1, 0, , True
       BorderStyle     =   3
       ControlCount    =   0
       Enabled         =   True
@@ -208,7 +208,7 @@ Begin MobileScreen ScreenEditItem
       TintColor       =   &c000000
       Top             =   499
       Visible         =   True
-      Width           =   202
+      Width           =   182
       _ClosingFired   =   False
    End
    Begin MobileTextField txtModel
@@ -657,7 +657,7 @@ Begin MobileScreen ScreenEditItem
       AllowSpellChecking=   False
       AutoCapitalizationType=   0
       AutoLayout      =   TextURL, 8, , 0, False, +1.00, 4, 1, 34, , True
-      AutoLayout      =   TextURL, 1, Lbl_CompanyURL, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   TextURL, 1, txtManufacturer, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   TextURL, 2, <Parent>, 2, False, +1.00, 4, 1, -40, , True
       AutoLayout      =   TextURL, 10, Lbl_CompanyURL, 10, False, +1.00, 4, 1, 0, , True
       BorderStyle     =   3
@@ -666,7 +666,7 @@ Begin MobileScreen ScreenEditItem
       Height          =   34
       Hint            =   ""
       InputType       =   0
-      Left            =   128
+      Left            =   153
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
       Password        =   False
@@ -683,7 +683,7 @@ Begin MobileScreen ScreenEditItem
       TintColor       =   &c000000
       Top             =   337
       Visible         =   True
-      Width           =   207
+      Width           =   182
       _ClosingFired   =   False
    End
    Begin MobileLabel Lbl_CompanyURL
@@ -761,6 +761,28 @@ Begin MobileScreen ScreenEditItem
       Top             =   778
       Type            =   1001
       Width           =   112.0
+   End
+   Begin MobileImageViewer PolicyImageViewer
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   PolicyImageViewer, 1, webSiteButton, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   PolicyImageViewer, 7, , 0, False, +1.00, 4, 1, 25, , True
+      AutoLayout      =   PolicyImageViewer, 3, lbl_PolicyNo, 3, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   PolicyImageViewer, 8, , 0, False, +1.00, 4, 1, 31, , True
+      ControlCount    =   0
+      DisplayMode     =   0
+      Enabled         =   True
+      Height          =   31
+      Image           =   147341311
+      Left            =   343
+      LockedInPosition=   False
+      Scope           =   2
+      TintColor       =   &c000000
+      Top             =   501
+      URL             =   ""
+      Visible         =   True
+      Width           =   25
+      _ClosingFired   =   False
    End
 End
 #tag EndMobileScreen
@@ -987,6 +1009,14 @@ End
 		  Var urlScreen As New ShowUrlScreen
 		  urlScreen.URLToDisplay = Self.CompanyURL
 		  urlScreen.Show
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events PolicyImageViewer
+	#tag Event
+		Sub Pressed()
+		  Var claimhistory As New ScreenClaimHistory
+		  claimhistory.show
 		End Sub
 	#tag EndEvent
 #tag EndEvents

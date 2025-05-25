@@ -1,5 +1,5 @@
 #tag Class
-Protected Class MaintenanceTableDataSource
+Protected Class ClaimTableDataSource
 Implements iOSMobileTableDataSource
 	#tag Method, Flags = &h21
 		Private Function RowCount(table As iOSMobileTable, section As Integer) As Integer
@@ -22,19 +22,19 @@ Implements iOSMobileTableDataSource
 		Private Function RowData(table As iOSMobileTable, section As Integer, row As Integer) As MobileTableCellData
 		  // Part of the iOSMobileTableDataSource interface.
 		  
-		  Var cell As MobileTableCellData =  Table.CreateCustomCell(GetTypeInfo(RepairsCustomCell))
+		  Var cell As MobileTableCellData =  Table.CreateCustomCell(GetTypeInfo(ClaimCustomCell))
 		  cell.AccessoryType = MobileTableCellData.AccessoryTypes.Disclosure
 		  
 		  
 		  Var ctrl As MobileUIControl = cell.Control
-		  Var custom As RepairsCustomCell = RepairsCustomCell(ctrl)
+		  Var custom As ClaimCustomCell = ClaimCustomCell(ctrl)
 		  
 		  
 		  
 		  If section = 0 Then  // headings section
 		    custom.IDLabel.Text = "ID"
-		    custom.DateLabel.Text = "Due Date"
-		    custom.DescriptionLabel.Text = "Description"
+		    custom.DateLabel.Text = "Date Filed"
+		    custom.AmountLabel.Text = "Amount Claimed"
 		    
 		  ElseIf section = 1 Then  // Items section
 		    If Recordset <> Nil Then 
@@ -42,8 +42,8 @@ Implements iOSMobileTableDataSource
 		      For Each dbRow As DatabaseRow In Recordset
 		        If currentRow = row Then
 		          custom.IDLabel.Text = dbrow.column("ItemID").Stringvalue
-		          custom.DateLabel.Text = dbrow.column("DueDate").Stringvalue
-		          custom.DescriptionLabel.Text = dbrow.column("Description").Stringvalue
+		          custom.DateLabel.Text = dbrow.column("DateFiled").Stringvalue
+		          custom.AmountLabel.Text = dbrow.column("AmountClaimed").Stringvalue
 		          Exit
 		        End  If
 		        currentrow = currentRow + 1
@@ -74,7 +74,7 @@ Implements iOSMobileTableDataSource
 		  If section = 0 Then
 		    Return "Headings"
 		  ElseIf Section = 1 Then
-		    Return "Maintenance"
+		    Return "Claims"
 		  End If
 		  
 		End Function
@@ -82,7 +82,7 @@ Implements iOSMobileTableDataSource
 
 
 	#tag Property, Flags = &h21
-		Private Maintenance As Dictionary
+		Private Claim As Dictionary
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
