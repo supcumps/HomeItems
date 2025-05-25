@@ -62,7 +62,7 @@ Begin MobileTableCustomCell ClaimCustomCell
       SelectedText    =   ""
       SelectionLength =   0
       SelectionStart  =   0
-      Text            =   "DateFiled"
+      Text            =   "Date Filed"
       TextColor       =   &c000000
       TextFont        =   "System Bold		"
       TextSize        =   0

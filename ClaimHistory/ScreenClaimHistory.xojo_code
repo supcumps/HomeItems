@@ -142,11 +142,11 @@ End
 		        SelectedItemID = dbRow.Column("ItemID").IntegerValue
 		        
 		        // Create an instance of the edit screen
-		        Var editMaintenanceScreen As New ScreenEditMaintenanceItem
+		        Var editClaimScreen As New ScreenEditClaim
 		        // Pass the selected ItemID to the screen
 		        
 		        // Show the edit screen to allow user to view or edit details
-		        editMaintenanceScreen.Show
+		        editClaimScreen.Show
 		        
 		        // Exit the loop early, since we've found and handled the tapped row
 		        Exit

@@ -26,13 +26,13 @@ Begin MobileScreen ScreenAddClaim
       Type            =   1001
       Width           =   62.0
    End
-   Begin MobileDateTimePicker DueDatePicker
+   Begin MobileDateTimePicker DateFiledPicker
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   DueDatePicker, 8, , 0, False, +1.00, 4, 1, 34, , True
-      AutoLayout      =   DueDatePicker, 1, DueDateLabel, 2, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   DueDatePicker, 10, DueDateLabel, 10, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   DueDatePicker, 7, , 0, False, +1.00, 4, 1, 133, , True
+      AutoLayout      =   DateFiledPicker, 8, , 0, False, +1.00, 4, 1, 34, , True
+      AutoLayout      =   DateFiledPicker, 1, CLaimDateLabel, 2, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   DateFiledPicker, 10, CLaimDateLabel, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   DateFiledPicker, 7, , 0, False, +1.00, 4, 1, 133, , True
       ControlCount    =   0
       DisplayMode     =   1
       DisplayStyle    =   1
@@ -47,14 +47,14 @@ Begin MobileScreen ScreenAddClaim
       Width           =   133
       _ClosingFired   =   False
    End
-   Begin MobileLabel DueDateLabel
+   Begin MobileLabel CLaimDateLabel
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      Alignment       =   0
-      AutoLayout      =   DueDateLabel, 8, , 0, False, +1.00, 4, 1, 34, , True
-      AutoLayout      =   DueDateLabel, 1, <Parent>, 1, False, +1.00, 4, 1, *kStdGapCtlToViewH, , True
-      AutoLayout      =   DueDateLabel, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, 20, , True
-      AutoLayout      =   DueDateLabel, 7, , 0, False, +1.00, 4, 1, 100, , True
+      Alignment       =   2
+      AutoLayout      =   CLaimDateLabel, 8, , 0, False, +1.00, 4, 1, 34, , True
+      AutoLayout      =   CLaimDateLabel, 1, <Parent>, 1, False, +1.00, 4, 1, *kStdGapCtlToViewH, , True
+      AutoLayout      =   CLaimDateLabel, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   CLaimDateLabel, 7, , 0, False, +1.00, 4, 1, 100, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   34
@@ -66,7 +66,7 @@ Begin MobileScreen ScreenAddClaim
       SelectedText    =   ""
       SelectionLength =   0
       SelectionStart  =   0
-      Text            =   "Due Date"
+      Text            =   "Date Filed"
       TextColor       =   &c000000
       TextFont        =   ""
       TextSize        =   0
@@ -76,14 +76,14 @@ Begin MobileScreen ScreenAddClaim
       Width           =   100
       _ClosingFired   =   False
    End
-   Begin MobileLabel DescriptionLabel
+   Begin MobileLabel AmountLabel
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      Alignment       =   0
-      AutoLayout      =   DescriptionLabel, 8, , 0, False, +1.00, 4, 1, 34, , True
-      AutoLayout      =   DescriptionLabel, 1, DueDateLabel, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   DescriptionLabel, 3, DueDateLabel, 4, False, +1.00, 4, 1, 20, , True
-      AutoLayout      =   DescriptionLabel, 7, , 0, False, +1.00, 4, 1, 100, , True
+      Alignment       =   2
+      AutoLayout      =   AmountLabel, 8, , 0, False, +1.00, 4, 1, 34, , True
+      AutoLayout      =   AmountLabel, 1, CLaimDateLabel, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   AmountLabel, 3, CLaimDateLabel, 4, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   AmountLabel, 7, , 0, False, +1.00, 4, 1, 100, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   34
@@ -95,7 +95,7 @@ Begin MobileScreen ScreenAddClaim
       SelectedText    =   ""
       SelectionLength =   0
       SelectionStart  =   0
-      Text            =   "Description"
+      Text            =   "Amount"
       TextColor       =   &c000000
       TextFont        =   ""
       TextSize        =   0
@@ -105,46 +105,17 @@ Begin MobileScreen ScreenAddClaim
       Width           =   100
       _ClosingFired   =   False
    End
-   Begin MobileLabel ReminderLabel
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      Alignment       =   0
-      AutoLayout      =   ReminderLabel, 1, DueDateLabel, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   ReminderLabel, 7, , 0, False, +1.00, 4, 1, 151, , True
-      AutoLayout      =   ReminderLabel, 3, DescriptionLabel, 4, False, +1.00, 4, 1, 20, , True
-      AutoLayout      =   ReminderLabel, 8, , 0, False, +1.00, 4, 1, 34, , True
-      ControlCount    =   0
-      Enabled         =   True
-      Height          =   34
-      Left            =   20
-      LineBreakMode   =   0
-      LockedInPosition=   False
-      MaximumCharactersAllowed=   0
-      Scope           =   2
-      SelectedText    =   ""
-      SelectionLength =   0
-      SelectionStart  =   0
-      Text            =   "Reminder (days before)"
-      TextColor       =   &c000000
-      TextFont        =   ""
-      TextSize        =   0
-      TintColor       =   &c000000
-      Top             =   193
-      Visible         =   True
-      Width           =   151
-      _ClosingFired   =   False
-   End
-   Begin MobileTextField DescriptionField
+   Begin MobileTextField AmountField
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       Alignment       =   0
       AllowAutoCorrection=   False
       AllowSpellChecking=   False
       AutoCapitalizationType=   0
-      AutoLayout      =   DescriptionField, 1, DescriptionLabel, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
-      AutoLayout      =   DescriptionField, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
-      AutoLayout      =   DescriptionField, 8, , 0, False, +1.00, 4, 1, 34, , True
-      AutoLayout      =   DescriptionField, 10, DescriptionLabel, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   AmountField, 8, , 0, False, +1.00, 4, 1, 34, , True
+      AutoLayout      =   AmountField, 1, AmountLabel, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   AmountField, 2, DateFiledPicker, 2, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   AmountField, 10, AmountLabel, 10, False, +1.00, 4, 1, 0, , True
       BorderStyle     =   3
       ControlCount    =   0
       Enabled         =   True
@@ -168,127 +139,21 @@ Begin MobileScreen ScreenAddClaim
       TintColor       =   &c000000
       Top             =   139
       Visible         =   True
-      Width           =   227
+      Width           =   125
       _ClosingFired   =   False
    End
-   Begin MobileTextField ReminderField
+   Begin MobileLabel StatusLabel
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      Alignment       =   1
-      AllowAutoCorrection=   False
-      AllowSpellChecking=   False
-      AutoCapitalizationType=   0
-      AutoLayout      =   ReminderField, 1, ReminderLabel, 2, False, +1.00, 4, 1, 16, , True
-      AutoLayout      =   ReminderField, 2, DueDatePicker, 2, False, +1.00, 4, 1, 8, , True
-      AutoLayout      =   ReminderField, 8, , 0, False, +1.00, 4, 1, 34, , True
-      AutoLayout      =   ReminderField, 10, ReminderLabel, 10, False, +1.00, 4, 1, 0, , True
-      BorderStyle     =   3
-      ControlCount    =   0
-      Enabled         =   True
-      Height          =   34
-      Hint            =   ""
-      InputType       =   0
-      Left            =   187
-      LockedInPosition=   False
-      MaximumCharactersAllowed=   0
-      Password        =   False
-      ReadOnly        =   False
-      ReturnCaption   =   0
-      Scope           =   2
-      SelectedText    =   ""
-      SelectionLength =   0
-      SelectionStart  =   0
-      Text            =   ""
-      TextColor       =   &c000000
-      TextFont        =   ""
-      TextSize        =   0
-      TintColor       =   &c000000
-      Top             =   193
-      Visible         =   True
-      Width           =   74
-      _ClosingFired   =   False
-   End
-   Begin MobileSwitch swRecurringButton
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      AutoLayout      =   swRecurringButton, 1, ReminderField, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   swRecurringButton, 7, , 0, True, +1.00, 4, 1, 51, , True
-      AutoLayout      =   swRecurringButton, 3, <Parent>, 3, False, +1.00, 4, 1, 274, , True
-      AutoLayout      =   swRecurringButton, 8, , 0, True, +1.00, 4, 1, 31, , True
-      ControlCount    =   0
-      Enabled         =   True
-      Height          =   31
-      Left            =   187
-      LockedInPosition=   False
-      Scope           =   2
-      TintColor       =   &c000000
-      Top             =   274
-      Value           =   False
-      Visible         =   True
-      Width           =   51
-      _ClosingFired   =   False
-   End
-   Begin MobileSwitch SwCompletedButton
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      AutoLayout      =   SwCompletedButton, 1, swRecurringButton, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   SwCompletedButton, 7, , 0, True, +1.00, 4, 1, 51, , True
-      AutoLayout      =   SwCompletedButton, 3, <Parent>, 3, False, +1.00, 4, 1, 328, , True
-      AutoLayout      =   SwCompletedButton, 8, , 0, True, +1.00, 4, 1, 31, , True
-      ControlCount    =   0
-      Enabled         =   True
-      Height          =   31
-      Left            =   187
-      LockedInPosition=   False
-      Scope           =   2
-      TintColor       =   &c000000
-      Top             =   328
-      Value           =   False
-      Visible         =   True
-      Width           =   51
-      _ClosingFired   =   False
-   End
-   Begin MobileLabel RecurringLabel
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      Alignment       =   0
-      AutoLayout      =   RecurringLabel, 3, swRecurringButton, 3, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   RecurringLabel, 8, , 0, False, +1.00, 4, 1, 30, , True
-      AutoLayout      =   RecurringLabel, 1, <Parent>, 1, False, +1.00, 4, 1, 79, , True
-      AutoLayout      =   RecurringLabel, 7, , 0, False, +1.00, 4, 1, 100, , True
+      Alignment       =   2
+      AutoLayout      =   StatusLabel, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   StatusLabel, 1, , 0, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   StatusLabel, 3, AmountLabel, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
+      AutoLayout      =   StatusLabel, 7, , 0, False, +1.00, 4, 1, 100, , True
       ControlCount    =   0
       Enabled         =   True
       Height          =   30
-      Left            =   79
-      LineBreakMode   =   0
-      LockedInPosition=   False
-      MaximumCharactersAllowed=   0
-      Scope           =   2
-      SelectedText    =   ""
-      SelectionLength =   0
-      SelectionStart  =   0
-      Text            =   "Recurring"
-      TextColor       =   &c000000
-      TextFont        =   ""
-      TextSize        =   0
-      TintColor       =   &c000000
-      Top             =   274
-      Visible         =   True
-      Width           =   100
-      _ClosingFired   =   False
-   End
-   Begin MobileLabel CompletedButtonLabel
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      Alignment       =   0
-      AutoLayout      =   CompletedButtonLabel, 1, RecurringLabel, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   CompletedButtonLabel, 2, RecurringLabel, 2, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   CompletedButtonLabel, 4, SwCompletedButton, 4, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   CompletedButtonLabel, 8, , 0, False, +1.00, 4, 1, 30, , True
-      ControlCount    =   0
-      Enabled         =   True
-      Height          =   30
-      Left            =   79
+      Left            =   20
       LineBreakMode   =   0
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
@@ -301,9 +166,62 @@ Begin MobileScreen ScreenAddClaim
       TextFont        =   ""
       TextSize        =   0
       TintColor       =   &c000000
-      Top             =   329
+      Top             =   181
       Visible         =   True
       Width           =   100
+      _ClosingFired   =   False
+   End
+   Begin MobileSwitch SwStatus
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   SwStatus, 8, , 0, True, +1.00, 4, 1, 31, , True
+      AutoLayout      =   SwStatus, 1, StatusLabel, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   SwStatus, 10, StatusLabel, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   SwStatus, 7, , 0, True, +1.00, 4, 1, 51, , True
+      ControlCount    =   0
+      Enabled         =   True
+      Height          =   31
+      Left            =   128
+      LockedInPosition=   False
+      Scope           =   2
+      TintColor       =   &c000000
+      Top             =   180
+      Value           =   False
+      Visible         =   True
+      Width           =   51
+      _ClosingFired   =   False
+   End
+   Begin MobileTextArea NotesTextArea
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      Alignment       =   0
+      AllowAutoCorrection=   False
+      AllowSpellChecking=   False
+      AutoCapitalizationType=   0
+      AutoLayout      =   NotesTextArea, 4, <Parent>, 4, False, +1.00, 4, 1, -40, , True
+      AutoLayout      =   NotesTextArea, 1, <Parent>, 1, False, +1.00, 4, 1, *kStdGapCtlToViewH, , True
+      AutoLayout      =   NotesTextArea, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
+      AutoLayout      =   NotesTextArea, 3, StatusLabel, 4, False, +1.00, 4, 1, 20, , True
+      BorderStyle     =   1
+      ControlCount    =   0
+      Enabled         =   True
+      Height          =   541
+      Left            =   20
+      LockedInPosition=   False
+      maximumCharactersAllowed=   0
+      ReadOnly        =   False
+      Scope           =   2
+      SelectedText    =   ""
+      SelectionLength =   0
+      SelectionStart  =   0
+      Text            =   "Notes"
+      TextColor       =   &c000000
+      TextFont        =   ""
+      TextSize        =   0
+      TintColor       =   &c000000
+      Top             =   231
+      Visible         =   True
+      Width           =   335
       _ClosingFired   =   False
    End
 End
@@ -320,7 +238,7 @@ End
 		Sub ToolbarButtonPressed(button As MobileToolbarButton)
 		  Select Case Button
 		  Case SaveButton
-		    SaveMaintenanceItem
+		    SaveClaim()
 		  End Select
 		  
 		  
@@ -331,44 +249,42 @@ End
 
 
 	#tag Method, Flags = &h21
-		Private Sub SaveMaintenanceItem()
+		Private Sub SaveClaim()
 		  
 		  Try
 		    // RowTag is set to the ID of the HouseholdItem we're adding a repair to
 		    
 		    Var itemId As Integer =  RowTag.IntegerValue
 		    // Example fields from UI controls
-		    Var DueDate As String = DueDatePicker.SelectedDate.SQLDate
-		    Var description As String = DescriptionField.Text
-		    Var ReminderDaysBefore As Integer = ReminderField.Text.ToInteger
-		    Var Recurring As Integer =  If(swRecurringButton.Value, 1, 0)
-		    Var Completed As Integer =  If(swCompletedButton.Value, 1, 0)
+		    Var DateFiled As String = DateFiledPicker.SelectedDate.SQLDate
+		    Var AmountClaimed As Double = AmountField.Text.ToDouble
+		    Var Status As Integer =  If(swStatus.Value, 1, 0)
+		    Var Notes As String = NotesTextArea.Text
 		    
 		    
 		    
 		    // Prepare SQL insert
-		    Var ps As SQLitePreparedStatement = App.DB.Prepare("INSERT INTO   MaintenanceReminder (ItemID, DueDate, Description, ReminderDaysBefore, Recurring, Completed) VALUES (?, ?, ?, ?, ?, ?)")
+		    Var ps As SQLitePreparedStatement = App.DB.Prepare("INSERT INTO   ClaimHistory (ItemID, DateFiled, AmountClaimed, Status, Notes) VALUES (?, ?, ?, ?, ?)")
 		    
 		    ps.BindType(0, SQLitePreparedStatement.SQLITE_INTEGER)
 		    ps.BindType(1, SQLitePreparedStatement.SQLITE_TEXT)
 		    ps.BindType(2, SQLitePreparedStatement.SQLITE_TEXT)
 		    ps.BindType(3, SQLitePreparedStatement.SQLITE_INTEGER)
-		    ps.BindType(4, SQLitePreparedStatement.SQLITE_INTEGER)
-		    ps.BindType(5, SQLitePreparedStatement.SQLITE_INTEGER)
+		    ps.BindType(4, SQLitePreparedStatement.SQLITE_TEXT)
 		    
 		    ps.Bind(0, itemId)
-		    ps.Bind(1, DueDate)
-		    ps.Bind(2, description)
-		    ps.Bind(3, ReminderDaysBefore)
-		    ps.Bind(4, Recurring)
-		    ps.Bind(5, Completed)
+		    ps.Bind(1, DateFiled)
+		    ps.Bind(2, AmountClaimed)
+		    ps.Bind(3, Status)
+		    ps.Bind(4, Notes)
+		    
 		    
 		    ps.ExecuteSQL
 		    
 		    MessageBox("Repair record added for item ID " + itemId.ToString)
 		    
 		  Catch error As DatabaseException
-		    MessageBox("Add repair failed: " + error.Message)
+		    MessageBox("Add claim failed: " + error.Message)
 		  End Try
 		End Sub
 	#tag EndMethod
