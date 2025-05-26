@@ -96,7 +96,7 @@ End
 		    App.db.Connect
 		    
 		    DataSource = New RepairsTableDataSource
-		    DataSource.Recordset = App.db.SelectSQL("SELECT ItemID, RepairDate, Description FROM RepairRecord WHERE ItemId = ? ORDER BY RepairDate DESC", RowTag)
+		    DataSource.Recordset = App.db.SelectSQL("SELECT ID, ItemID, RepairDate, Description FROM RepairRecord WHERE ItemId = ? ORDER BY RepairDate DESC", RowTag)
 		    TableRepairs.DataSource = DataSource  // ✅ triggers dynamic row loading
 		    
 		    
@@ -139,7 +139,8 @@ End
 		        // Retrieve the "ID" column from the database row and store it in Selected
 		        // (You  use this to load or identify the correct record on the next screen)
 		        
-		        SelectedItemID = dbRow.Column("ItemID").IntegerValue
+		        RowTag = dbRow.Column("ItemID").IntegerValue
+		        selectedItemID = dbRow.Column("ID").IntegerValue
 		        
 		        // Create an instance of the edit screen
 		        Var editRepairScreen As New ScreenEditRepair

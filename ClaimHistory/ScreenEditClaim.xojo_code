@@ -12,7 +12,7 @@ Begin MobileScreen ScreenEditClaim
    TabBarVisible   =   True
    TabIcon         =   0
    TintColor       =   &c000000
-   Title           =   "Edit Repair Record"
+   Title           =   "Edit  Record"
    Top             =   0
    Begin MobileToolbarButton SaveButton
       Caption         =   "💾 Save"
@@ -136,16 +136,16 @@ Begin MobileScreen ScreenEditClaim
    Begin MobileDateTimePicker DateFiledPicker
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   DateFiledPicker, 1, <Parent>, 1, False, +1.00, 4, 1, 120, , True
-      AutoLayout      =   DateFiledPicker, 7, , 0, False, +1.00, 4, 1, 133, , True
-      AutoLayout      =   DateFiledPicker, 3, <Parent>, 3, False, +1.00, 4, 1, 91, , True
       AutoLayout      =   DateFiledPicker, 8, , 0, False, +1.00, 4, 1, 34, , True
+      AutoLayout      =   DateFiledPicker, 1, CLaimDateLabel, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   DateFiledPicker, 10, CLaimDateLabel, 10, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   DateFiledPicker, 7, , 0, False, +1.00, 4, 1, 133, , True
       ControlCount    =   0
       DisplayMode     =   1
       DisplayStyle    =   1
       Enabled         =   True
       Height          =   34
-      Left            =   120
+      Left            =   128
       LockedInPosition=   False
       Scope           =   2
       TintColor       =   &c000000
@@ -269,20 +269,40 @@ End
 
 	#tag Method, Flags = &h21
 		Private Sub DeleteClaim()
+		  
+		  'MessageBox("Delete Claim ")
+		  '
+		  'Try
+		  '// Get the repair record ID to delete
+		  'Var ClaimID As Integer =  RowTag.IntegerValue
+		  '
+		  '// Prepare and execute delete
+		  'Var ps As SQLitePreparedStatement = App.DB.Prepare("DELETE FROM ClaimHistory WHERE ID = ?")
+		  'ps.BindType(0, SQLitePreparedStatement.SQLITE_INTEGER)
+		  'ps.Bind(0, ClaimID)
+		  'ps.ExecuteSQL
+		  '
+		  'MessageBox("Claim record deleted. ID = " + ClaimID.ToString)
+		  '
+		  'Catch error As DatabaseException
+		  'MessageBox("Delete repair failed: " + error.Message)
+		  'End Try
+		  '
+		  
 		  Try
 		    // Get the repair record ID to delete
-		    Var maintenanceID As Integer = RowTag.IntegerValue
+		    Var ClaimId As Integer = RowTag.IntegerValue
 		    
 		    // Prepare and execute delete
-		    Var ps As SQLitePreparedStatement = App.DB.Prepare("DELETE FROM MaintenanceReminder WHERE ID = ?")
+		    Var ps As SQLitePreparedStatement = App.DB.Prepare("DELETE FROM RepairRecord WHERE ID = ?")
 		    ps.BindType(0, SQLitePreparedStatement.SQLITE_INTEGER)
-		    ps.Bind(0, maintenanceID)
+		    ps.Bind(0, ClaimId)
 		    ps.ExecuteSQL
 		    
-		    MessageBox("Maintenance record deleted. ID = " + maintenanceID.ToString)
+		    MessageBox("Claim record deleted. ID = " + ClaimID.ToString)
 		    
 		  Catch error As DatabaseException
-		    MessageBox("Delete repair failed: " + error.Message)
+		    MessageBox("Delete Claim failed: " + error.Message)
 		  End Try
 		End Sub
 	#tag EndMethod
@@ -293,13 +313,13 @@ End
 		  
 		  Try
 		    // maintenanceID is passed via SelectedItemID
-		    Var ClaimID As Integer = SelectedItemID
+		    Var ClaimID As Integer = selectedItemID
 		    
 		    // Query the RepairRecord table
-		    Var rs As RowSet = App.DB.SelectSQL("SELECT * FROM ClaimHistory WHERE itemID = ?", SelectedItemID)
+		    Var rs As RowSet = App.DB.SelectSQL("SELECT * FROM ClaimHistory WHERE itemID = ?", ClaimID)
 		    
 		    If rs.AfterLastRow Then
-		      MessageBox("No repair record found for ID: " + ClaimID.ToString)
+		      MessageBox("No claim found for ID: " + ClaimID.ToString)
 		      Return
 		    End If
 		    
@@ -307,16 +327,15 @@ End
 		    rs.MoveToFirstRow
 		    
 		    // Populate controls with data
-		    
+		    AmountField.Text = rs.Column("AmountClaimed").StringValue
+		    NotesTextArea.Text = rs.Column("Notes").StringValue
 		    
 		    // Date handling
 		    If rs.Column("DateFiled").StringValue <> "" Then
 		      DateFiledPicker.SelectedDate = DateTime. FromString(rs.Column("DateFiled").StringValue)
 		    End If
-		    AmountField.Text = rs.Column("AmountClaimed").StringValue
 		    
 		    swStatus.Value  =  rs.Column("Status").StringValue.ToBoolean
-		    NotesTextArea.Text = rs.Column("Notes").StringValue
 		    
 		    // Display the ItemID for information or linkage
 		    'ItemIDTextField.Text = rs.Column("ItemID").IntegerValue.ToString
@@ -328,7 +347,7 @@ End
 		    
 		    
 		  Catch error As DatabaseException
-		    MessageBox("Error loading repair record: " + error.Message)
+		    MessageBox("Error loading claim record: " + error.Message)
 		  Catch e As RuntimeException
 		    MessageBox("Unexpected error: " + e.Message)
 		  End Try
@@ -337,51 +356,51 @@ End
 
 	#tag Method, Flags = &h21
 		Private Sub UpdateClaim()
-		  'Try
-		  '// The ItemID of the RepairRecord to update (e.g., passed via RowTag)
-		  'Var ID As Integer = RowTag.IntegerValue
-		  '
-		  'Var ItemID As Integer = selectedItemID
-		  '
-		  '// Get updated values from UI controls
-		  '
-		  'Var DueDate As String = DueDatePicker.SelectedDate.SQLDate
-		  'Var description As String = DescriptionField.Text// Populate controls with data
-		  'Var ReminderDaysBefore As String = ReminderField.Text
-		  '
-		  'Var recurring As Integer =  If(swRecurringButton.Value, 1, 0)
-		  'Var completed As Integer =  If(swCompletedButton.Value, 1, 0)
-		  '
-		  '
-		  '
-		  '
-		  '// Prepare the UPDATE SQL statement
-		  'Var sql As String = "UPDATE ClaimHistory SET ItemID = ?,DueDate = ?, Description = ?, ReminderDaysBefore = ?, recurring = ?, completed = ? WHERE ID = ?"
-		  'Var ps As SQLitePreparedStatement = App.DB.Prepare(sql)
-		  '
-		  'ps.BindType(0, SQLitePreparedStatement.SQLITE_INTEGER)
-		  'ps.BindType(1, SQLitePreparedStatement.SQLITE_TEXT)
-		  'ps.BindType(2, SQLitePreparedStatement.SQLITE_TEXT)
-		  'ps.BindType(3, SQLitePreparedStatement.SQLITE_TEXT)
-		  'ps.BindType(4, SQLitePreparedStatement.SQLITE_INTEGER)
-		  'ps.BindType(5, SQLitePreparedStatement.SQLITE_INTEGER)
-		  'ps.BindType(6, SQLitePreparedStatement.SQLITE_INTEGER)
-		  '
-		  'ps.Bind(0, itemID)
-		  'ps.Bind(1, DueDate)
-		  'ps.Bind(2, description)
-		  'ps.Bind(3, ReminderDaysBefore)
-		  'ps.Bind(4, Recurring)
-		  'ps.Bind(5, Completed)
-		  'ps.Bind(6, ID)
-		  '
-		  'ps.ExecuteSQL
-		  '
-		  'MessageBox("Maintenance record updated. ID = " + itemID.ToString)
-		  '
-		  'Catch error As DatabaseException
-		  'MessageBox("Update failed: " + error.Message)
-		  'End Try
+		  Try
+		    // The ItemID of the RepairRecord to update (e.g., passed via RowTag)
+		    Var ID As Integer = RowTag.IntegerValue
+		    
+		    Var ItemID As Integer = selectedItemID
+		    
+		    // Get updated values from UI controls
+		    
+		    Var DateFiled As String = DateFiledPicker.SelectedDate.SQLDate
+		    Var AmountClaimed As String = AmountField.Text// Populate controls with data
+		    Var swStatus As Integer =  If(swStatus.Value, 1, 0)
+		    
+		    Var Notes As String = NotesTextArea.Text// Populate controls with data
+		    
+		    
+		    
+		    
+		    
+		    // Prepare the UPDATE SQL statement
+		    Var sql As String = "UPDATE ClaimHistory SET ItemID = ?,DateFiled = ?, AmountClaimed = ?, swStatus = ?, Notes = ? WHERE ID = ?"
+		    Var ps As SQLitePreparedStatement = App.DB.Prepare(sql)
+		    
+		    ps.BindType(0, SQLitePreparedStatement.SQLITE_INTEGER)
+		    ps.BindType(1, SQLitePreparedStatement.SQLITE_TEXT)
+		    ps.BindType(2, SQLitePreparedStatement.SQLITE_TEXT)
+		    ps.BindType(3, SQLitePreparedStatement.SQLITE_TEXT)
+		    ps.BindType(4, SQLitePreparedStatement.SQLITE_INTEGER)
+		    ps.BindType(5, SQLitePreparedStatement.SQLITE_INTEGER)
+		    ps.BindType(6, SQLitePreparedStatement.SQLITE_INTEGER)
+		    
+		    ps.Bind(0, itemID)
+		    ps.Bind(1, DateFiled)
+		    ps.Bind(2, AmountClaimed)
+		    ps.Bind(3, swStatus)
+		    ps.Bind(4, Notes)
+		    ps.Bind(5, ID)
+		    
+		    
+		    ps.ExecuteSQL
+		    
+		    MessageBox("Claim record updated. ID = " + itemID.ToString)
+		    
+		  Catch error As DatabaseException
+		    MessageBox("Update failed: " + error.Message)
+		  End Try
 		End Sub
 	#tag EndMethod
 

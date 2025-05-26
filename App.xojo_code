@@ -12,21 +12,21 @@ Inherits MobileApplication
 		  
 		  
 		  Var debugMode As Boolean
-		  debugMode = FAlSE
+		  debugMode = True
 		  
 		  
 		  If DebugMode Then
 		    
 		    MessageBox(db.DatabaseFile.ShellPath)  
 		    
-		    Try
-		      If db.DatabaseFile.Exists Then
-		        db.DatabaseFile.Remove
-		        MessageBox("Database removed")
-		      End If
-		    Catch e As DatabaseException
-		      MessageBox("Database Error: " + e.Message)
-		    End Try
+		    'Try
+		    'If db.DatabaseFile.Exists Then
+		    'db.DatabaseFile.Remove
+		    'MessageBox("Database removed")
+		    ''End If
+		    'Catch e As DatabaseException
+		    'MessageBox("Database Error: " + e.Message)
+		    'End Try
 		    
 		  End If
 		  

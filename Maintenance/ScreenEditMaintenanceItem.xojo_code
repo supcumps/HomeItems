@@ -12,7 +12,7 @@ Begin MobileScreen ScreenEditMaintenanceItem
    TabBarVisible   =   True
    TabIcon         =   0
    TintColor       =   &c000000
-   Title           =   "Edit Repair Record"
+   Title           =   "Edit Record"
    Top             =   0
    Begin MobileToolbarButton SaveButton
       Caption         =   "💾 Save"

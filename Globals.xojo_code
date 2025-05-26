@@ -9,7 +9,7 @@ Protected Module Globals
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		selectedItemID As Integer
+		selectedItemID As Variant
 	#tag EndProperty
 
 

@@ -385,14 +385,17 @@ End
 
 	#tag Method, Flags = &h21
 		Private Sub DeleteRepair()
+		  
+		  // Get the repair record ID to delete
 		  Try
-		    // Get the repair record ID to delete
-		    Var repairId As Integer = RowTag.IntegerValue
+		    // The ItemID of the RepairRecord to update (e.g., passed via RowTag)
+		    Var repairID As Integer =  selectedItemID.IntegerValue// needed for update and delete
+		    Var ItemID As Integer = RowTag.IntegerValue
 		    
 		    // Prepare and execute delete
 		    Var ps As SQLitePreparedStatement = App.DB.Prepare("DELETE FROM RepairRecord WHERE ID = ?")
 		    ps.BindType(0, SQLitePreparedStatement.SQLITE_INTEGER)
-		    ps.Bind(0, repairId)
+		    ps.Bind(0, repairID)
 		    ps.ExecuteSQL
 		    
 		    MessageBox("Repair record deleted. ID = " + repairId.ToString)
@@ -400,6 +403,10 @@ End
 		  Catch error As DatabaseException
 		    MessageBox("Delete repair failed: " + error.Message)
 		  End Try
+		  
+		  
+		  
+		  
 		End Sub
 	#tag EndMethod
 
@@ -409,13 +416,16 @@ End
 		  
 		  Try
 		    // repairId is passed via SelectedItemID
-		    Var repairId As Integer = SelectedItemID
+		    
+		    Var repairId As String = selectedItemID.StringValue
 		    
 		    // Query the RepairRecord table
-		    Var rs As RowSet = App.DB.SelectSQL("SELECT * FROM RepairRecord WHERE itemID = ?", SelectedItemID)
+		    Var rs As RowSet = App.DB.SelectSQL("SELECT * FROM RepairRecord WHERE ID = ?", repairID)
+		    
+		    
 		    
 		    If rs.AfterLastRow Then
-		      MessageBox("No repair record found for ID: " + repairId.ToString)
+		      MessageBox("No repair record found for ID: " + repairId)
 		      Return
 		    End If
 		    
@@ -424,7 +434,7 @@ End
 		    
 		    // Populate controls with data
 		    DescriptionField.Text = rs.Column("Description").StringValue
-		    CostField.Text = rs.Column("Cost").DoubleValue.ToString
+		    CostField.Text = rs.Column("Cost").StringValue
 		    WarrantyField.Text = rs.Column("PostRepairWarranty").StringValue
 		    ServiceCenterField.Text = rs.Column("ServiceCenter").StringValue
 		    
@@ -459,16 +469,14 @@ End
 		Private Sub UpdateRepair()
 		  Try
 		    // The ItemID of the RepairRecord to update (e.g., passed via RowTag)
-		    Var ID As Integer = RowTag.IntegerValue
-		    
-		    'Var ItemID As Integer = ItemIDtextField.Text.ToInteger
-		    Var ItemID As Integer = selectedItemID
+		    Var ID As Integer =  selectedItemID.IntegerValue  // needed for update and delete
+		    Var ItemID As Integer = RowTag.IntegerValue
 		    
 		    // Get updated values from UI controls
 		    
 		    Var repairDate As String = RepairDatePicker.SelectedDate.SQLDate
 		    Var description As String = DescriptionField.Text
-		    Var cost As Double = CostField.Text.ToDouble
+		    Var cost As String = CostField.Text
 		    Var postRepairWarranty As String = WarrantyField.Text
 		    Var serviceCenter As String = ServiceCenterField.Text
 		    
@@ -626,6 +634,14 @@ End
 		Group="Behavior"
 		InitialValue=""
 		Type="Double"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="ItemID"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Integer"
 		EditorType=""
 	#tag EndViewProperty
 #tag EndViewBehavior

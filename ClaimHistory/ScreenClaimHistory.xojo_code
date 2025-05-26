@@ -118,7 +118,47 @@ End
 #tag Events ClaimTable
 	#tag Event
 		Sub SelectionChanged(section As Integer, row As Integer)
-		  
+		  '
+		  '
+		  '// Skip interaction if the selected row is the header row (first row)
+		  '
+		  '// Skip the header row: section 0, row 0
+		  'If section = 0 And row = 0 Then Return
+		  '// Ensure the DataSource has a valid Recordset before proceeding
+		  'If DataSource.Recordset <> Nil Then
+		  '
+		  '// We'll use this to track which record we're currently on in the loop
+		  'Var currentRow As Integer = 0
+		  '
+		  '// Loop through each row in the Recordset from the DataSource
+		  'For Each dbRow As DatabaseRow In DataSource.Recordset
+		  '
+		  '// When we reach the row that matches the selected row index
+		  'If currentRow = row Then
+		  '
+		  '// Retrieve the "ID" column from the database row and store it in Selected
+		  '// (You  use this to load or identify the correct record on the next screen)
+		  '
+		  'SelectedItemID = dbRow.Column("ItemID").IntegerValue
+		  '
+		  '// Create an instance of the edit screen
+		  'Var editClaimScreen As New ScreenEditClaim
+		  '// Pass the selected ItemID to the screen
+		  '
+		  '// Show the edit screen to allow user to view or edit details
+		  'editClaimScreen.Show
+		  '
+		  '// Exit the loop early, since we've found and handled the tapped row
+		  'Exit
+		  'End If
+		  '
+		  '// Move to the next row in the loop
+		  'currentRow = currentRow + 1
+		  '
+		  'Next
+		  'End If
+		  '
+		  '
 		  
 		  // Skip interaction if the selected row is the header row (first row)
 		  
@@ -157,6 +197,7 @@ End
 		      
 		    Next
 		  End If
+		  
 		  
 		  
 		  

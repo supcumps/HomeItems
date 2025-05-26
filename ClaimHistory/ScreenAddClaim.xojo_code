@@ -255,7 +255,6 @@ End
 		    // RowTag is set to the ID of the HouseholdItem we're adding a repair to
 		    
 		    Var itemId As Integer =  RowTag.IntegerValue
-		    // Example fields from UI controls
 		    Var DateFiled As String = DateFiledPicker.SelectedDate.SQLDate
 		    Var AmountClaimed As Double = AmountField.Text.ToDouble
 		    Var Status As Integer =  If(swStatus.Value, 1, 0)

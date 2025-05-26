@@ -245,7 +245,7 @@ Begin MobileScreen ScreenAddRepairs
       Enabled         =   True
       Height          =   34
       Hint            =   ""
-      InputType       =   0
+      InputType       =   8
       Left            =   128
       LockedInPosition=   False
       MaximumCharactersAllowed=   0
