@@ -404,6 +404,8 @@ End
 		    MessageBox("Delete repair failed: " + error.Message)
 		  End Try
 		  
+		  CLOSE ' return to calling screen
+		  
 		  
 		  
 		  
@@ -507,6 +509,8 @@ End
 		  Catch error As DatabaseException
 		    MessageBox("Update failed: " + error.Message)
 		  End Try
+		  
+		  CLOSE ' return to calling screen
 		End Sub
 	#tag EndMethod
 

@@ -147,7 +147,7 @@ Begin MobileScreen ScreenAddClaim
       AccessibilityLabel=   ""
       Alignment       =   2
       AutoLayout      =   StatusLabel, 8, , 0, False, +1.00, 4, 1, 30, , True
-      AutoLayout      =   StatusLabel, 1, , 0, False, +1.00, 4, 1, 20, , True
+      AutoLayout      =   StatusLabel, 1, <Parent>, 1, False, +1.00, 4, 1, 20, , True
       AutoLayout      =   StatusLabel, 3, AmountLabel, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       AutoLayout      =   StatusLabel, 7, , 0, False, +1.00, 4, 1, 100, , True
       ControlCount    =   0
@@ -285,6 +285,8 @@ End
 		  Catch error As DatabaseException
 		    MessageBox("Add claim failed: " + error.Message)
 		  End Try
+		  
+		  CLOSE ' return to calling screen
 		End Sub
 	#tag EndMethod
 

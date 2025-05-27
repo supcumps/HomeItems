@@ -435,6 +435,8 @@ End
 		  Catch error As DatabaseException
 		    MessageBox("Add repair failed: " + error.Message)
 		  End Try
+		  
+		  CLOSE ' return to calling screen
 		End Sub
 	#tag EndMethod
 

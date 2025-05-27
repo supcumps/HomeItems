@@ -270,40 +270,32 @@ End
 	#tag Method, Flags = &h21
 		Private Sub DeleteClaim()
 		  
-		  'MessageBox("Delete Claim ")
-		  '
-		  'Try
-		  '// Get the repair record ID to delete
-		  'Var ClaimID As Integer =  RowTag.IntegerValue
-		  '
-		  '// Prepare and execute delete
-		  'Var ps As SQLitePreparedStatement = App.DB.Prepare("DELETE FROM ClaimHistory WHERE ID = ?")
-		  'ps.BindType(0, SQLitePreparedStatement.SQLITE_INTEGER)
-		  'ps.Bind(0, ClaimID)
-		  'ps.ExecuteSQL
-		  '
-		  'MessageBox("Claim record deleted. ID = " + ClaimID.ToString)
-		  '
-		  'Catch error As DatabaseException
-		  'MessageBox("Delete repair failed: " + error.Message)
-		  'End Try
-		  '
-		  
 		  Try
-		    // Get the repair record ID to delete
-		    Var ClaimId As Integer = RowTag.IntegerValue
+		    // The ItemID of the RepairRecord to update (e.g., passed via RowTag)
+		    
+		    
+		    Var ClaimID As Integer =  selectedItemID.IntegerValue// needed for update and delete
+		    Var ItemID As Integer = RowTag.IntegerValue
 		    
 		    // Prepare and execute delete
-		    Var ps As SQLitePreparedStatement = App.DB.Prepare("DELETE FROM RepairRecord WHERE ID = ?")
+		    Var ps As SQLitePreparedStatement = App.DB.Prepare("DELETE FROM ClaimHistory WHERE ID = ?")
 		    ps.BindType(0, SQLitePreparedStatement.SQLITE_INTEGER)
-		    ps.Bind(0, ClaimId)
-		    ps.ExecuteSQL
+		    ps.Bind(0, ClaimID)
+		    Try
+		      ps.ExecuteSQL
+		      MessageBox("Claim record deleted. ID = " + ClaimID.ToString)
+		    Catch e As DatabaseException
+		      MessageBox("Database errror: " + e.Message)
+		    End Try 
 		    
-		    MessageBox("Claim record deleted. ID = " + ClaimID.ToString)
+		    
 		    
 		  Catch error As DatabaseException
 		    MessageBox("Delete Claim failed: " + error.Message)
 		  End Try
+		  
+		  CLOSE ' return to calling screen
+		  
 		End Sub
 	#tag EndMethod
 
@@ -312,14 +304,15 @@ End
 		  
 		  
 		  Try
-		    // maintenanceID is passed via SelectedItemID
-		    Var ClaimID As Integer = selectedItemID
+		    // MaintenanceID is passed via SelectedItemID
+		    
+		    Var ClaimID As String = selectedItemID.StringValue
 		    
 		    // Query the RepairRecord table
-		    Var rs As RowSet = App.DB.SelectSQL("SELECT * FROM ClaimHistory WHERE itemID = ?", ClaimID)
+		    Var rs As RowSet = App.DB.SelectSQL("SELECT * FROM ClaimHistory WHERE ID = ?", ClaimID)
 		    
 		    If rs.AfterLastRow Then
-		      MessageBox("No claim found for ID: " + ClaimID.ToString)
+		      MessageBox("No claim found for ID: " + ClaimID)
 		      Return
 		    End If
 		    
@@ -327,13 +320,18 @@ End
 		    rs.MoveToFirstRow
 		    
 		    // Populate controls with data
-		    AmountField.Text = rs.Column("AmountClaimed").StringValue
-		    NotesTextArea.Text = rs.Column("Notes").StringValue
+		    
 		    
 		    // Date handling
 		    If rs.Column("DateFiled").StringValue <> "" Then
 		      DateFiledPicker.SelectedDate = DateTime. FromString(rs.Column("DateFiled").StringValue)
 		    End If
+		    
+		    
+		    
+		    AmountField.Text = rs.Column("AmountClaimed").StringValue
+		    NotesTextArea.Text = rs.Column("Notes").StringValue
+		    
 		    
 		    swStatus.Value  =  rs.Column("Status").StringValue.ToBoolean
 		    
@@ -347,7 +345,7 @@ End
 		    
 		    
 		  Catch error As DatabaseException
-		    MessageBox("Error loading claim record: " + error.Message)
+		    MessageBox("Error loading Maintenance record: " + error.Message)
 		  Catch e As RuntimeException
 		    MessageBox("Unexpected error: " + e.Message)
 		  End Try
@@ -357,10 +355,11 @@ End
 	#tag Method, Flags = &h21
 		Private Sub UpdateClaim()
 		  Try
-		    // The ItemID of the RepairRecord to update (e.g., passed via RowTag)
-		    Var ID As Integer = RowTag.IntegerValue
 		    
-		    Var ItemID As Integer = selectedItemID
+		    // The ItemID of the RepairRecord to update (e.g., passed via RowTag)
+		    
+		    Var ID As Integer =  selectedItemID.IntegerValue  // needed for update and delete
+		    Var ItemID As Integer = RowTag.IntegerValue
 		    
 		    // Get updated values from UI controls
 		    
@@ -375,16 +374,15 @@ End
 		    
 		    
 		    // Prepare the UPDATE SQL statement
-		    Var sql As String = "UPDATE ClaimHistory SET ItemID = ?,DateFiled = ?, AmountClaimed = ?, swStatus = ?, Notes = ? WHERE ID = ?"
+		    Var sql As String = "UPDATE ClaimHistory SET ItemID = ?, DateFiled = ?, AmountClaimed = ?, Status = ?, Notes = ? WHERE ID = ?"
 		    Var ps As SQLitePreparedStatement = App.DB.Prepare(sql)
 		    
 		    ps.BindType(0, SQLitePreparedStatement.SQLITE_INTEGER)
 		    ps.BindType(1, SQLitePreparedStatement.SQLITE_TEXT)
 		    ps.BindType(2, SQLitePreparedStatement.SQLITE_TEXT)
-		    ps.BindType(3, SQLitePreparedStatement.SQLITE_TEXT)
-		    ps.BindType(4, SQLitePreparedStatement.SQLITE_INTEGER)
+		    ps.BindType(3, SQLitePreparedStatement.SQLITE_INTEGER)
+		    ps.BindType(4, SQLitePreparedStatement.SQLITE_TEXT)
 		    ps.BindType(5, SQLitePreparedStatement.SQLITE_INTEGER)
-		    ps.BindType(6, SQLitePreparedStatement.SQLITE_INTEGER)
 		    
 		    ps.Bind(0, itemID)
 		    ps.Bind(1, DateFiled)
@@ -401,6 +399,9 @@ End
 		  Catch error As DatabaseException
 		    MessageBox("Update failed: " + error.Message)
 		  End Try
+		  
+		  
+		  CLOSE ' return to calling screen
 		End Sub
 	#tag EndMethod
 

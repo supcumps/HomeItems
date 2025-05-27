@@ -353,7 +353,9 @@ End
 		Private Sub DeleteJob()
 		  Try
 		    // Get the repair record ID to delete
-		    Var maintenanceID As Integer = RowTag.IntegerValue
+		    // The ItemID of the RepairRecord to update (e.g., passed via RowTag)
+		    Var maintenanceID As Integer =  selectedItemID.IntegerValue// needed for update and delete
+		    Var ItemID As Integer = RowTag.IntegerValue
 		    
 		    // Prepare and execute delete
 		    Var ps As SQLitePreparedStatement = App.DB.Prepare("DELETE FROM MaintenanceReminder WHERE ID = ?")
@@ -364,8 +366,13 @@ End
 		    MessageBox("Maintenance record deleted. ID = " + maintenanceID.ToString)
 		    
 		  Catch error As DatabaseException
-		    MessageBox("Delete repair failed: " + error.Message)
+		    MessageBox("Delete Maintenance job failed: " + error.Message)
 		  End Try
+		  
+		  CLOSE ' return to calling screen
+		  
+		  
+		  
 		End Sub
 	#tag EndMethod
 
@@ -374,14 +381,16 @@ End
 		  
 		  
 		  Try
-		    // maintenanceID is passed via SelectedItemID
-		    Var maintenanceID As Integer = SelectedItemID
+		    // MaintenanceID is passed via SelectedItemID
+		    
+		    Var MaintenanceID As String = selectedItemID.StringValue
 		    
 		    // Query the RepairRecord table
-		    Var rs As RowSet = App.DB.SelectSQL("SELECT * FROM MaintenanceReminder WHERE itemID = ?", SelectedItemID)
+		    Var rs As RowSet = App.DB.SelectSQL("SELECT * FROM MaintenanceReminder WHERE ID = ?", maintenanceID)
+		    
 		    
 		    If rs.AfterLastRow Then
-		      MessageBox("No repair record found for ID: " + maintenanceID.ToString)
+		      MessageBox("No repair Maintenance found for ID: " + maintenanceID)
 		      Return
 		    End If
 		    
@@ -410,7 +419,7 @@ End
 		    
 		    
 		  Catch error As DatabaseException
-		    MessageBox("Error loading repair record: " + error.Message)
+		    MessageBox("Error loading Maintenance record: " + error.Message)
 		  Catch e As RuntimeException
 		    MessageBox("Unexpected error: " + e.Message)
 		  End Try
@@ -421,9 +430,8 @@ End
 		Private Sub UpdateJob()
 		  Try
 		    // The ItemID of the RepairRecord to update (e.g., passed via RowTag)
-		    Var ID As Integer = RowTag.IntegerValue
-		    
-		    Var ItemID As Integer = selectedItemID
+		    Var ID As Integer =  selectedItemID.IntegerValue  // needed for update and delete
+		    Var ItemID As Integer = RowTag.IntegerValue
 		    
 		    // Get updated values from UI controls
 		    
@@ -464,6 +472,8 @@ End
 		  Catch error As DatabaseException
 		    MessageBox("Update failed: " + error.Message)
 		  End Try
+		  
+		  CLOSE ' return to calling screen
 		End Sub
 	#tag EndMethod
 

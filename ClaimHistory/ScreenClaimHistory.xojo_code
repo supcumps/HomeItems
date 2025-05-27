@@ -42,16 +42,16 @@ Begin MobileScreen ScreenClaimHistory
       _OpeningCompleted=   False
    End
    Begin MobileToolbarButton AddButton
-      Caption         =   "✉️ Claims"
+      Caption         =   "✉️ New Claim"
       Enabled         =   True
       Height          =   22
       Icon            =   0
-      Left            =   293
+      Left            =   268
       LockedInPosition=   False
       Scope           =   2
       Top             =   32
       Type            =   1001
-      Width           =   74.0
+      Width           =   99.0
    End
 End
 #tag EndMobileScreen
@@ -96,7 +96,7 @@ End
 		    App.db.Connect
 		    
 		    DataSource = New ClaimTableDataSource
-		    DataSource.Recordset = App.db.SelectSQL("SELECT ItemID, DateFiled, AmountClaimed FROM ClaimHistory WHERE ItemId = ? ORDER BY DateFiled DESC", RowTag)
+		    DataSource.Recordset = App.db.SelectSQL("SELECT ID, ItemID, DateFiled, AmountClaimed FROM ClaimHistory WHERE ItemId = ? ORDER BY DateFiled DESC", RowTag)
 		    ClaimTable.DataSource = DataSource  // ✅ triggers dynamic row loading
 		    
 		    
@@ -118,47 +118,7 @@ End
 #tag Events ClaimTable
 	#tag Event
 		Sub SelectionChanged(section As Integer, row As Integer)
-		  '
-		  '
-		  '// Skip interaction if the selected row is the header row (first row)
-		  '
-		  '// Skip the header row: section 0, row 0
-		  'If section = 0 And row = 0 Then Return
-		  '// Ensure the DataSource has a valid Recordset before proceeding
-		  'If DataSource.Recordset <> Nil Then
-		  '
-		  '// We'll use this to track which record we're currently on in the loop
-		  'Var currentRow As Integer = 0
-		  '
-		  '// Loop through each row in the Recordset from the DataSource
-		  'For Each dbRow As DatabaseRow In DataSource.Recordset
-		  '
-		  '// When we reach the row that matches the selected row index
-		  'If currentRow = row Then
-		  '
-		  '// Retrieve the "ID" column from the database row and store it in Selected
-		  '// (You  use this to load or identify the correct record on the next screen)
-		  '
-		  'SelectedItemID = dbRow.Column("ItemID").IntegerValue
-		  '
-		  '// Create an instance of the edit screen
-		  'Var editClaimScreen As New ScreenEditClaim
-		  '// Pass the selected ItemID to the screen
-		  '
-		  '// Show the edit screen to allow user to view or edit details
-		  'editClaimScreen.Show
-		  '
-		  '// Exit the loop early, since we've found and handled the tapped row
-		  'Exit
-		  'End If
-		  '
-		  '// Move to the next row in the loop
-		  'currentRow = currentRow + 1
-		  '
-		  'Next
-		  'End If
-		  '
-		  '
+		  
 		  
 		  // Skip interaction if the selected row is the header row (first row)
 		  
@@ -178,8 +138,9 @@ End
 		        
 		        // Retrieve the "ID" column from the database row and store it in Selected
 		        // (You  use this to load or identify the correct record on the next screen)
+		        RowTag = dbRow.Column("ItemID").IntegerValue
+		        selectedItemID = dbRow.Column("ID").IntegerValue
 		        
-		        SelectedItemID = dbRow.Column("ItemID").IntegerValue
 		        
 		        // Create an instance of the edit screen
 		        Var editClaimScreen As New ScreenEditClaim
@@ -197,7 +158,6 @@ End
 		      
 		    Next
 		  End If
-		  
 		  
 		  
 		  

@@ -213,7 +213,7 @@ Begin MobileScreen ScreenAddMaintenanceItem
       AccessibilityLabel=   ""
       AutoLayout      =   swRecurringButton, 1, ReminderField, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   swRecurringButton, 7, , 0, True, +1.00, 4, 1, 51, , True
-      AutoLayout      =   swRecurringButton, 3, , 0, False, +1.00, 4, 1, 274, , True
+      AutoLayout      =   swRecurringButton, 3, <Parent>, 3, False, +1.00, 4, 1, 274, , True
       AutoLayout      =   swRecurringButton, 8, , 0, True, +1.00, 4, 1, 31, , True
       ControlCount    =   0
       Enabled         =   True
@@ -254,7 +254,7 @@ Begin MobileScreen ScreenAddMaintenanceItem
       Alignment       =   0
       AutoLayout      =   RecurringLabel, 3, swRecurringButton, 3, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   RecurringLabel, 8, , 0, False, +1.00, 4, 1, 30, , True
-      AutoLayout      =   RecurringLabel, 1, , 0, False, +1.00, 4, 1, 79, , True
+      AutoLayout      =   RecurringLabel, 1, <Parent>, 1, False, +1.00, 4, 1, 79, , True
       AutoLayout      =   RecurringLabel, 7, , 0, False, +1.00, 4, 1, 100, , True
       ControlCount    =   0
       Enabled         =   True
@@ -323,6 +323,7 @@ End
 		    SaveMaintenanceItem
 		  End Select
 		  
+		  CLOSE ' return to calling screen
 		  
 		  
 		  

@@ -94,7 +94,7 @@ End
 		  
 		  Try
 		    App.db.Connect
-		    
+		    // NB ID is needed here so that it can be used in the SelectionChanged event
 		    DataSource = New RepairsTableDataSource
 		    DataSource.Recordset = App.db.SelectSQL("SELECT ID, ItemID, RepairDate, Description FROM RepairRecord WHERE ItemId = ? ORDER BY RepairDate DESC", RowTag)
 		    TableRepairs.DataSource = DataSource  // ✅ triggers dynamic row loading

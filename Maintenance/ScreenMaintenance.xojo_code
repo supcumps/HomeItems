@@ -94,9 +94,9 @@ End
 		  
 		  Try
 		    App.db.Connect
-		    
+		    // note: need to have ID in this group so that it can be used int he selecitonchaged event
 		    DataSource = New MaintenanceTableDataSource
-		    DataSource.Recordset = App.db.SelectSQL("SELECT ItemID, DueDate, Description FROM MaintenanceReminder WHERE ItemId = ? ORDER BY DueDate DESC", RowTag)
+		    DataSource.Recordset = App.db.SelectSQL("SELECT ID, ItemID, DueDate, Description FROM MaintenanceReminder WHERE ItemId = ? ORDER BY DueDate DESC", RowTag)
 		    TableMaintenance.DataSource = DataSource  // ✅ triggers dynamic row loading
 		    
 		    
@@ -139,7 +139,9 @@ End
 		        // Retrieve the "ID" column from the database row and store it in Selected
 		        // (You  use this to load or identify the correct record on the next screen)
 		        
-		        SelectedItemID = dbRow.Column("ItemID").IntegerValue
+		        
+		        RowTag = dbRow.Column("ItemID").IntegerValue
+		        selectedItemID = dbRow.Column("ID").IntegerValue
 		        
 		        // Create an instance of the edit screen
 		        Var editMaintenanceScreen As New ScreenEditMaintenanceItem
