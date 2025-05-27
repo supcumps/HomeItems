@@ -184,7 +184,7 @@ Begin MobileScreen ScreenEditItem
       AutoLayout      =   txtPolicy, 8, , 0, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   txtPolicy, 1, txtManufacturer, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   txtPolicy, 10, lbl_PolicyNo, 10, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   txtPolicy, 7, TextURL, 7, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   txtPolicy, 7, , 0, False, +1.00, 4, 1, 202, , True
       BorderStyle     =   3
       ControlCount    =   0
       Enabled         =   True
@@ -208,7 +208,7 @@ Begin MobileScreen ScreenEditItem
       TintColor       =   &c000000
       Top             =   499
       Visible         =   True
-      Width           =   182
+      Width           =   202
       _ClosingFired   =   False
    End
    Begin MobileTextField txtModel
@@ -762,27 +762,17 @@ Begin MobileScreen ScreenEditItem
       Type            =   1001
       Width           =   112.0
    End
-   Begin MobileImageViewer PolicyImageViewer
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      AutoLayout      =   PolicyImageViewer, 1, webSiteButton, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   PolicyImageViewer, 7, , 0, False, +1.00, 4, 1, 25, , True
-      AutoLayout      =   PolicyImageViewer, 3, lbl_PolicyNo, 3, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   PolicyImageViewer, 8, , 0, False, +1.00, 4, 1, 31, , True
-      ControlCount    =   0
-      DisplayMode     =   0
+   Begin MobileToolbarButton ClaimButton
+      Caption         =   "🛄 Claims"
       Enabled         =   True
-      Height          =   31
-      Image           =   147341311
-      Left            =   343
+      Height          =   22
+      Icon            =   0
+      Left            =   217
       LockedInPosition=   False
       Scope           =   2
-      TintColor       =   &c000000
-      Top             =   501
-      URL             =   ""
-      Visible         =   True
-      Width           =   25
-      _ClosingFired   =   False
+      Top             =   778
+      Type            =   1001
+      Width           =   74.0
    End
 End
 #tag EndMobileScreen
@@ -817,6 +807,9 @@ End
 		  Case MaintenanceButton
 		    Var MaingenanceScreen As New ScreenMaintenance
 		    MaingenanceScreen.Show
+		  Case ClaimButton
+		    Var claimhistory As New ScreenClaimHistory
+		    claimhistory.show
 		  End Select
 		  
 		  
@@ -1009,14 +1002,6 @@ End
 		  Var urlScreen As New ShowUrlScreen
 		  urlScreen.URLToDisplay = Self.CompanyURL
 		  urlScreen.Show
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events PolicyImageViewer
-	#tag Event
-		Sub Pressed()
-		  Var claimhistory As New ScreenClaimHistory
-		  claimhistory.show
 		End Sub
 	#tag EndEvent
 #tag EndEvents

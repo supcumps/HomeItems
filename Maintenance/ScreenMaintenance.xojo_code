@@ -12,7 +12,7 @@ Begin MobileScreen ScreenMaintenance
    TabBarVisible   =   True
    TabIcon         =   0
    TintColor       =   &c34C75900
-   Title           =   "Maintenance"
+   Title           =   "Item Maintenance"
    Top             =   0
    Begin iOSMobileTable TableMaintenance
       AccessibilityHint=   ""
