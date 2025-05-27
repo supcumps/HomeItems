@@ -79,7 +79,7 @@ End
 		  Select Case Button
 		  Case AddButton
 		    Var AddItemScreen  As New ScreenAddItem
-		    AddItemScreen.Title = "Edit Items1"
+		    AddItemScreen.Title = "Edit Items"    // to show how titles can be modified
 		    AddItemScreen.Show
 		  End Select
 		  
